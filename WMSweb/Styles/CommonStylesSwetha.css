@@ -1,0 +1,233 @@
+﻿body {
+    border: 1px solid lightblue;
+}
+
+.dropdownlist {
+    width: 150px;
+    height: 100%;
+    background: none;
+    border: 1px solid #fff;
+    border-radius: 5%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.checkstyle {
+   border: 1px solid lightblue;
+    /*background-color: #f2f2f2;*/
+    color: black;
+    text-align: left;
+     width: 70%;
+}
+.checkstyle:hover {
+    outline: none;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+}
+.dropdownlistnew {
+    font-size: 90%;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    color: black;
+    padding: 2%;
+    width: 70%;
+    -webkit-appearance: none;
+    /*background-color: lightblue;*/
+    background-transparency: 0.5;
+    background-position: right 15px top;
+}
+.dropdownlistnew:active {
+    border: 1px solid #000;
+}
+.dropdownlistnew:hover {
+    outline: none;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+}
+.dropdownlistdash {
+    font-size: 90%;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    color: black;
+    padding: 0.8%;
+    width: 15%;    
+    -webkit-appearance: none;    
+    background-transparency: 0.5;
+    background-position: right 15px top;
+}
+.dropdownlistdash:active {
+    border: 1px solid #000;
+}
+.dropdownlistdash:hover {
+    outline: none;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+}
+.trstyle {
+}
+.tdlabel {
+    border:0px solid #CCCCCC;
+    background-color:white;
+    text-align:right;
+    padding:0.5%;
+    vertical-align:middle;
+    width:8%;
+    padding-top:0.5%;
+}
+.tdTextbox{
+     border:0px solid #CCCCCC;
+      background-color:white;
+    text-align:left;
+    height:5%;
+    padding:0.5% 0px 0.5% 0.5%;
+    vertical-align:middle;
+    width:15%;
+    padding-top:0.5%;
+}
+.textbox {
+    display: block;
+    width:60%;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    padding: 2% 4%;
+    color: #333;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+}
+.textbox:hover, #text1:focus {
+        outline: none;
+        box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+    }
+.textboxdash {
+    display: block;
+    width:90%;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    padding: 2% 4%;
+    color: #333;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+}
+    .textboxdash:hover, #text1:focus {
+        outline: none;
+        box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+    }
+
+.button {
+    display: block;
+    width:90%;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    padding: 3% 4%;
+    color: #333;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+}
+    .button:hover, .button:active {
+        outline: none;
+        box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+    }
+    
+.buttondash {
+    display: block;
+    width:20%;
+    height:30%;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    padding: 1% 1%;
+    color: #333;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+}
+.buttondash:hover, .button:active 
+{
+     outline: none;
+        box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+}
+.lightblue{
+    background-color:aquamarine;
+    margin-top:2%;
+}
+
+.tdTextboxadmin{
+     border:0px solid #CCCCCC;
+      background-color:white;
+    text-align:left;
+    height:1%;
+    padding:0.5% 0px 0.5% 0.5%;
+    vertical-align:middle;
+    width:5%;
+    padding-top:0.5%;
+}
+.textboxadmin {
+    display: block;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    padding: 2% 4%;
+    color: #333;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+}
+.textboxadmin:hover, #text1:focus {
+        outline: none;
+        box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+    }
+.textboxadmindash {
+    display: block;
+    width:90%;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    padding: 2% 4%;
+    color: #333;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+}
+    .textboxadmindash:hover, #text1:focus {
+        outline: none;
+        box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+    }
+
+.tdlabeladmin {
+    border:0px solid #CCCCCC;
+    background-color:white;
+    text-align:right;
+    padding:0.5%;
+    vertical-align:middle;
+    width:50%;
+    padding-top:0.5%;
+}
+
+.checkadminstyle {
+   border: 1px none lightblue;
+    /*background-color: #f2f2f2;*/
+    color: black;
+    text-align: left;
+     width: 70%;
+}
+.checkadminstyle:hover {
+    outline: none;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+}
+
+
+.buttonadmin {
+    /*display: block;*/
+    width:40%;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    padding: 3% 4%;
+    color: #333;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+}
+.buttonadmin:hover, .buttonadmin:active {
+        outline: none;
+        box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+    }
+    
+.buttonadmindash {
+    /*display: block;*/
+    width:20%;
+    height:30%;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    padding: 1% 1%;
+    color: #333;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+}
+.buttonadmindash:hover, .buttonadmin:active 
+{
+     outline: none;
+        box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+}

@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="TipsMaster.master.cs" Inherits="TipsMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="Scripts/jquery-ui-1.12.1.js"></script>
+    <link href="Styles/MenuStyle.css" rel="stylesheet" />
+
+    <title></title>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+    <body>
+        <form id="form1" runat="server">
+            <div>
+            
+              <%--  <asp:Image ImageUrl="~/Images/Header.jpg" ID="imgheader" runat="server" Width="100%" />  --%>    
+                  <p id="DisplayLinks">
+                      <%--<img src="Images/tipsntoesLogo.png"  height="40px"/>--%>
+              <asp:Label ID="lblWelcomeMessage" Text="Welcome Admin" runat="server" CssClass="WelcomeLabel"></asp:Label>
+              <asp:Label ID="Label1" Text=" | " runat="server" CssClass="WelcomeLabel"></asp:Label>
+              <asp:LinkButton ID="lnkSignout" Text="Sign Out" runat="server" OnClick="lnkSignout_Click"></asp:LinkButton>
+          </p>      
+            </div>
+    
+
+            <header>
+                <nav id="nav" class="ry">
+                    <ul id="main-menu">
+                        <li>
+                            <a href="Dashboard.aspx"><i class="fa fa-home"></i>Dashbord</a>
+                        </li>
+                           <li >
+                            <a href="RequestDetails.aspx"><i class="fa fa-home"></i>Request</a>
+                         <%--  <asp:LinkButton ID="lnkRequest" runat="server" Text="Request" OnClick="lnkRequest_Click" ><i class="fa fa-home"></i></asp:LinkButton>--%>
+                        </li>
+                        <li id="liAdmin" runat="server" visible="true">
+                            <a href="AdminRegion.aspx"><i class="fa fa-user"></i>Administration <i class="fa fa-caret-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="AdminRegion.aspx">Region Master</a></li>
+                                <li><a href="AdminBranch.aspx">Branch Master</a></li>
+                                <li><a href="AdminCategory.aspx">Category Master</a></li>
+                                   <li><a href="AdminPriority.aspx">Priority Master</a></li>
+                                   <li><a href="AdminSection.aspx">Section Master</a></li>
+                            </ul>
+                        </li>
+                    
+                         <li>
+                            <a href="TrackRequest.aspx"><i class="fa fa-home"></i>Reports</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <div>
+                <asp:ContentPlaceHolder ID="cph_body" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </form>
+    </body>
+</html>
