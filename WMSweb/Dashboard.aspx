@@ -8,12 +8,20 @@
     <%--<link href="Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="Content/bootstrap.css" rel="stylesheet" />--%>
     <link href="Styles/CommonStyles.css" rel="stylesheet" />
+    
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_body" runat="Server">
     <asp:ScriptManager runat="server" ID="scrptmgr"></asp:ScriptManager>
-
-
+    <div class="row-fluid" style="text-align: center;">
+        Dashboard for :
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default btn-frequency active">Month</button>
+            <button type="button" class="btn btn-default btn-frequency">Week</button>
+            <button type="button" class="btn btn-default btn-frequency">Day</button>
+        </div>
+    </div>
+    
     <asp:UpdatePanel ID="upanel_full" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div>

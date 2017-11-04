@@ -125,6 +125,10 @@
     <script src="Scripts/SidebarNav.min.js"></script>
     <script type="text/javascript">
         $('.sidebar-menu').SidebarNav();
+        $(".btn-group > .btn").click(function () {
+            $(".btn-group > .btn").removeClass("active");
+            $(this).addClass("active");
+        });
     </script>
 </body>
 </html>
