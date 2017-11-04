@@ -62,6 +62,7 @@ public partial class AdminRegion : System.Web.UI.Page
             hidRegionID.Value = "";
             btnSave.Visible = true;
             btnUpdate.Visible = false;
+            dvRegionAlert.Visible = false;
         }
         catch (Exception)
         {
@@ -94,11 +95,13 @@ public partial class AdminRegion : System.Web.UI.Page
             if (result == 1)
             {
                 lblMessage.Text = "Saved Successfully";
+                dvRegionAlert.Visible = true;
                 ClearControls();
             }
             else if (result == 100)
             {
                 lblMessage.Text = "Region Name already exists";
+                dvRegionAlert.Visible = true;
                 txtRegionName.Focus();
             }
 
@@ -174,16 +177,19 @@ public partial class AdminRegion : System.Web.UI.Page
             if (result == 1)
             {
                 lblMessage.Text = "Updated Successfully";
+                dvRegionAlert.Visible = true;
                 ClearControls();
             }
             else if (result == 2)
             {
                 lblMessage.Text = "Cannot de-activate the Region Record as it is being referenced by Open/In-Progress tickets";
+                dvRegionAlert.Visible = true;
                 ClearControls();
             }
             else if (result == 100)
             {
                 lblMessage.Text = "Region Name already exists";
+                dvRegionAlert.Visible = true;
                 txtRegionName.Focus();
             }
         }

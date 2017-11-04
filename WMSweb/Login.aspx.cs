@@ -27,7 +27,7 @@ public partial class Login : System.Web.UI.Page
 
             CheckUser();
 
-                        
+
         }
         catch (Exception ex)
         {
@@ -53,8 +53,19 @@ public partial class Login : System.Web.UI.Page
             else
             {
                 Session["UserBO"] = _userbo;
-                Response.Redirect("Dashboard.aspx", false);
-                //Response.Redirect("RequestDetails.aspx", false);
+                var userId = _userbo.UserID;
+
+                if (!this.Page.ClientScript.IsClientScriptBlockRegistered("myPostBackScript"))
+                {
+                    this.Page.ClientScript.RegisterClientScriptBlock(typeof(Page),
+                        "set", "SetUserId(" + userId + ");window.location='" + Request.ApplicationPath + "Dashboard.aspx';", true);
+                }
+
+                //Response.Redirect("Dashboard.aspx", false);
+
+
+
+
             }
         }
         catch (Exception ex)

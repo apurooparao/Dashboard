@@ -8,6 +8,29 @@
     <%--<link href="Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="Content/bootstrap.css" rel="stylesheet" />--%>
     <link href="Styles/CommonStyles.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function getStatsForMonth() {
+            var userId = window.sessionStorage["USERID"];
+            alert(userId);
+            $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "http://localhost:3232/WebControllers/api/Values"
+                }).done(function (resp) {
+                    alert("done");
+                })
+                .fail(function (msg) {
+                    alert("fail");
+                })
+                .always(function (msg) {
+                    alert("always");
+                });
+
+            $.getJSON("http://localhost:3232/WebControllers/api/Values", function (data) {
+                alert(data);
+            });
+        }
+    </script>
     
 
 </asp:Content>
@@ -16,7 +39,7 @@
     <div class="row-fluid" style="text-align: center;">
         Dashboard for :
         <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-default btn-frequency active">Month</button>
+            <button type="button" class="btn btn-default btn-frequency active" onclick="getStatsForMonth();">Month</button>
             <button type="button" class="btn btn-default btn-frequency">Week</button>
             <button type="button" class="btn btn-default btn-frequency">Day</button>
         </div>

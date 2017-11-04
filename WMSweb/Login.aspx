@@ -6,6 +6,11 @@
 <head runat="server">
     <title>Login</title>
     <link href="Styles/loginstyle.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function SetUserId(userId) {
+            window.sessionStorage.setItem("USERID", userId);
+        }
+    </script>
 </head>
 <body style="background-image: url(../Images/TipsNToes.jpg)">
     <form id="loginform" class="login-form" runat="server" name="login-form">
@@ -25,5 +30,6 @@
         </div>
     </div>
     </form>
+   
 </body>
 </html>
