@@ -1,64 +1,130 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="TipsMaster.master.cs" Inherits="TipsMaster" %>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head runat="server">
-    <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
-    <script src="Scripts/jquery-3.1.1.min.js"></script>
-    <script src="Scripts/jquery-ui-1.12.1.js"></script>
-    <link href="Styles/MenuStyle.css" rel="stylesheet" />
+    <%--<link href="Styles/MenuStyle.css" rel="stylesheet" />--%>
 
     <title></title>
+    
+    <script src="../../Scripts/jquery-3.1.1.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
+    <link href="Content/font-awesome-4.0.3.css" rel="stylesheet" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../../Content/Layout/LayoutOne.css" rel="stylesheet" />
+    <link href="../../Content/SidebarNav.min.css" rel="stylesheet" />
 
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-    <body>
-        <form id="form1" runat="server">
-            <div>
-            
-              <%--  <asp:Image ImageUrl="~/Images/Header.jpg" ID="imgheader" runat="server" Width="100%" />  --%>    
-                  <p id="DisplayLinks">
-                      <%--<img src="Images/tipsntoesLogo.png"  height="40px"/>--%>
-              <asp:Label ID="lblWelcomeMessage" Text="Welcome Admin" runat="server" CssClass="WelcomeLabel"></asp:Label>
-              <asp:Label ID="Label1" Text=" | " runat="server" CssClass="WelcomeLabel"></asp:Label>
-              <asp:LinkButton ID="lnkSignout" Text="Sign Out" runat="server" OnClick="lnkSignout_Click"></asp:LinkButton>
-          </p>      
-            </div>
-    
+<body>
+    <form id="form1" runat="server">
+        <%--<div>
+            <p id="DisplayLinks">
+                <asp:Label ID="lblWelcomeMessage" Text="Welcome Admin" runat="server" CssClass="WelcomeLabel"></asp:Label>
+                <asp:Label ID="Label1" Text=" | " runat="server" CssClass="WelcomeLabel"></asp:Label>
+                <asp:LinkButton ID="lnkSignout" Text="Sign Out" runat="server" OnClick="lnkSignout_Click"></asp:LinkButton>
+            </p>
+        </div>--%>
+        <%--<header>
+            <nav id="nav" class="ry">
+                <ul id="main-menu">
+                    <li>
+                        <a href="Dashboard.aspx"><i class="fa fa-home"></i>Dashbord</a>
+                    </li>
+                    <li>
+                        <a href="RequestDetails.aspx"><i class="fa fa-home"></i>Request</a>--%>
+        <%--  <asp:LinkButton ID="lnkRequest" runat="server" Text="Request" OnClick="lnkRequest_Click" ><i class="fa fa-home"></i></asp:LinkButton>--%>
+        <%--</li>
+                    <li id="liAdmin" runat="server" visible="true">
+                        <a href="AdminRegion.aspx"><i class="fa fa-user"></i>Administration <i class="fa fa-caret-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="AdminRegion.aspx">Region Master</a></li>
+                            <li><a href="AdminBranch.aspx">Branch Master</a></li>
+                            <li><a href="AdminCategory.aspx">Category Master</a></li>
+                            <li><a href="AdminPriority.aspx">Priority Master</a></li>
+                            <li><a href="AdminSection.aspx">Section Master</a></li>
+                        </ul>
+                    </li>
 
-            <header>
-                <nav id="nav" class="ry">
-                    <ul id="main-menu">
-                        <li>
-                            <a href="Dashboard.aspx"><i class="fa fa-home"></i>Dashbord</a>
-                        </li>
-                           <li >
-                            <a href="RequestDetails.aspx"><i class="fa fa-home"></i>Request</a>
-                         <%--  <asp:LinkButton ID="lnkRequest" runat="server" Text="Request" OnClick="lnkRequest_Click" ><i class="fa fa-home"></i></asp:LinkButton>--%>
-                        </li>
-                        <li id="liAdmin" runat="server" visible="true">
-                            <a href="AdminRegion.aspx"><i class="fa fa-user"></i>Administration <i class="fa fa-caret-down"></i></a>
-                            <ul class="submenu">
-                                <li><a href="AdminRegion.aspx">Region Master</a></li>
-                                <li><a href="AdminBranch.aspx">Branch Master</a></li>
-                                <li><a href="AdminCategory.aspx">Category Master</a></li>
-                                   <li><a href="AdminPriority.aspx">Priority Master</a></li>
-                                   <li><a href="AdminSection.aspx">Section Master</a></li>
-                            </ul>
-                        </li>
-                    
-                         <li>
-                            <a href="TrackRequest.aspx"><i class="fa fa-home"></i>Reports</a>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-            <div>
+                    <li>
+                        <a href="TrackRequest.aspx"><i class="fa fa-home"></i>Reports</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>--%>
+
+        <nav class="titleHeader navbar navbar-inverse" style="z-index: 2200">
+            <span class="navbar-brand brandName">Tips n Toes
+            </span>
+            <div class="pull-right">
+                <asp:Label ID="lblWelcomeMessage" Text="Welcome Admin" runat="server" CssClass="navbar-brand"></asp:Label>
+                <asp:Label ID="Label1" Text=" | " runat="server" CssClass="navbar-brand"></asp:Label>
+                <asp:LinkButton ID="lnkSignout" Text="Sign Out" runat="server" CssClass="navbar-brand" OnClick="lnkSignout_Click"></asp:LinkButton>
+            </div>
+        </nav>
+        <aside class="sidebar-left col-md-1">
+            <nav class="navbar navbar-inverse">
+                <div class="">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Brand</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="sidebar-menu">
+                            <li class="header"></li>
+                            <li class="treeview">
+                                <a href="../../Dashboard.aspx">
+                                    <span><i class="fa fa-dashboard"></i></span>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    
+                                    <span><i class="fa fa-gear"></i></span>
+                                    <span><u>Administration</u></span>
+                                </a>
+                                <ul class="treeview-menu" style="display: none;">
+                                    <li><a href="../../AdminRegion.aspx"><i class="fa-sub fa-angle-right"></i>Region</a></li>
+                                    <li><a href="../../AdminBranch.aspx"><i class="fa-sub fa-angle-right"></i>Branch</a></li>
+                                    <li><a href="../../AdminCategory.aspx"><i class="fa-sub fa-angle-right"></i>Category</a></li>
+                                    <li><a href="../../AdminPriority.aspx"><i class="fa-sub fa-angle-right"></i>Priority</a></li>
+                                    <li><a href="../../AdminSection.aspx"><i class="fa-sub fa-angle-right"></i>Section</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../../TrackRequest.aspx">
+                                <span><i class="fa fa-bar-chart-o"></i></span>
+                                <span>Reports</span></a></li>
+                            <li><a href="../../RequestDetails.aspx">
+                                <span><i class="fa fa-circle"></i></span>
+                                <span>Request</span></a></li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </aside>
+        <div>
+            <span class="col-md-1"></span>
+            <div class="col-md-11">
                 <asp:ContentPlaceHolder ID="cph_body" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-        </form>
-    </body>
+        </div>
+    </form>
+    <script src="Scripts/SidebarNav.min.js"></script>
+    <script type="text/javascript">
+        $('.sidebar-menu').SidebarNav();
+    </script>
+</body>
 </html>

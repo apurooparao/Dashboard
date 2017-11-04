@@ -1,0 +1,193 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <script src="../../Scripts/jquery-3.1.1.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
+    <link href="../../Content/font-awesome.css" rel="stylesheet" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../../Content/SidebarNav.min.css" rel="stylesheet" />
+    <link href="../../Content/Layout/LayoutOne.css" rel="stylesheet" />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+    <aside class="sidebar-left">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="sidebar-menu">
+                        <li class="header"></li>
+                        <li class="treeview">
+                            <a href="../../Dashboard.aspx">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../../AdminRegion.aspx">
+                                <i class="fa fa-gear"></i>
+                                <span>Administration</span>
+                                <span class="fa fa-angle-left pull-right"></span>
+                            </a>
+                            <ul class="treeview-menu" style="display: none;">
+                                <li><a href="../../AdminRegion.aspx"><i class="fa fa-angle-double-right"></i> <span>Region</span></a></li>
+                                <li><a href="../../AdminBranch.aspx"><i class="fa fa-angle-double-right" "></i> <span>Branch</span></a></li>
+                                <li><a href="../../AdminCategory.aspx"><i class="fa fa-angle-double-right" "></i> <span>Category</span></a></li>
+                                <li><a href="../../AdminPriority.aspx"><i class="fa fa-angle-double-right" "></i> <span>Priority</span></a></li>
+                                <li><a href="../../AdminSection.aspx"><i class="fa fa-angle-double-right" "></i> <span>Section</span></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../../TrackRequest.aspx"><i class="fa fa-bar-chart-o"></i> <span>Reports</span></a></li>
+                        <li><a href="../../RequestDetails.aspx"><i class="fa fa-circle"></i> <span>Request</span></a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </aside>
+    <nav class="titleHeader navbar navbar-inverse" style="z-index:2200">
+        <div class="container-fluid">
+            <span class="navbar-brand brandName">
+                Tips n Toes
+            </span>
+            <div class="pull-right">
+                <asp:Label ID="lblWelcomeMessage" Text="Welcome Admin" runat="server" CssClass="WelcomeLabel"></asp:Label>
+                <asp:Label ID="Label1" Text=" | " runat="server" CssClass="WelcomeLabel"></asp:Label>
+                <asp:LinkButton ID="lnkSignout" Text="Sign Out" runat="server" OnClick="lnkSignout_Click"></asp:LinkButton>
+            </div>
+        </div>
+    </nav>
+    
+    <script src="../../Scripts/SidebarNav.min.js"></script>
+    <script type="text/javascript">
+        $('.sidebar-menu').SidebarNav();
+    </script>
+</body>
+<!--<body>
+    <script src="../../Scripts/jquery-3.1.1.slim.min.js"></script>
+    <script src="../../Scripts/popper.min.js"></script>
+
+    <div class="area">
+        Hello
+        Hello
+        Hello
+        Hello
+        Hello
+        Hello
+        Hello
+        Hello
+        Hello
+        Hello
+        Hello
+    </div>
+    <nav>
+
+    </nav>
+    <nav class="main-menu">
+        <section>
+
+        </section>
+        <ul>
+            <li>
+                <a href="http://justinfarrow.com">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        Dashboard
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                    <i class="fa fa-laptop fa-2x"></i>
+                    <span class="nav-text">
+                        UI Components
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                    <i class="fa fa-list fa-2x"></i>
+                    <span class="nav-text">
+                        Forms
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                    <i class="fa fa-folder-open fa-2x"></i>
+                    <span class="nav-text">
+                        Pages
+                    </span>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-bar-chart-o fa-2x"></i>
+                    <span class="nav-text">
+                        Graphs and Statistics
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-font fa-2x"></i>
+                    <span class="nav-text">
+                        Typography and Icons
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-table fa-2x"></i>
+                    <span class="nav-text">
+                        Tables
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-map-marker fa-2x"></i>
+                    <span class="nav-text">
+                        Maps
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-info fa-2x"></i>
+                    <span class="nav-text">
+                        Documentation
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="logout">
+            <li>
+                <a href="#">
+                    <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text">
+                        Logout
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <script src="../../Scripts/SidebarNav.js"></script>
+</body>-->
+</html>
