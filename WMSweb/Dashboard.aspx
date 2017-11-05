@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/TipsMaster.master" AutoEventWireup="true" CodeFile="Dashboard.aspx.cs" Inherits="Dashboard" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <script src="Scripts/jquery-3.1.1.js"></script>
     <%--<script src="Scripts/DataTables/jquery.dataTables.min.js"></script>
     <link href="Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />--%>
     <link href="Styles/GridViewStyleSheet.css" rel="stylesheet" />
@@ -9,10 +8,151 @@
     <link href="Content/bootstrap.css" rel="stylesheet" />--%>
     <link href="Styles/CommonStyles.css" rel="stylesheet" />
 
+    <script type="text/javascript">
+        $(function () {
+            //var chart = c3.generate({
+            //    data: {
+            //        columns: [
+            //            ['data1', 30, 200, 100, 400, 150, 250],
+            //            ['data2', 50, 20, 10, 40, 15, 25]
+            //        ],
+            //        type: 'bar'
+            //    }
+            //});
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3232/GetDataServices.asmx/GetRequestbyStatus",
+                data: JSON.stringify({ Status: 1, Userid: 1 }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            })
+                .done(function (msg) {
+                    console.log(msg.d);
+                    var data = eval("(" + msg.d + ")");
+                    var newData = [];
+                    for (var i = 0, l = data.length; i < l; i++) {
+                        var o = data[i];
+                        newData[i] = [o.Criticality, o.IssueCount];
+                    }
+                    //console.log(JSON.stringify(newData)); console.log(newData);
+                    var chart = c3.generate({
+                        bindto: '#charts',
+                        data: {
+                            columns: newData,
+                            type: 'bar'
+                        },
+                        bar: {
+                            width: {
+                                ratio: 0.5 // this makes bar width 50% of length between ticks
+                            }
+                            // or
+                            //width: 100 // this makes bar width 100px
+                        }
+                    });
+
+                })
+                .fail(function (msg) {
+                    console.log("fail")
+                })
+                .always(function (msg) {
+                    console.log("always")
+                });
+
+            $("select[id$='ddlStatus']").change(function (e) {
+                $.ajax({
+                    type: "POST",
+                    url: "GetDataServices.asmx/GetRequestbyStatus",
+                    data: JSON.stringify({ Status: parseInt($(this).val()), Userid: 1 }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                })
+                    .done(function (msg) {
+                        console.log(msg.d);
+                        var data = eval("(" + msg.d + ")");
+                        var newData = [];
+                        for (var i = 0, l = data.length; i < l; i++) {
+                            var o = data[i];
+                            newData[i] = [o.Criticality, o.IssueCount];
+                        }
+                        //console.log(JSON.stringify(newData)); console.log(newData);
+                        var chart = c3.generate({
+                            bindto: '#charts',
+                            data: {
+                                columns: newData,
+                                type: 'bar'
+                            },
+                            bar: {
+                                width: {
+                                    ratio: 0.5 // this makes bar width 50% of length between ticks
+                                }
+                                // or
+                                //width: 100 // this makes bar width 100px
+                            }
+                        });
+
+                    })
+                    .fail(function (msg) {
+                        console.log("fail")
+                    })
+                    .always(function (msg) {
+                        console.log("always")
+                    });
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_body" runat="Server">
     <asp:ScriptManager runat="server" ID="scrptmgr"></asp:ScriptManager>
 
+    <div class="wrap">
+        <div class="tile">
+            <div class="tileStyle">
+                <div class="text">
+                    <h1>Lorem ipsum.</h1>
+                    <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+                    <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
+                    <div class="dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tile">
+            <div class="tileStyle">
+                <div class="text">
+                    <h1>Lorem ipsum.</h1>
+                    <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+                    <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
+                    <div class="dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tile">
+            <div class="tileStyle">
+                <div class="text">
+                    <h1>Lorem ipsum.</h1>
+                    <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+                    <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf. Flank sirloin strip steak prosciutto kevin turducken. </p>
+                    <div class="dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="charts" style="width:40%;height:300px;margin:0 auto"></div>
 
     <asp:UpdatePanel ID="upanel_full" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
@@ -31,7 +171,7 @@
                 </table>
             </div>
 
-            <table id="tblchart" runat="server" style="width: 100%">
+   <%--         <table id="tblchart" runat="server" style="width: 100%">
                 <tr>
                     <td>
                         <asp:Chart ID="chart_dashboard" CanResize="false" runat="server" Width="500px">
@@ -92,15 +232,15 @@
                             </ChartAreas>
                         </asp:Chart>
                     </td>
-                  
+
                 </tr>
 
 
-            </table>
+            </table>--%>
         </ContentTemplate>
 
         <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="ddlStatus" EventName="SelectedIndexChanged" />
+            <%--<asp:AsyncPostBackTrigger ControlID="ddlStatus" EventName="SelectedIndexChanged" />--%>
         </Triggers>
     </asp:UpdatePanel>
 
@@ -140,7 +280,7 @@
                     </asp:TemplateField>--%>
                         <asp:BoundField DataField="WMSID" HeaderText="WMS ID" InsertVisible="False" ReadOnly="True" SortExpression="WMSID" ItemStyle-Width="5%" />
                         <asp:BoundField DataField="PriorityName" HeaderText="Priority" SortExpression="PriorityName" ItemStyle-Width="8%" />
-                         <asp:BoundField DataField="BranchName" HeaderText="Branch" SortExpression="BranchName" ItemStyle-Width="10%" />                       
+                        <asp:BoundField DataField="BranchName" HeaderText="Branch" SortExpression="BranchName" ItemStyle-Width="10%" />
                         <asp:BoundField DataField="AffectOperation" HeaderText="Affect Operation" SortExpression="AffectOperation" ItemStyle-Width="10%" />
                         <asp:BoundField DataField="Scope" HeaderText="Scope" SortExpression="Scope" ItemStyle-Width="8%" />
                         <asp:BoundField DataField="SectionName" HeaderText="Section" SortExpression="SectionName" ItemStyle-Width="15%" />

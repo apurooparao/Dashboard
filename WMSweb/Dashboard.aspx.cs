@@ -49,7 +49,7 @@ public partial class Dashboard : System.Web.UI.Page
             //chart_dashboard.DataBind();
             // int branchid = 1;
             //   FillGrid(status, branchid);
-            FillGrid(status, userid);
+            //FillGrid(status, userid);
 
             grd_requests.DataBind();
             grdcnt();
@@ -102,47 +102,47 @@ public partial class Dashboard : System.Web.UI.Page
         }
     }
 
-    private void FillGrid(int status, int userid)
-    {
-        try
-        {
-            _rqstbl = new requestBL();
-            DataSet drequest = _rqstbl.getRequestbyStatus(status, userid);
+    //private void FillGrid(int status, int userid)
+    //{
+    //    try
+    //    {
+    //        _rqstbl = new requestBL();
+    //        DataSet drequest = _rqstbl.getRequestbyStatus(status, userid);
 
 
-            if (drequest.Tables[0].Rows.Count != 0)
-            {
-                chart_dashboard.DataSource = drequest.Tables[0];
-                chart_dashboard.Titles["OpenIssues"].Text = ddlStatus.SelectedItem.Text + " Requests";
-                // Set series members names for the X and Y values
+    //        if (drequest.Tables[0].Rows.Count != 0)
+    //        {
+    //            chart_dashboard.DataSource = drequest.Tables[0];
+    //            chart_dashboard.Titles["OpenIssues"].Text = ddlStatus.SelectedItem.Text + " Requests";
+    //            // Set series members names for the X and Y values
 
-                //    Series["Count"].XValueMember = "Criticality";
+    //            //    Series["Count"].XValueMember = "Criticality";
 
-                chart_dashboard.Series["Count"].YValueMembers = "IssueCount";
+    //            chart_dashboard.Series["Count"].YValueMembers = "IssueCount";
 
-                chart_dashboard.Series["Count"].IsValueShownAsLabel = true;
+    //            chart_dashboard.Series["Count"].IsValueShownAsLabel = true;
 
-                chart_dashboard.Series["Count"].ChartType = SeriesChartType.Column;
+    //            chart_dashboard.Series["Count"].ChartType = SeriesChartType.Column;
 
-                // chart_dashboard.Titles[0].Text = "No of incidents vs Criticality";
+    //            // chart_dashboard.Titles[0].Text = "No of incidents vs Criticality";
 
-                chart_dashboard.DataBind();
+    //            chart_dashboard.DataBind();
 
-                for (int i = 0; i < drequest.Tables[0].Rows.Count; i++)
-                {
+    //            for (int i = 0; i < drequest.Tables[0].Rows.Count; i++)
+    //            {
 
-                    chart_dashboard.Series["Count"].Points[i].Color = Color.FromName(drequest.Tables[0].Rows[i]["ChartColor"].ToString());
-                }
+    //                chart_dashboard.Series["Count"].Points[i].Color = Color.FromName(drequest.Tables[0].Rows[i]["ChartColor"].ToString());
+    //            }
 
-            }
+    //        }
 
-        }
-        catch (Exception ex)
-        {
+    //    }
+    //    catch (Exception ex)
+    //    {
 
-            throw;
-        }
-    }
+    //        throw;
+    //    }
+    //}
 
     private void FillDropDown(DropDownList ddl, string selectQuery, string table, string condition)
     {
@@ -182,7 +182,7 @@ public partial class Dashboard : System.Web.UI.Page
                 _userBO = new UserBO();
                 _userBO = (UserBO)Session["UserBO"];
                 int userid = _userBO.UserID;
-                FillGrid(status, userid);
+                //FillGrid(status, userid);
                 grd_requests.DataBind();
                 grdcnt();
 
