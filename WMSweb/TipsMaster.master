@@ -3,20 +3,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
-    <%--<link href="Styles/MenuStyle.css" rel="stylesheet" />--%>
-
-    <title></title>
-    
-    <script src="../../Scripts/jquery-3.1.1.js"></script>
-    <script src="../../Scripts/bootstrap.js"></script>
-    <link href="Content/font-awesome-4.0.3.css" rel="stylesheet" />
-    <link href="../../Content/bootstrap.css" rel="stylesheet" />
-    <link href="../../Content/Layout/LayoutOne.css" rel="stylesheet" />
-    <link href="../../Content/SidebarNav.min.css" rel="stylesheet" />
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title></title>
+    
+    <%--<link href="Styles/MenuStyle.css" rel="stylesheet" />--%>
+    <%--<script src="../../Scripts/jquery-3.1.1.js"></script>--%>
+    <%--<script src="Scripts/foundation.min.js"></script>--%>
+
+    <link href="Styles/c3.css" rel="stylesheet" />
+    <link href="Content/font-awesome-4.0.3.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Layout/LayoutOne.css" rel="stylesheet" />
+    <link href="Content/SidebarNav.min.css" rel="stylesheet" />
+
+    <script src="Scripts/modernizr-2.6.1.min.js"></script>
+    <%--<script src="Scripts/jquery-1.11.0.min.js"></script>--%>
+    <script src="Scripts/jquery-3.1.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/d3-3.5.6.min.js"></script>
+    <script src="Scripts/c3.js"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
