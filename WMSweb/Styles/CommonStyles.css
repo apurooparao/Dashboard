@@ -387,3 +387,15 @@ background: #eee;
     visibility:visible;
     
 }
+
+.btn-frequency.active,
+.btn-frequency:focus,
+.btn-frequency:active:focus,
+.btn-frequency.active:focus,
+.btn-frequency.focus,
+.btn-frequency:active.focus,
+.btn-frequency.active.focus {
+	color: #fff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+}
