@@ -31,6 +31,12 @@ namespace WMSbl
             return objRequestDA.getRequestByStatus(status, userId);
         }
 
+        public DataSet GetDashboardInfo(int UserId, string Timeframe)
+        {
+            requestDA objRequestDA = new requestDA();
+            return objRequestDA.GetDashboardInfo(UserId, Timeframe);
+        }
+
         public DataSet GetRequestDetail(int wmsId)
         {
             requestDA objRequestDA = new requestDA();
@@ -47,6 +53,18 @@ namespace WMSbl
         {
             requestDA objRequestDA = new requestDA();
             return objRequestDA.getStatusvalues(wmsId);
+        }
+
+        public DataTable GetRequestDetailsByStatus(int userId, int status)
+        {
+            requestDA objRequestDA = new requestDA();
+            return objRequestDA.GetRequestDetailsByStatus(userId, status);
+        }
+
+        public DataTable GetMasterStatus()
+        {
+            requestDA objRequestDA = new requestDA();
+            return objRequestDA.getMasterStatus();
         }
     }
 }

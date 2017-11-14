@@ -6,9 +6,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <title></title>
-    
+
     <%--<link href="Styles/MenuStyle.css" rel="stylesheet" />--%>
     <%--<script src="../../Scripts/jquery-3.1.1.js"></script>--%>
     <%--<script src="Scripts/foundation.min.js"></script>--%>
@@ -31,41 +31,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <%--<div>
-            <p id="DisplayLinks">
-                <asp:Label ID="lblWelcomeMessage" Text="Welcome Admin" runat="server" CssClass="WelcomeLabel"></asp:Label>
-                <asp:Label ID="Label1" Text=" | " runat="server" CssClass="WelcomeLabel"></asp:Label>
-                <asp:LinkButton ID="lnkSignout" Text="Sign Out" runat="server" OnClick="lnkSignout_Click"></asp:LinkButton>
-            </p>
-        </div>--%>
-        <%--<header>
-            <nav id="nav" class="ry">
-                <ul id="main-menu">
-                    <li>
-                        <a href="Dashboard.aspx"><i class="fa fa-home"></i>Dashbord</a>
-                    </li>
-                    <li>
-                        <a href="RequestDetails.aspx"><i class="fa fa-home"></i>Request</a>--%>
-        <%--  <asp:LinkButton ID="lnkRequest" runat="server" Text="Request" OnClick="lnkRequest_Click" ><i class="fa fa-home"></i></asp:LinkButton>--%>
-        <%--</li>
-                    <li id="liAdmin" runat="server" visible="true">
-                        <a href="AdminRegion.aspx"><i class="fa fa-user"></i>Administration <i class="fa fa-caret-down"></i></a>
-                        <ul class="submenu">
-                            <li><a href="AdminRegion.aspx">Region Master</a></li>
-                            <li><a href="AdminBranch.aspx">Branch Master</a></li>
-                            <li><a href="AdminCategory.aspx">Category Master</a></li>
-                            <li><a href="AdminPriority.aspx">Priority Master</a></li>
-                            <li><a href="AdminSection.aspx">Section Master</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="TrackRequest.aspx"><i class="fa fa-home"></i>Reports</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>--%>
-
         <nav class="titleHeader navbar navbar-inverse" style="z-index: 2200">
             <span class="navbar-brand brandName">Tips n Toes
             </span>
@@ -98,7 +63,7 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    
+
                                     <span><i class="fa fa-gear"></i></span>
                                     <span><u>Administration</u></span>
                                 </a>
@@ -113,9 +78,15 @@
                             <li><a href="../../TrackRequest.aspx">
                                 <span><i class="fa fa-bar-chart-o"></i></span>
                                 <span>Reports</span></a></li>
-                            <li><a href="../../RequestDetails.aspx">
-                                <span><i class="fa fa-circle"></i></span>
-                                <span>Request</span></a></li>
+                            <li><a href="#">
+                                <i class="fa fa-circle"></i>
+                                <span style="text-decoration: underline">Request</span>
+                            </a>
+                                <ul class="treeview-menu" style="display: none;">
+                                    <li><a href="../../RequestDetails.aspx"><i class="fa-sub fa-angle-right"></i>Add Request</a></li>
+                                    <li><a href="../../SearchRequest.aspx"><i class="fa-sub fa-angle-right"></i>Search</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -134,6 +105,10 @@
     <script src="Scripts/SidebarNav.min.js"></script>
     <script type="text/javascript">
         $('.sidebar-menu').SidebarNav();
+        $(".btn-group > .btn").click(function () {
+            $(".btn-group > .btn").removeClass("active");
+            $(this).addClass("active");
+        });
     </script>
 </body>
 </html>

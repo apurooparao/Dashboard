@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WMSweb", "WMSweb\", "{BD67A7C0-928A-4D57-B197-86159346DA5F}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMSda", "WMSda\WMSda.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMSobjects", "WMSobjects\WMSobjects.csproj", "{9EA1A7FD-90FD-4E63-8ED2-30A57D7FC58A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMApis", "WMApis\WMApis\WMApis.csproj", "{493617A9-3F44-4E84-9F93-1E1AA15E67EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,8 +55,15 @@ Global
 		{9EA1A7FD-90FD-4E63-8ED2-30A57D7FC58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EA1A7FD-90FD-4E63-8ED2-30A57D7FC58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EA1A7FD-90FD-4E63-8ED2-30A57D7FC58A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{493617A9-3F44-4E84-9F93-1E1AA15E67EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{493617A9-3F44-4E84-9F93-1E1AA15E67EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{493617A9-3F44-4E84-9F93-1E1AA15E67EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{493617A9-3F44-4E84-9F93-1E1AA15E67EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03D16878-18A5-4255-BA09-EC0AF9544C05}
 	EndGlobalSection
 EndGlobal

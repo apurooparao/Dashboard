@@ -27,6 +27,12 @@ public partial class RequestDetails : System.Web.UI.Page
             {
                 _userBO = new UserBO();
                 _userBO = (UserBO)Session["UserBO"];
+                if (Request["request"] != null)
+                {
+                    Session["WmsId"] = int.Parse(Request["request"]);
+                }
+                
+                //Session["WmsId"] = 1;
                 if (Session["WmsId"] != null && Convert.ToInt32(Session["WmsId"]) != 0)
                 {
                     lblWmsIdValue.Text = Session["WmsId"].ToString();

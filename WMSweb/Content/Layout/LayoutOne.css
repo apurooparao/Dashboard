@@ -2,7 +2,6 @@
 }
 
 .titleHeader {
-	z-index: 3020;
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	font-size: 14px;
 }
@@ -22,10 +21,10 @@
 }
 
 .tile {
-	width: 380px;
-	height: 380px;
-	margin: 10px;
-	background-color: #99aeff;
+	width: 360px;
+	height: 300px;
+	margin: 20px;
+	background-color: #A9A9A9;
 	display: inline-block;
 	background-size: cover;
 	position: relative;
@@ -33,8 +32,9 @@
 	transition: all 0.4s ease-out;
 	box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.44);
 	overflow: hidden;
-	color: white;
+	color: #000;
 	font-family: 'Roboto';
+	border-radius: 10px;
 }
 
 	.tile div.tileStyle {
@@ -50,13 +50,14 @@
 	.tile .text {
 		/*   z-index:99; */
 		position: absolute;
-		padding: 30px;
+		padding: 20px;
 		height: calc(100% - 60px);
 	}
 
 	.tile h1 {
-		font-weight: 300;
+		font-weight: 100;
 		margin: 0;
+		font-size: 10em;
 		text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 	}
 
@@ -77,7 +78,7 @@
 	}
 
 .animate-text {
-	opacity: 0;
+	opacity: 0.8;
 	transition: all 0.6s ease-in-out;
 }
 
@@ -88,7 +89,7 @@
 }
 
 	.tile:hover div.tileStyle {
-		opacity: 0.2;
+		opacity: 0.8;
 	}
 
 	.tile:hover .animate-text {
