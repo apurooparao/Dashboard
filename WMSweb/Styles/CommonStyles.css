@@ -399,3 +399,48 @@ background: #eee;
 	background-color: #5cb85c;
 	border-color: #4cae4c;
 }
+
+
+.mydatagridgray
+{
+	/*border: solid 0.5px darkgray;*/
+	min-width: 80%;
+}
+.header
+{
+	background-color: #eee;
+	font-family: Arial;
+	color: black;
+	border: none 0px transparent;
+	height: 25px;
+	text-align: left;
+	font-size: 13px;
+}
+.rows
+{
+	background-color: #eee;
+	font-family: Arial;
+	font-size: 13px;
+	color: #000;
+	min-height: 25px;
+	text-align: left;
+	border: none 0px transparent;
+}
+
+.rows:hover
+{
+	background-color: darkgray;
+	font-family: Arial;
+	color: #fff;
+	text-align: left;
+}
+
+
+.mydatagridgray td
+{
+	padding: 5px;
+}
+.mydatagridgray th
+{
+	padding: 5px;
+}

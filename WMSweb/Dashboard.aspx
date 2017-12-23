@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/TipsMaster.master" AutoEventWireup="true" CodeFile="Dashboard.aspx.cs" Inherits="Dashboard" EnableEventValidation="false" %>
+﻿
+    <%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/TipsMaster.master" AutoEventWireup="true" CodeFile="Dashboard.aspx.cs" Inherits="Dashboard" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link href="Styles/GridViewStyleSheet.css" rel="stylesheet" />
@@ -12,7 +13,7 @@
             $.ajax({
                 type: "POST",
                 url: "/GetDataServices.asmx/GetRequestbyStatus",
-                data: JSON.stringify({ Status: 1, Userid: 1 }),
+                data: JSON.stringify({ Status: 1, Userid: 1003 }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json"
             })

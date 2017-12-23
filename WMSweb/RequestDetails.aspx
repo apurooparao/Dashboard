@@ -21,7 +21,7 @@
 
             <table id="tblmaintable" runat="server" style="width: 100%">
                 <tr>
-                    <td style="width: 55%;">
+                    <td style="width: 100%;">
 
                         <asp:FormView ID="Form_Request" runat="server" DefaultMode="ReadOnly" Width="100%" DataKeyNames="WMSID"
                             OnDataBound="Form_Request_DataBound" OnItemInserting="Form_Request_ItemInserting" OnItemUpdating="Form_Request_ItemUpdating"
@@ -468,43 +468,8 @@
                         </div>
 
                     </td>
-
-                    <td style="width: 44%; padding-left: 1%;">
-                        <div id="timelinediv" runat="server" visible="true">
-                            <table id="tblTimeLine" runat="server" class="tblnewstyle" style="min-height: 330px;">
-                                <tr class="form-top" style="height: 4%">
-                                    <%--  <td colspan="6" style="text-align: left; background: #424242; color: #fff; padding-left: 5%; font-family: Calibri; font-size: 15px;">
-                                        <strong>Request Timeline </strong>
-                                    </td>--%>
-                                    <td colspan="4" style="text-align: center">
-                                        <div>
-                                            <h4>Request Timeline</h4>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr style="height: 96%">
-                                    <td class="tdlabel">
-                                        <asp:Label ID="lblWmsId" runat="server" Text="WMS ID : "></asp:Label>
-                                    </td>
-                                    <td class="tdTextbox">
-                                        <asp:Label ID="lblWmsIdValue" runat="server"></asp:Label>
-                                    </td>
-                                    <td class="tdlabel">
-                                        <asp:Label ID="lblCurrentStatus" runat="server" Text="Current Status : "></asp:Label>
-                                    </td>
-
-                                    <td class="tdTextbox">
-                                        <asp:Label ID="lblCurrentStatusValue" runat="server" Text="Open"></asp:Label>
-                                    </td>
-                                </tr>
-
-
-                            </table>
-
-                        </div>
-
-                    </td>
-                </tr>
+</tr>
+   
                 <tr>
                     <td>
                         <div style="margin-top: 0.5%">
@@ -605,7 +570,81 @@
 
                     </td>
                 </tr>
+                      <tr>
+                    <td>
+                        <div style="margin-top: 0.5%">
+                            <asp:Label ID="Label1" runat="server" Visible="false"></asp:Label>
+                        </div>
+                    </td>
+                </tr>
+                             <tr>
+                    <td style="width: 100%;height:96%">
+                        <div id="timelinediv" runat="server" visible="true">
+                            <table id="tblTimeLine" runat="server" class="tblnewstyle" >
+                                <tr class="form-top" style="height: 4%">
+                            
+                                    <%--<td colspan="4" style="text-align: center">--%>
+                                     <td class="tdlabel">
+                                        <div>
+                                            <h4>Request Timeline</h4>
+                                        </div>
+                                    </td>
+                             <%--   </tr>
+                                <tr >--%>
+                                    <td class="tdlabel">
+                                        <asp:Label ID="lblWmsId" runat="server" Text="WMS ID : "></asp:Label>
+                                    </td>
+                                    <td class="tdTextbox">
+                                        <asp:Label ID="lblWmsIdValue" runat="server"></asp:Label>
+                                    </td>
+                                    <td class="tdlabel">
+                                        <asp:Label ID="lblCurrentStatus" runat="server" Text="Current Status : "></asp:Label>
+                                    </td>
 
+                                    <td class="tdTextbox">
+                                        <asp:Label ID="lblCurrentStatusValue" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tdTextbox" colspan="6">
+                                        <%--<asp:Label ID="lblTimeline" runat="server" Text=""></asp:Label>--%>
+                                              <asp:GridView ID="grdTimeline" runat="server" CssClass="mydatagridgray" 
+                                    HeaderStyle-CssClass="header" RowStyle-CssClass="rows" 
+                                                  Width="100%" AllowSorting="True" AutoGenerateColumns="False">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="Status" HeaderStyle-Width="15%">
+                                            <ItemTemplate >
+                                                 <asp:Label ID="lblStatusTimeline" runat="server" Text='<%#Eval("StatusName") %>' BackColor="Transparent"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Assigned To" HeaderStyle-Width="15%" >
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblassignedToTimeline" runat="server" Text='<%#Eval("AsssignedTo") %>' BackColor="Transparent"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                           <asp:TemplateField HeaderText="Comment" HeaderStyle-Width="50%">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblCommentsTimeline" runat="server" Text='<%#Eval("Comments") %>' BackColor="Transparent"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>  
+                                        
+                                        <asp:TemplateField HeaderText="Date" HeaderStyle-Width="20%">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblDateTimeline" runat="server" Text='<%#Eval("ModifiedDate") %>' BackColor="Transparent"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>                                            
+                                    </Columns>
+                                </asp:GridView>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+
+                        </div>
+
+                    </td>
+                </tr>
             </table>
 
         </ContentTemplate>

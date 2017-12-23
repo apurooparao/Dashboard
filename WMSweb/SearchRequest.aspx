@@ -142,43 +142,7 @@
         <label class="form-horizontal">Status: </label>
         <select id="Statuslist" class="form-control" style="width: 120px">
         </select>
-        <%--<table id="grid-command-buttons" class="table table-condensed table-hover table-striped">
-            <thead>
-                <tr>
-                    <th data-column-id="id" data-type="numeric">ID</th>
-                    <th data-column-id="sender">Sender</th>
-                    <th data-column-id="received" data-order="desc">Received</th>
-                    <th data-column-id="commands" data-formatter="commands" data-sortable="false">Commands</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>10238</td>
-                    <td>eduardo@pingpong.com</td>
-                    <td>14.10.2013</td>
-                </tr>
-                <tr>
-                    <td>10239</td>
-                    <td>eduardo@pingpong.com</td>
-                    <td>14.10.2013</td>
-                </tr>
-                <tr>
-                    <td>10240</td>
-                    <td>eduardo@pingpong.com</td>
-                    <td>14.10.2013</td>
-                </tr>
-                <tr>
-                    <td>10241</td>
-                    <td>eduardo@pingpong.com</td>
-                    <td>14.10.2013</td>
-                </tr>
-                <tr>
-                    <td>10242</td>
-                    <td>eduardo@pingpong.com</td>
-                    <td>14.10.2013</td>
-                </tr>
-            </tbody>
-        </table>--%>
+     
         <div id="dRequestStatus"></div>
         <%--<table id="grid-data" class="table table-condensed table-hover table-striped">
             <thead>

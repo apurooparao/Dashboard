@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -39,6 +40,8 @@ public partial class RequestDetails : System.Web.UI.Page
                     var WmsId = Convert.ToInt32(Session["WmsId"]);
                     FillStatusDropDown(WmsId);
                     FillRequestDetails(WmsId);
+                    Session["WmsId"] = "";
+                    Session.Remove("WmsId");
                 }
                 else
                 {
@@ -67,10 +70,7 @@ public partial class RequestDetails : System.Web.UI.Page
     private void BindControls()
     {
         try
-        {
-            //var ddlPriority = (DropDownList)Form_Request.FindControl("ddlPriorityEdit");
-            //var ddlsection = (DropDownList)Form_Request.FindControl("ddlSectionEdit");
-            //var chkCategory = (CheckBoxList)Form_Request.FindControl("chkCategoryEdit");
+        {    
             FillDropDown("ddlSectionEdit", "SectionID,SectionName", "tblm_Section", " IsActive =1 order by SectionName");
             FillDropDown("ddlPriorityEdit", "PriorityID,PriorityName", "tblm_Priority", " IsActive =1 order by PriorityName");
             FillCheckBox("chkCategoryEdit", "CategoryID,CategoryName", "tblm_Category", " IsActive =1 order by CategoryName");
@@ -138,6 +138,22 @@ public partial class RequestDetails : System.Web.UI.Page
                 Form_Request.DataSource = ds.Tables[0];
                 Form_Request.DataBind();
                 lblCurrentStatusValue.Text = ds.Tables[0].Rows[0]["StatusName"].ToString();
+
+                
+
+                //StringBuilder sbstring = new StringBuilder();
+                //foreach (DataRow row in ds.Tables[1].Rows)
+                //{
+                //    sbstring.Append("\n");
+                //    sbstring.Append(row[0].ToString() + "   ");
+                //    sbstring.Append(row[1].ToString());
+                //    sbstring.Append(row[2].ToString());
+                //    sbstring.Append(row[3].ToString());
+                //    sbstring.Append(row[4].ToString());
+                //    sbstring.Append("\n");
+                //}
+                //lblTimeline.Text = sbstring.ToString();
+
                 if (Convert.ToInt16(ds.Tables[0].Rows[0]["StatusId"]) == 3 || Convert.ToInt16(ds.Tables[0].Rows[0]["StatusId"]) == 4)
                 {
                     var btnEditRequest = (Button)Form_Request.FindControl("btnEditRequest");
@@ -150,14 +166,17 @@ public partial class RequestDetails : System.Web.UI.Page
                     {
                         btnEditRequest.Visible = true;
                     }
-
                 }
-
-                Session["wmsId"] = wmsId;
+             //   Session["wmsId"] = wmsId;
+            }
+            if (ds.Tables[1].Rows.Count > 0)
+            {
+                grdTimeline.DataSource = ds.Tables[1];
+                grdTimeline.DataBind();
             }
 
 
-        }
+            }
         catch (Exception ex)
         {
 
@@ -214,7 +233,10 @@ public partial class RequestDetails : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            Session["wmsId"] = null;
+            if (Session["wmsId"]!=null)
+            {
+                Session["wmsId"] = null;
+            }            
             throw;
         }
         finally
@@ -332,19 +354,22 @@ public partial class RequestDetails : System.Web.UI.Page
         {
             Form_Request.ChangeMode(e.NewMode);
 
-            if (Session["wmsId"] != null)
+            // if (Session["wmsId"] != null)
+            if (!string.IsNullOrWhiteSpace(lblWmsIdValue.Text))
             {
-                var wmsid = Convert.ToInt32(Session["wmsId"]);
+                //var wmsid = Convert.ToInt32(Session["wmsId"]);
+                var wmsid = Convert.ToInt32(lblWmsIdValue.Text);
                 FillRequestDetails(wmsid);
             }
             else
             {
-                Form_Request.ChangeMode(FormViewMode.Insert);
+              Form_Request.ChangeMode(FormViewMode.Insert);
             }
 
             if (e.NewMode == FormViewMode.Insert)
             {
-                Session["wmsId"] = null;
+                //  Session["wmsId"] = null;
+                lblWmsIdValue.Text = string.Empty;
             }
 
             if (e.NewMode == FormViewMode.Edit)
