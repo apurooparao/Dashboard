@@ -55,6 +55,28 @@ public class GetDataServices : System.Web.Services.WebService
 
     [WebMethod(EnableSession = true)]
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+    public string GetRequestbyStatusTypes()
+    {
+       // Status = 1;
+        requestBL _rqstbl = new requestBL();
+        List<RequestStatusData> lstRequestStatusData = new List<RequestStatusData>();
+        int Userid = Convert.ToInt16(Session["UserId"]);
+
+        DataTable dtRequest = _rqstbl.getRequestbyStatusTypes( Userid).Tables[0];
+        foreach (DataRow row in dtRequest.Rows)
+        {
+            lstRequestStatusData.Add(new RequestStatusData
+            {
+                StatusName = Convert.ToString(row["StatusName"]),
+                IssueCount = Convert.ToInt16(row["IssueCount"]),
+               // ChartColor = Convert.ToString(row["ChartColor"]),
+            });
+        }
+        return new JavaScriptSerializer().Serialize(lstRequestStatusData);
+    }
+
+    [WebMethod(EnableSession = true)]
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetStatsData(string Timeframe)
     {
         requestBL _rqstbl = new requestBL();
@@ -74,14 +96,6 @@ public class GetDataServices : System.Web.Services.WebService
             });
         }
 
-        //var data = from p in lstPriorityByStatus
-        //    group p by p.PriorityName
-        //    into g
-        //    select new
-        //    {
-        //        PriorityName = g.Key,
-        //        PriorityCount = (int) g.Sum(a => a.StatusCount)
-        //    };
         return new JavaScriptSerializer().Serialize(lstPriorityByStatus);
     }
 
@@ -94,6 +108,34 @@ public class GetDataServices : System.Web.Services.WebService
         List<RequestData> lstRequestData = new List<RequestData>();
 
         DataTable dtRequest = _rqstbl.GetRequestDetailsByStatus(userid, Status);
+        foreach (DataRow row in dtRequest.Rows)
+        {
+            lstRequestData.Add(new RequestData
+            {
+                WMSID = Convert.ToInt32(row["WMSID"]),
+                PriorityName = Convert.ToString(row["PriorityName"]),
+                BranchName = Convert.ToString(row["BranchName"]),
+                AffectOperation = Convert.ToString(row["AffectOperation"]),
+                Scope = Convert.ToString(row["Scope"]),
+                SectionName = Convert.ToString(row["SectionName"]),
+                Category = Convert.ToString(row["Category"]),
+                Requestor = Convert.ToString(row["Requestor"]),
+                CreatedDate = Convert.ToDateTime(row["CreatedDate"])
+            });
+        }
+
+        return new JavaScriptSerializer().Serialize(lstRequestData);
+    }
+
+    [WebMethod(EnableSession = true)]
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+    public string GetRequestDataByStatusAndPriority(int Status,int Priority)
+    {
+        requestBL _rqstbl = new requestBL();
+        int userid = Convert.ToInt16(Session["UserId"]);
+        List<RequestData> lstRequestData = new List<RequestData>();
+
+        DataTable dtRequest = _rqstbl.GetRequestDetailsByStatusAndPriority(userid, Status,Priority);
         foreach (DataRow row in dtRequest.Rows)
         {
             lstRequestData.Add(new RequestData
@@ -133,6 +175,27 @@ public class GetDataServices : System.Web.Services.WebService
         return new JavaScriptSerializer().Serialize(lstStatuses);
     }
 
+    [WebMethod(EnableSession = true)]
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+    public string GetPriorities()
+    {
+        requestBL _rqstbl = new requestBL();
+        List<Priorities> lstpriorities = new List<Priorities>();
+
+        DataTable dtpriorities = _rqstbl.GetMasterPriority();
+        foreach (DataRow row in dtpriorities.Rows)
+        {
+            lstpriorities.Add(new Priorities
+            {
+                PriorityID = Convert.ToInt32(row["PriorityID"]),
+                PriorityName = Convert.ToString(row["PriorityName"])
+            });
+        }
+
+        return new JavaScriptSerializer().Serialize(lstpriorities);
+    }
+
+    
 
 
     public class RequestCriticalityData
@@ -140,6 +203,14 @@ public class GetDataServices : System.Web.Services.WebService
         public string Criticality { get; set; }
         public int IssueCount { get; set; }
         public string ChartColor { get; set; }
+    }
+
+
+    public class RequestStatusData
+    {
+        public string StatusName { get; set; }
+        public int IssueCount { get; set; }
+     //   public string ChartColor { get; set; }
     }
 
     public class PriorityByStatus
@@ -168,6 +239,12 @@ public class GetDataServices : System.Web.Services.WebService
     {
         public int StatusID { get; set; }
         public string StatusName { get; set; }
+    }
+
+    public class Priorities
+    {
+        public int PriorityID { get; set; }
+        public string PriorityName { get; set; }
     }
 
 }

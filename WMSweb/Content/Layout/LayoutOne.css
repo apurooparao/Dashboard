@@ -21,8 +21,8 @@
 }
 
 .tile {
-	width: 360px;
-	height: 300px;
+	width: 300px;
+	height: 280px;
 	margin: 20px;
 	background-color: #A9A9A9;
 	display: inline-block;
@@ -65,7 +65,8 @@
 		font-weight: 100;
 		margin: 20px 0 0 0;
 		font-style: italic;
-		transform: translateX(200px);
+		/*transform: translateX(200px);*/
+        transform: translateX(80px);
 	}
 
 	.tile p {

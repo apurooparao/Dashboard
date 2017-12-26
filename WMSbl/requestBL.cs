@@ -60,11 +60,29 @@ namespace WMSbl
             requestDA objRequestDA = new requestDA();
             return objRequestDA.GetRequestDetailsByStatus(userId, status);
         }
+        public DataTable GetRequestDetailsByStatusAndPriority(int userId, int status,int priority)
+        {
+            requestDA objRequestDA = new requestDA();
+            return objRequestDA.GetRequestDetailsByStatusAndPriority(userId, status,priority);
+        }
 
         public DataTable GetMasterStatus()
         {
             requestDA objRequestDA = new requestDA();
             return objRequestDA.getMasterStatus();
+        }
+
+
+        public DataTable GetMasterPriority()
+        {
+            requestDA objRequestDA = new requestDA();
+            return objRequestDA.getMasterPriority();
+        }
+
+        public DataSet getRequestbyStatusTypes(int userid)
+        {
+            requestDA objRequestDA = new requestDA();
+            return objRequestDA.getRequestByStatusTypes(userid);
         }
     }
 }

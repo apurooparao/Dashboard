@@ -35,7 +35,8 @@
             <span class="navbar-brand brandName">Tips n Toes
             </span>
             <div class="pull-right">
-                <asp:Label ID="lblWelcomeMessage" Text="Welcome Admin" runat="server" CssClass="navbar-brand"></asp:Label>
+                <asp:Label ID="lblWelcomeMessage" Text="Welcome " runat="server" CssClass="navbar-brand"></asp:Label>
+                 <asp:Label ID="lblUsername"  runat="server" CssClass="navbar-brand"></asp:Label>
                 <asp:Label ID="Label1" Text=" | " runat="server" CssClass="navbar-brand"></asp:Label>
                 <asp:LinkButton ID="lnkSignout" Text="Sign Out" runat="server" CssClass="navbar-brand" OnClick="lnkSignout_Click"></asp:LinkButton>
             </div>
@@ -61,7 +62,7 @@
                                     <span>Dashboard</span>
                                 </a>
                             </li>
-                            <li>
+                            <li runat="server" id="li_administration" visible="false">
                                 <a href="#">
 
                                     <span><i class="fa fa-gear"></i></span>
@@ -83,7 +84,7 @@
                                 <span style="text-decoration: underline">Request</span>
                             </a>
                                 <ul class="treeview-menu" style="display: none;">
-                                    <li><a href="../../RequestDetails.aspx"><i class="fa-sub fa-angle-right"></i>Add Request</a></li>
+                                    <li runat="server" id="li_createrequest" visible="false"><a href="../../RequestDetails.aspx"><i class="fa-sub fa-angle-right"></i>Add Request</a></li>
                                     <li><a href="../../SearchRequest.aspx"><i class="fa-sub fa-angle-right"></i>Search</a></li>
                                 </ul>
                             </li>

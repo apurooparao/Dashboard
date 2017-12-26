@@ -481,7 +481,7 @@
                     <td colspan="2">
 
                         <div id="statusdiv" runat="server" visible="false">
-                            <table id="tblnewrequest" runat="server" class="tblnewstylestatus" style="margin-top: 0.5%;">
+                            <table id="tblnewrequest" runat="server" class="tblnewstylestatus" style="margin-top: 0.5%;width:100%;" >
                                 <tr class="form-top">
                                     <%-- <td colspan="4" style="text-align: left; background: #424242; color: #fff; padding-left: 5%; font-family: Calibri; font-size: 15px;">
                                         <strong>Status Details</strong>

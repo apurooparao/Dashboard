@@ -61,6 +61,70 @@ namespace WMSda
             }
         }
 
+        public DataTable GetRequestDetailsByStatusAndPriority(int userId, int status, int priority)
+        {
+            DataTable dset = new DataTable();
+            try
+            {
+                var cmd = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = _sqlcon,
+                    CommandText = "sp_Dashboard_Grid_Sel_WithPriority"
+                };
+                cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = userId;
+                cmd.Parameters.Add("@StatusID", SqlDbType.Int).Value = status;
+                cmd.Parameters.Add("@PriorityID", SqlDbType.Int).Value = priority;
+
+                _sqlcon.Open();
+
+                var sqlda = new SqlDataAdapter(cmd);
+                sqlda.Fill(dset);
+
+            }
+            catch (Exception ex)
+            {
+                dset = null;
+            }
+            finally
+            {
+                _sqlcon.Close();
+            }
+            return dset;
+        }
+
+        public DataSet getRequestByStatusTypes(int userId)
+        {
+            try
+            {
+                var cmd = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = _sqlcon,
+                    CommandText = "sp_Dashboard_Status_Tiles"
+                };
+                cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = userId;
+             //   cmd.Parameters.Add("@StatusID", SqlDbType.Int).Value = status;
+
+                _sqlcon.Open();
+
+                var sqlda = new SqlDataAdapter(cmd);
+                var dset = new DataSet();
+                sqlda.Fill(dset);
+                // cmd.ExecuteNonQuery();               
+                return dset;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                _sqlcon.Close();
+            }
+        }
+
         public DataSet getStatusvalues(int wmsId)
         {
             try
@@ -261,6 +325,35 @@ namespace WMSda
                         CommandType = CommandType.StoredProcedure,
                         Connection = _sqlcon,
                         CommandText = "sp_master_status"
+                    };
+
+                    var sqlda = new SqlDataAdapter(cmd);
+                    sqlda.Fill(dset);
+
+                }
+                catch (Exception ex)
+                {
+                    dset = null;
+                }
+                finally
+                {
+                    _sqlcon.Close();
+                }
+                return dset;
+            }
+        }
+
+        public DataTable getMasterPriority()
+        {
+            {
+                DataTable dset = new DataTable();
+                try
+                {
+                    var cmd = new SqlCommand
+                    {
+                        CommandType = CommandType.StoredProcedure,
+                        Connection = _sqlcon,
+                        CommandText = "sp_master_priority"
                     };
 
                     var sqlda = new SqlDataAdapter(cmd);

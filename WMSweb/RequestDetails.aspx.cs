@@ -42,6 +42,10 @@ public partial class RequestDetails : System.Web.UI.Page
                     FillRequestDetails(WmsId);
                     Session["WmsId"] = "";
                     Session.Remove("WmsId");
+                    if (_userBO.RoleID == 3)
+                    {
+                        statusdiv.Visible = false;
+                    }
                 }
                 else
                 {
@@ -469,7 +473,23 @@ public partial class RequestDetails : System.Web.UI.Page
                 ddlChangeStatus.DataBind();
                 ddlChangeStatus.Items.Insert(0, "Select Status");
                 ddlChangeStatusEvent();
-                statusdiv.Visible = true;
+                if (Session["UserBO"] == null)
+                {
+                    Response.Redirect("Login.aspx", false);
+                }
+                else
+                {
+                    _userBO = new UserBO();
+                    _userBO = (UserBO)Session["UserBO"];
+                    if (_userBO.RoleID == 3)
+                    {
+                        statusdiv.Visible = false;
+                    }
+                    else
+                    {
+                        statusdiv.Visible = true;
+                    }
+                }
 
             }
             else
