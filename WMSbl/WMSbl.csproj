@@ -40,13 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="changePasswordBL.cs" />
     <Compile Include="loginBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="requestBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WMSda\WMSda.csproj">
-      <Project>{b271e989-3e3d-4d64-83da-1e4cb239c63c}</Project>
+      <Project>{d0919329-e05d-4550-9017-673511d2aec9}</Project>
       <Name>WMSda</Name>
     </ProjectReference>
     <ProjectReference Include="..\WMSobjects\WMSobjects.csproj">

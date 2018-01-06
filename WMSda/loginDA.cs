@@ -5,20 +5,19 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using WMSobjects;
 
 namespace WMSda
 {
-   
-
     public class loginDA
     {
         readonly SqlConnection _sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
         UserBO _objUserBO;
         SqlDataReader _sqldr;
-        
-        public DataTable getStatusvalues(string UserName,string Password)
+
+        public DataTable getStatusvalues(string UserName, string Password)
         {
             try
             {
@@ -44,10 +43,10 @@ namespace WMSda
 
 
         public UserBO CheckUser(string UserName, string Password)
-            {
+        {
             try
             {
-              
+
                 SqlCommand cmd = new SqlCommand("SELECT * FROM vw_UserRole WHERE UserName = @UserName AND UserPassword = @UserPassword", _sqlcon);
                 cmd.Parameters.AddWithValue("@UserName", UserName);
                 cmd.Parameters.AddWithValue("@UserPassword", Password);
@@ -69,7 +68,7 @@ namespace WMSda
                     {
                         _objUserBO.BranchID = 1;
                     }
-                 
+
                     _sqldr.Close();
                     _sqlcon.Close();
 
@@ -79,7 +78,7 @@ namespace WMSda
                     sqlcmd.Parameters.AddWithValue("@UserID", _objUserBO.UserID);
                     sqlcmd.Parameters.Add("@sessionId", SqlDbType.VarChar).Value = HttpContext.Current.Session.SessionID;
                     _sqlcon.Open();
-                    sqlcmd.ExecuteNonQuery();          
+                    sqlcmd.ExecuteNonQuery();
                 }
                 _sqlcon.Close();
                 return _objUserBO;
@@ -89,9 +88,9 @@ namespace WMSda
                 _objUserBO = new UserBO();
                 _objUserBO.UserName = ex.Message;
                 return _objUserBO;
-                
+
             }
-           
+
         }
 
         public string UpdateLoginStatus()
@@ -115,9 +114,8 @@ namespace WMSda
             }
             finally
             {
-                _sqlcon.Close();                
+                _sqlcon.Close();
             }
         }
-
     }
 }

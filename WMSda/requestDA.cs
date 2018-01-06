@@ -5,14 +5,14 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using WMSobjects;
 
 namespace WMSda
 {
-   
    public class requestDA
     {
-        
+
         readonly SqlConnection _sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
 
         public int insertUpdateRequest(requestBO rqstbo)
@@ -37,9 +37,9 @@ namespace WMSda
                 cmd.Parameters.Add("@Requestor", SqlDbType.VarChar).Value = rqstbo.requestor;
                 cmd.Parameters.Add("@StatusID", SqlDbType.Int).Value = rqstbo.statusId;
                 cmd.Parameters.Add("@AssignedID", SqlDbType.Int).Value = rqstbo.assignedTo;
-               // cmd.Parameters.Add("@Flag", SqlDbType.VarChar).Value = rqstbo.flag;
+                // cmd.Parameters.Add("@Flag", SqlDbType.VarChar).Value = rqstbo.flag;
 
-               cmd.Parameters.Add("@WMSID", SqlDbType.VarChar).Value = rqstbo.wmsId;
+                cmd.Parameters.Add("@WMSID", SqlDbType.VarChar).Value = rqstbo.wmsId;
                 cmd.Parameters.Add("@InsUpd_Flag", SqlDbType.Int).Value = rqstbo.InsUpdFlag;
                 SqlParameter WMSID_Out = new SqlParameter("@WMSID_Out", SqlDbType.Int)
                 {
@@ -104,7 +104,7 @@ namespace WMSda
                     CommandText = "sp_Dashboard_Status_Tiles"
                 };
                 cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = userId;
-             //   cmd.Parameters.Add("@StatusID", SqlDbType.Int).Value = status;
+                //   cmd.Parameters.Add("@StatusID", SqlDbType.Int).Value = status;
 
                 _sqlcon.Open();
 
@@ -234,11 +234,11 @@ namespace WMSda
                     Connection = _sqlcon,
                     CommandText = "sp_getRequestDetail_byId"
                 };
-                cmd.Parameters.Add("@wmsId", SqlDbType.Int).Value = wmsId;              
+                cmd.Parameters.Add("@wmsId", SqlDbType.Int).Value = wmsId;
                 _sqlcon.Open();
                 var sqlda = new SqlDataAdapter(cmd);
                 var dset = new DataSet();
-                sqlda.Fill(dset);                    
+                sqlda.Fill(dset);
                 return dset;
             }
             catch (Exception ex)
@@ -251,7 +251,7 @@ namespace WMSda
             }
         }
 
-        public DataSet getRequestByStatus(int status,int UserID)
+        public DataSet getRequestByStatus(int status, int UserID)
         {
             try
             {
@@ -262,7 +262,7 @@ namespace WMSda
                     CommandText = "sp_Dashboard_Chart_Sel"
                 };
                 cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = UserID;
-                cmd.Parameters.Add("@StatusID", SqlDbType.Int).Value = status; 
+                cmd.Parameters.Add("@StatusID", SqlDbType.Int).Value = status;
 
                 _sqlcon.Open();
 
@@ -388,7 +388,7 @@ namespace WMSda
                 var sqlda = new SqlDataAdapter(cmd);
                 var dset = new DataSet();
                 sqlda.Fill(dset);
-               // cmd.ExecuteNonQuery();               
+                // cmd.ExecuteNonQuery();               
                 return dset;
 
             }
