@@ -7,11 +7,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WMSobjects;
+using WMSbl;
+
 
 public partial class ChangePassword : System.Web.UI.Page
 {
-    private UserBO _userBO;
-    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
+    UserBO _userBO;
+    // SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
+    ChangePasswordBL abc;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -31,18 +34,17 @@ public partial class ChangePassword : System.Web.UI.Page
         }
 
     }
-
     protected void btnChangePassword_Click(object sender, EventArgs e)
     {
         try
         {
             lblMessage.Visible = false;
             // if (CheckDetails())
-            if (!string.IsNullOrWhiteSpace(txtConfirmPassword.Text))
+            if (CheckDetails())
             {
 
             }
-         
+
         }
         catch (Exception)
         {
@@ -51,23 +53,30 @@ public partial class ChangePassword : System.Web.UI.Page
         }
     }
 
-    //private bool CheckDetails()
-    //{
-    //    try
-    //    {
-    //        bool result = true;
-    //        _userBO = new UserBO();
-    //        if (true)
-    //        {
+   
 
-    //        }
+    
 
-    //    }
-    //    catch (Exception)
-    //    {
+    
 
-    //        lblMessage.Visible = true;
-    //        lblMessage.Text = "Something went wrong please try again";
-    //    }
-    //}
+    private bool CheckDetails()
+    {
+        try
+        {
+            bool result = true;
+            _userBO = new UserBO();
+        //    objChangePasswordBl = new changePasswordBL();
+            if (true)
+            {
+
+            }
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+            lblMessage.Visible = true;
+            lblMessage.Text = "Something went wrong please try again";
+        }
+    }
 }

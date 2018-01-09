@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using WMSda;
 using WMSobjects;
 
 namespace WMSbl
 {
-      public class loginBL
+    public class loginBL
     {
-        public DataTable loginUser(string username,string password)
+        public DataTable loginUser(string username, string password)
         {
             loginDA objloginDA = new loginDA();
-            return objloginDA.getStatusvalues(username,password);
+            return objloginDA.getStatusvalues(username, password);
         }
         public string UpdateLoginStatus()
         {
@@ -24,7 +25,7 @@ namespace WMSbl
         public UserBO CheckUser(string userName, string password)
         {
             loginDA _obLoginDA = new loginDA();
-           return _obLoginDA.CheckUser(userName, password);
+            return _obLoginDA.CheckUser(userName, password);
         }
     }
 }

@@ -256,7 +256,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\WMSbl\WMSbl.csproj">
-      <Project>{858b74c6-5729-4e6e-8be0-7fdb7b05e98a}</Project>
+      <Project>{9BC54D72-9F12-4B1A-B125-BFFE4C69684D}</Project>
       <Name>WMSbl</Name>
     </ProjectReference>
   </ItemGroup>

@@ -26,11 +26,11 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WMSweb", ".", "{BD67A7C0-92
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMApis", "..\WMApis\WMApis\WMApis.csproj", "{493617A9-3F44-4E84-9F93-1E1AA15E67EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMSbl", "..\WMSbl\WMSbl.csproj", "{858B74C6-5729-4E6E-8BE0-7FDB7B05E98A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMSobjects", "..\WMSobjects\WMSobjects.csproj", "{9EA1A7FD-90FD-4E63-8ED2-30A57D7FC58A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMSda", "..\WMSda\WMSda.csproj", "{D0919329-E05D-4550-9017-673511D2AEC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMSbl", "..\WMSbl\WMSbl.csproj", "{9BC54D72-9F12-4B1A-B125-BFFE4C69684D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,10 +46,6 @@ Global
 		{493617A9-3F44-4E84-9F93-1E1AA15E67EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{493617A9-3F44-4E84-9F93-1E1AA15E67EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{493617A9-3F44-4E84-9F93-1E1AA15E67EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{858B74C6-5729-4E6E-8BE0-7FDB7B05E98A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{858B74C6-5729-4E6E-8BE0-7FDB7B05E98A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{858B74C6-5729-4E6E-8BE0-7FDB7B05E98A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{858B74C6-5729-4E6E-8BE0-7FDB7B05E98A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9EA1A7FD-90FD-4E63-8ED2-30A57D7FC58A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9EA1A7FD-90FD-4E63-8ED2-30A57D7FC58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EA1A7FD-90FD-4E63-8ED2-30A57D7FC58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -58,6 +54,10 @@ Global
 		{D0919329-E05D-4550-9017-673511D2AEC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0919329-E05D-4550-9017-673511D2AEC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0919329-E05D-4550-9017-673511D2AEC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BC54D72-9F12-4B1A-B125-BFFE4C69684D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BC54D72-9F12-4B1A-B125-BFFE4C69684D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BC54D72-9F12-4B1A-B125-BFFE4C69684D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BC54D72-9F12-4B1A-B125-BFFE4C69684D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

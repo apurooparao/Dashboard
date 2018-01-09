@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
-using WMSbl;
+using System.Threading.Tasks;
 using WMSda;
 using WMSobjects;
 
-
-
 namespace WMSbl
 {
-   public class requestBL
+  public   class requestBL
     {
         public int insertUpdateRequest(requestBO objActivityBO)
         {
@@ -22,10 +20,10 @@ namespace WMSbl
         public DataSet getDropDownValues(string selectQuery, string table, string condition)
         {
             requestDA objRequestDA = new requestDA();
-            return objRequestDA.getDropDownValues(selectQuery,table,condition);
+            return objRequestDA.getDropDownValues(selectQuery, table, condition);
         }
 
-        public DataSet getRequestbyStatus(int status,int userId)
+        public DataSet getRequestbyStatus(int status, int userId)
         {
             requestDA objRequestDA = new requestDA();
             return objRequestDA.getRequestByStatus(status, userId);
@@ -60,10 +58,10 @@ namespace WMSbl
             requestDA objRequestDA = new requestDA();
             return objRequestDA.GetRequestDetailsByStatus(userId, status);
         }
-        public DataTable GetRequestDetailsByStatusAndPriority(int userId, int status,int priority)
+        public DataTable GetRequestDetailsByStatusAndPriority(int userId, int status, int priority)
         {
             requestDA objRequestDA = new requestDA();
-            return objRequestDA.GetRequestDetailsByStatusAndPriority(userId, status,priority);
+            return objRequestDA.GetRequestDetailsByStatusAndPriority(userId, status, priority);
         }
 
         public DataTable GetMasterStatus()
