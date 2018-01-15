@@ -89,6 +89,16 @@
     padding-top:0.5%;
 }
 
+.tdlabelchangepassword {
+    border:0px solid #CCCCCC;
+    background: #eee;
+    text-align:right;
+    padding:0.5%;
+    vertical-align:middle;
+    width:4%;
+    padding-top:0.5%;
+}
+
 
 .tdlabellong {
     border:0px solid #CCCCCC;

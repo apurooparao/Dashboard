@@ -8,16 +8,16 @@
     <asp:UpdatePanel ID="UpdPanelChange" runat="server">
         <ContentTemplate>
             <div>
-                <table id="tblmaintable" runat="server" style="width: 100%">
-                    <tr>
-                        <td colspan="4" style="text-align: center">
+                <table id="tblmaintable" runat="server" style="width: 90%">
+                    <tr >
+                        <td  style="text-align: center">
                             <div>
-                                <h4>Request Details</h4>
+                                <h4>Change Password</h4>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td class="tdlabel">
+                        <td class="tdlabelchangepassword">
                             <asp:Label ID="lblUserName" runat="server" Text="User Name: "></asp:Label>
                         </td>
                         <td class="tdTextbox">
@@ -26,7 +26,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="tdlabel">
+                        <td class="tdlabelchangepassword">
                             <asp:Label ID="lblOldPassword" runat="server" Text="Old Password: "></asp:Label>
                         </td>
                         <td class="tdTextbox">
@@ -37,7 +37,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="tdlabel">
+                        <td class="tdlabelchangepassword">
                             <asp:Label ID="lblNewPassword" runat="server" Text="New Password: "></asp:Label>
                         </td>
                         <td class="tdTextbox">
@@ -48,7 +48,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="tdlabel">
+                        <td class="tdlabelchangepassword">
                             <asp:Label ID="lblConfirmPassword" runat="server" Text="Confirm Password: "></asp:Label>
                         </td>
                         <td class="tdTextbox">
@@ -62,17 +62,18 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="tdlabel"></td>
+                        <td class="tdlabelchangepassword"></td>
                         <td class="tdTextbox"><span>password is case sensitive</span></td>
                     </tr>
                     <tr>
-                        <td class="tdlabel" colspan="4">
+                         <td class="tdTextbox"></td>
+                        <td class="tdlabelchangepassword" colspan="1" style="text-align:left">
                             <asp:Button ID="btnChangePassword" runat="server" CssClass="button" ValidationGroup="Submit" OnClick="btnChangePassword_Click" Text="Submit" />
                         </td>
-
+                        
                     </tr>
                     <tr>
-                        <td class="tdlabel"></td>
+                        <td class="tdlabelchangepassword"></td>
                         <td class="tdTextbox">
                             <asp:Label ID="lblMessage" runat="server" Visible="false"></asp:Label></td>
                     </tr>

@@ -11,9 +11,9 @@ using WMSobjects;
 
 namespace WMSda
 {
-    public class ChangePasswordDAL : IDisposable
+    public class ChangePasswordDAL
     {
-        private bool disposeflag = false;
+      
 
         SqlConnection _sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
         UserBO _objUserBO;
@@ -76,31 +76,7 @@ namespace WMSda
             }
         }
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposeflag)
-            {
-                if (disposing)
-                {
-                    if (_sqlcmd != null)
-                    {
-                        _sqlcmd.Dispose();
-                    }
-                    if (_sqlcon != null)
-                    {
-                        _sqlcon.Dispose();
-                    }
-                }
-                disposeflag = true;
-            }
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+       }
 
       
     }
-}

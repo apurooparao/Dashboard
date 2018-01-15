@@ -37,6 +37,8 @@
             <div class="pull-right">
                 <asp:Label ID="lblWelcomeMessage" Text="Welcome " runat="server" CssClass="navbar-brand"></asp:Label>
                  <asp:Label ID="lblUsername"  runat="server" CssClass="navbar-brand"></asp:Label>
+                <asp:Label ID="Label2" Text=" | " runat="server" CssClass="navbar-brand"></asp:Label>
+                <asp:LinkButton ID="knkChangePassword" Text="Change Password" runat="server" CssClass="navbar-brand" OnClick="knkChangePassword_Click"></asp:LinkButton>
                 <asp:Label ID="Label1" Text=" | " runat="server" CssClass="navbar-brand"></asp:Label>
                 <asp:LinkButton ID="lnkSignout" Text="Sign Out" runat="server" CssClass="navbar-brand" OnClick="lnkSignout_Click"></asp:LinkButton>
             </div>

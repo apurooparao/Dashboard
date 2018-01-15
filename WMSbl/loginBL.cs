@@ -27,5 +27,21 @@ namespace WMSbl
             loginDA _obLoginDA = new loginDA();
             return _obLoginDA.CheckUser(userName, password);
         }
+
+        public string CheckOldPassword(string username)
+        {
+
+            ChangePasswordDAL objchangepasswordDL = new ChangePasswordDAL();
+            return objchangepasswordDL.CheckOldPassword(username);
+
+        }
+
+        public bool ChangePassword(string newPassword)
+        {
+            ChangePasswordDAL objChangeDAL = new ChangePasswordDAL();
+            return objChangeDAL.ChangePassword(newPassword);
+
+        }
+
     }
 }

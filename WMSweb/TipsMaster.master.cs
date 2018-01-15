@@ -79,4 +79,16 @@ public partial class TipsMaster : System.Web.UI.MasterPage
 
         }
     }
+
+    protected void knkChangePassword_Click(object sender, EventArgs e)
+    {
+        try
+        {          
+            Response.Redirect("~/ChangePassword.aspx");
+        }
+        catch (Exception ex)
+        {
+          
+        }
+    }
 }
