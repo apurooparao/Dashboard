@@ -99,81 +99,126 @@
             }
             function loadRequests() {
                 //alert('here');
-                var statusId = $("#Statuslist").val();
-                var priorityId = $("#Prioritylist").val();
+                var wmsid = $("#txtWMSid").val();
+             
+                if (wmsid != null && wmsid != "") {
+                    var numbers = /^[0-9]+$/;
+                    var reg = /^\d+$/;
+                    if (numbers.test(wmsid)) {
+                        // alert(wmsid);
+                        var tableHeader = "<table id='grid-requested-status' class='table table-condensed table-hover table-striped'><thead><tr><th data-column-id='WMSID' data-type='numeric'>WMSID</th><th data-column-id='PriorityName'>PriorityName</th><th data-column-id='BranchName' data-order='desc'>BranchName</th><th data-column-id='AffectOperation' data-order='desc'>AffectOperation</th><th data-column-id='Scope' data-order='desc'>Scope</th><th data-column-id='SectionName' data-order='desc'>SectionName</th><th data-column-id='Category' data-order='desc'>Category</th><th data-column-id='Requestor' data-order='desc'>Requestor</th><th data-type='date' data-column-id='CreatedDate' data-order='desc' >CreatedDate</th></tr></thead><tbody>$$$$</tbody></table>";
+                        $.ajax({
+                            type: "POST",
+                            url: "/GetDataServices.asmx/GetRequestDataByWMSid",
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify({ wmsId: wmsid})
+                        }).done(function (resp) {
+                            var data = eval("(" + resp.d + ")");
+                            var rows = "";
+                            $.each(data,
+                                function (index, row) {
+                                    var newRow = "<tr>" +
+                                        "<td>" +
+                                        row.WMSID +
+                                        "</td>" +
+                                        "<td>" +
+                                        row.Priority +
+                                        "</td>" +
+                                        "<td>" +
+                                        row.BranchName +
+                                        "</td>" +
+                                        "<td>" +
+                                        row.AffectOperation +
+                                        "</td>" +
+                                        "<td>" +
+                                        row.Scope +
+                                        "</td>" +
+                                        "<td>" +
+                                        row.SectionName +
+                                        "</td>" +
+                                        "<td>" +
+                                        row.Category +
+                                        "</td>" +
+                                        "<td>" +
+                                        row.Requestor +
+                                        "</td>" +
+                                        "<td >" +
+                                        row.CreatedDate +
+                                        "</td>" +
+                                        "</tr>";
+                                    rows = rows + newRow;
+                                    //$("#grid-requested-status tr:last").after();
+                                });
+                            $("#dRequestStatus").append(tableHeader.replace("$$$$", rows));
+                            $("#dRequestStatus").find("table tbody tr").on("click", (function () {
 
-                //var grid = $("#grid-data").bootgrid({
-                //    ajax: true,
-                //    type: "POST",                    
-                //    url: "http://localhost:3232/services/Apis/DataServices/GetRequestDataByStatus/1/1"
-                //});
+                                var wmsid = parseInt($($(this)[0].cells[0]).text());
+                                location.href = "RequestDetails.aspx?request=" + wmsid;
+                            }));
+                        }).fail().always();
+                    }
+                    else {
+                        alert("Please enter a valid wmsid");
+                        //alert(wmsid);
+                    }
+                }
+                else {
+                    var statusId = $("#Statuslist").val();
+                    var priorityId = $("#Prioritylist").val();
 
-                //$("#grid-data").bootgrid({
-                //    ajax: true,
-                //    post: function () {
-                //        /* To accumulate custom parameter with the request object */
-                //        return {
-                //            id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
-                //        };
-                //    },
-                //    url: "http://localhost:3232/services/Apis/DataServices/GetRequestDataByStatus/1/1",
-                //    formatters: {
-                //        "link": function (column, row) {
-                //            return "<a href=\"#\">" + column.id + ": " + row.id + "</a>";
-                //        }
-                //    }
-                //});
 
-                var tableHeader = "<table id='grid-requested-status' class='table table-condensed table-hover table-striped'><thead><tr><th data-column-id='WMSID' data-type='numeric'>WMSID</th><th data-column-id='PriorityName'>PriorityName</th><th data-column-id='BranchName' data-order='desc'>BranchName</th><th data-column-id='AffectOperation' data-order='desc'>AffectOperation</th><th data-column-id='Scope' data-order='desc'>Scope</th><th data-column-id='SectionName' data-order='desc'>SectionName</th><th data-column-id='Category' data-order='desc'>Category</th><th data-column-id='Requestor' data-order='desc'>Requestor</th><th data-type='date' data-column-id='CreatedDate' data-order='desc' >CreatedDate</th></tr></thead><tbody>$$$$</tbody></table>";
-                $.ajax({
-                    type: "POST",
-                    url: "/GetDataServices.asmx/GetRequestDataByStatusAndPriority",
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify({ Status: statusId, Priority: priorityId })
-                }).done(function (resp) {
-                    var data = eval("(" + resp.d + ")");
-                    var rows = "";
-                    $.each(data,
-                        function (index, row) {
-                            var newRow = "<tr>" +
-                                "<td>" +
-                                row.WMSID +
-                                "</td>" +
-                                "<td>" +
-                                row.PriorityName +
-                                "</td>" +
-                                "<td>" +
-                                row.BranchName +
-                                "</td>" +
-                                "<td>" +
-                                row.AffectOperation +
-                                "</td>" +
-                                "<td>" +
-                                row.Scope +
-                                "</td>" +
-                                "<td>" +
-                                row.SectionName +
-                                "</td>" +
-                                "<td>" +
-                                row.Category +
-                                "</td>" +
-                                "<td>" +
-                                row.Requestor +
-                                "</td>" +
-                                "<td >" +
-                                row.CreatedDate +
-                                "</td>" +
-                                "</tr>";
-                            rows = rows + newRow;
-                            //$("#grid-requested-status tr:last").after();
-                        });
-                    $("#dRequestStatus").append(tableHeader.replace("$$$$", rows));
-                    $("#dRequestStatus").find("table tbody tr").on("click", (function () {
-                       
-                        var wmsid = parseInt($($(this)[0].cells[0]).text());
-                        location.href = "RequestDetails.aspx?request=" + wmsid;
-                    }));
-                }).fail().always();
+                    var tableHeader = "<table id='grid-requested-status' class='table table-condensed table-hover table-striped'><thead><tr><th data-column-id='WMSID' data-type='numeric'>WMSID</th><th data-column-id='PriorityName'>PriorityName</th><th data-column-id='BranchName' data-order='desc'>BranchName</th><th data-column-id='AffectOperation' data-order='desc'>AffectOperation</th><th data-column-id='Scope' data-order='desc'>Scope</th><th data-column-id='SectionName' data-order='desc'>SectionName</th><th data-column-id='Category' data-order='desc'>Category</th><th data-column-id='Requestor' data-order='desc'>Requestor</th><th data-type='date' data-column-id='CreatedDate' data-order='desc' >CreatedDate</th></tr></thead><tbody>$$$$</tbody></table>";
+                    $.ajax({
+                        type: "POST",
+                        url: "/GetDataServices.asmx/GetRequestDataByStatusAndPriority",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify({ Status: statusId, Priority: priorityId })
+                    }).done(function (resp) {
+                        var data = eval("(" + resp.d + ")");
+                        var rows = "";
+                        $.each(data,
+                            function (index, row) {
+                                var newRow = "<tr>" +
+                                    "<td>" +
+                                    row.WMSID +
+                                    "</td>" +
+                                    "<td>" +
+                                    row.Priority +
+                                    "</td>" +
+                                    "<td>" +
+                                    row.BranchName +
+                                    "</td>" +
+                                    "<td>" +
+                                    row.AffectOperation +
+                                    "</td>" +
+                                    "<td>" +
+                                    row.Scope +
+                                    "</td>" +
+                                    "<td>" +
+                                    row.SectionName +
+                                    "</td>" +
+                                    "<td>" +
+                                    row.Category +
+                                    "</td>" +
+                                    "<td>" +
+                                    row.Requestor +
+                                    "</td>" +
+                                    "<td >" +
+                                    row.CreatedDate +
+                                    "</td>" +
+                                    "</tr>";
+                                rows = rows + newRow;
+                                //$("#grid-requested-status tr:last").after();
+                            });
+                        $("#dRequestStatus").append(tableHeader.replace("$$$$", rows));
+                        $("#dRequestStatus").find("table tbody tr").on("click", (function () {
+
+                            var wmsid = parseInt($($(this)[0].cells[0]).text());
+                            location.href = "RequestDetails.aspx?request=" + wmsid;
+                        }));
+                    }).fail().always();
+                }
+             
             }
 
 
@@ -186,6 +231,10 @@
                 $("#dRequestStatus").empty();
                 loadRequests();
             });
+                $("#txtWMSid").on("blur", function (e) {
+                    $("#dRequestStatus").empty();
+                    loadRequests();
+                });
 
         });
     </script>
@@ -196,7 +245,7 @@
         <table>
             
             <tr>
-                <td>
+                <td >
         <label class="form-horizontal">Status: </label>
         <select id="Statuslist" class="form-control" style="width: 120px">
         </select>
@@ -207,8 +256,13 @@
         <select id="Prioritylist" class="form-control" style="width: 120px">
         </select>
                 </td>
+                <td>  
+                    <label class="form-horizontal">WMS Id: </label>
+                    <input type="text" id="txtWMSid" class="form-control" style="width:120px" />
+                </td>
             </tr>
         </table>
+        
 
 
      

@@ -113,7 +113,7 @@ public class GetDataServices : System.Web.Services.WebService
             lstRequestData.Add(new RequestData
             {
                 WMSID = Convert.ToInt32(row["WMSID"]),
-                PriorityName = Convert.ToString(row["PriorityName"]),
+                Priority = Convert.ToString(row["priority"]),
                 BranchName = Convert.ToString(row["BranchName"]),
                 AffectOperation = Convert.ToString(row["AffectOperation"]),
                 Scope = Convert.ToString(row["Scope"]),
@@ -141,7 +141,34 @@ public class GetDataServices : System.Web.Services.WebService
             lstRequestData.Add(new RequestData
             {
                 WMSID = Convert.ToInt32(row["WMSID"]),
-                PriorityName = Convert.ToString(row["PriorityName"]),
+                Priority = Convert.ToString(row["priority"]),
+                BranchName = Convert.ToString(row["BranchName"]),
+                AffectOperation = Convert.ToString(row["AffectOperation"]),
+                Scope = Convert.ToString(row["Scope"]),
+                SectionName = Convert.ToString(row["SectionName"]),
+                Category = Convert.ToString(row["Category"]),
+                Requestor = Convert.ToString(row["Requestor"]),
+                CreatedDate = Convert.ToDateTime(row["CreatedDate"])
+            });
+        }
+
+        return new JavaScriptSerializer().Serialize(lstRequestData);
+    }
+    [WebMethod(EnableSession = true)]
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+    public string GetRequestDataByWMSid(int wmsId)
+    {
+        requestBL _rqstbl = new requestBL();
+        int userid = Convert.ToInt16(Session["UserId"]);
+        List<RequestData> lstRequestData = new List<RequestData>();
+
+        DataTable dtRequest = _rqstbl.GetRequestDataByWMSid(userid, wmsId);
+        foreach (DataRow row in dtRequest.Rows)
+        {
+            lstRequestData.Add(new RequestData
+            {
+                WMSID = Convert.ToInt32(row["WMSID"]),
+                Priority = Convert.ToString(row["priority"]),
                 BranchName = Convert.ToString(row["BranchName"]),
                 AffectOperation = Convert.ToString(row["AffectOperation"]),
                 Scope = Convert.ToString(row["Scope"]),
@@ -225,7 +252,7 @@ public class GetDataServices : System.Web.Services.WebService
     public class RequestData
     {
         public int WMSID { get; set; }
-        public string PriorityName { get; set; }
+        public string Priority { get; set; }
         public string BranchName { get; set; }
         public string AffectOperation { get; set; }
         public string Scope { get; set; }

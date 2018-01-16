@@ -92,7 +92,38 @@ namespace WMSda
             }
             return dset;
         }
+        public DataTable GetRequestDataByWMSid(int userId, int WmsID)
+        {
+            DataTable dset = new DataTable();
+            try
+            {
+                var cmd = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = _sqlcon,
+                    CommandText = "sp_Dashboard_Grid_Sel_WithWMSid"
+                };
+                cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = userId;
+                cmd.Parameters.Add("@wmsid", SqlDbType.Int).Value = WmsID;
+                
 
+                _sqlcon.Open();
+
+                var sqlda = new SqlDataAdapter(cmd);
+                sqlda.Fill(dset);
+
+            }
+            catch (Exception ex)
+            {
+                dset = null;
+            }
+            finally
+            {
+                _sqlcon.Close();
+            }
+            return dset;
+        }
+        
         public DataSet getRequestByStatusTypes(int userId)
         {
             try

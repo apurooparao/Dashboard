@@ -64,6 +64,12 @@ namespace WMSbl
             return objRequestDA.GetRequestDetailsByStatusAndPriority(userId, status, priority);
         }
 
+        public DataTable GetRequestDataByWMSid(int userId, int wmsID)
+        {
+            requestDA objRequestDA = new requestDA();
+            return objRequestDA.GetRequestDataByWMSid(userId, wmsID);
+        }
+
         public DataTable GetMasterStatus()
         {
             requestDA objRequestDA = new requestDA();

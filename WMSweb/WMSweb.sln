@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WMSweb", ".", "{BD67A7C0-928A-4D57-B197-86159346DA5F}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{9bc54d72-9f12-4b1a-b125-bffe4c69684d}|WMSbl.dll;{D0919329-E05D-4550-9017-673511D2AEC9}|WMSda.dll;{9EA1A7FD-90FD-4E63-8ED2-30A57D7FC58A}|WMSobjects.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_5764"
 		Debug.AspNetCompiler.PhysicalPath = "..\WMSweb\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5764\"
