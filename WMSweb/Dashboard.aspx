@@ -7,6 +7,12 @@
 
     <script type="text/javascript">
         $(function () {
+
+            //
+            //Load select controls with master data in dCriterion div
+
+
+            // below code goes in change event of select controls
             var dashboardData;
             var pageLoad = true;
             //Get Stats tile data
@@ -153,7 +159,9 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_body" runat="Server">
+    <div id="dCriterion">
 
+    </div>
     <div class="row-fluid" style="text-align: center;">
         <div class="btn-group" role="timeframe" aria-label="...">
             <button type="button" data-timeframe="Month" class="btn btn-default btn-frequency">Month</button>

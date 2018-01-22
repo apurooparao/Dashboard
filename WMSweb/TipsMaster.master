@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="TipsMaster.master.cs" Inherits="TipsMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="TipsMaster.master.cs" Inherits="TipsMaster"  %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +78,7 @@
                                     <li><a href="../../AdminSection.aspx"><i class="fa-sub fa-angle-right"></i>Section</a></li>
                                 </ul>
                             </li>
-                            <li><a href="../../TrackRequest.aspx">
+                            <li><a href="../../Reports.aspx">
                                 <span><i class="fa fa-bar-chart-o"></i></span>
                                 <span>Reports</span></a></li>
                             <li><a href="#">

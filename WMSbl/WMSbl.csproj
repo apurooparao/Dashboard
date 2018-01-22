@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChangePasswordBL.cs" />
+    <Compile Include="CommonBL.cs" />
     <Compile Include="loginBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="requestBL.cs" />
