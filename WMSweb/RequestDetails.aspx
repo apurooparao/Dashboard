@@ -61,7 +61,7 @@
 
                                     </script>
 
-                                    <table id="tblnewrequest" runat="server" style="min-height: 330px;">
+                                    <table id="tblnewrequest" runat="server" style="min-height: 330px;width:100%">
                                         <tr class="form-top" style="height: 4%">
                                             <%--  <td colspan="4" style="text-align: left; background: #424242; color: #fff; padding-left: 5%; font-family: Calibri; font-size: 15px;">
                                                 <strong>Request Details</strong>
@@ -195,7 +195,7 @@
                                         }
 
                                     </script>
-                                    <table id="tblInsertRequest" runat="server" style="min-height: 330px;">
+                                    <table id="tblInsertRequest" runat="server" style="min-height: 330px;width:100%">
                                         <tr class="form-top" style="height: 4%">
                                             <%-- <td colspan="4" style="text-align: left; background: #424242; color: #fff; padding-left: 5%; font-family: Calibri; font-size: 15px;">
                                                 <strong>Request Details</strong>
@@ -343,7 +343,7 @@
                                         }
 
                                     </script>
-                                    <table id="tblInsertRequest" runat="server" style="min-height: 330px;">
+                                    <table id="tblInsertRequest" runat="server" style="min-height: 330px;width:100%">
 
                                         <tr class="form-top" style="height: 4%">
 
