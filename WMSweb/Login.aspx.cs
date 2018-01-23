@@ -47,8 +47,10 @@ public partial class Login : System.Web.UI.Page
             _userbo = _objloginBL.CheckUser(UserName, password);
             if (_userbo == null)
             {
+
                 lblStatus.Visible = true;
                 lblStatus.Text = "Invalid UserName or Password";
+                txtPassword.Focus();
             }
             else
             {

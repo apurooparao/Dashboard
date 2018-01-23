@@ -16,9 +16,10 @@
                             </div>
                         </td>
                     </tr>
+
                     <tr>
                         <td class="tdlabelchangepassword">
-                            <asp:Label ID="lblUserName" runat="server" Text="User Name: "></asp:Label>
+                            <asp:Label ID="lblUserName" runat="server" Text="User Name "></asp:Label>
                         </td>
                         <td class="tdTextbox">
 
@@ -27,7 +28,7 @@
                     </tr>
                     <tr>
                         <td class="tdlabelchangepassword">
-                            <asp:Label ID="lblOldPassword" runat="server" Text="Old Password: "></asp:Label>
+                            <asp:Label ID="lblOldPassword" runat="server" Text="Old Password "></asp:Label>
                         </td>
                         <td class="tdTextbox">
                             <asp:TextBox ID="txtOldPassword" runat="server" TextMode="Password" class="textbox"></asp:TextBox>
@@ -38,7 +39,7 @@
                     </tr>
                     <tr>
                         <td class="tdlabelchangepassword">
-                            <asp:Label ID="lblNewPassword" runat="server" Text="New Password: "></asp:Label>
+                            <asp:Label ID="lblNewPassword" runat="server" Text="New Password "></asp:Label>
                         </td>
                         <td class="tdTextbox">
                             <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" class="textbox"></asp:TextBox>
