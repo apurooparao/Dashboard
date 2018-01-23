@@ -88,19 +88,19 @@ public partial class ChangePassword : System.Web.UI.Page
             if (!password.Equals(oldPassword))
             {
                 lblMessage.Visible = true;
-                lblMessage.Text = "Password entered does not match with existing password";
+                lblMessage.Text = "Password entered does not match with existing Password";
                 result = false;
             }
             else if (newPassword!=confirmPassword)
             {
                 lblMessage.Visible = true;
-                lblMessage.Text = "New password does not match with confirm password";
+                lblMessage.Text = "New Password does not match with Confirm Password";
                 result = false;
             }
             else if (oldPassword==newPassword)
             {
                 lblMessage.Visible = true;
-                lblMessage.Text = "Current and New password is same";
+                lblMessage.Text = "Current and New Password is same";
                 result = false;
             }
            
@@ -129,7 +129,7 @@ public partial class ChangePassword : System.Web.UI.Page
             _sqlcon.Open();
             int result = _sqlcmd.ExecuteNonQuery();
             _sqlcon.Close();
-            if (result.Equals(1))
+            if (result > 1)
             {
                 return true;
             }

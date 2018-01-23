@@ -21,7 +21,7 @@
                         <td class="tdlabelchangepassword">
                             <asp:Label ID="lblUserName" runat="server" Text="User Name "></asp:Label>
                         </td>
-                        <td class="tdTextbox">
+                        <td class="tdTextboxChangePassword">
 
                             <asp:Label ID="lblUserNameValue" runat="server"></asp:Label>
                         </td>
@@ -30,8 +30,8 @@
                         <td class="tdlabelchangepassword">
                             <asp:Label ID="lblOldPassword" runat="server" Text="Old Password "></asp:Label>
                         </td>
-                        <td class="tdTextbox">
-                            <asp:TextBox ID="txtOldPassword" runat="server" TextMode="Password" class="textbox"></asp:TextBox>
+                        <td class="tdTextboxChangePassword">
+                            <asp:TextBox ID="txtOldPassword" runat="server" TextMode="Password" class="textboxChangePassword"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rfvtxtOldPassword" runat="server" ErrorMessage="Old Password cannot be blank" ControlToValidate="txtOldPassword"
                                 ValidationGroup="Submit" Text="*" ForeColor="Red">
                             </asp:RequiredFieldValidator>
@@ -41,8 +41,8 @@
                         <td class="tdlabelchangepassword">
                             <asp:Label ID="lblNewPassword" runat="server" Text="New Password "></asp:Label>
                         </td>
-                        <td class="tdTextbox">
-                            <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" class="textbox"></asp:TextBox>
+                        <td class="tdTextboxChangePassword">
+                            <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" class="textboxChangePassword"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rfvtxtNewPassword" runat="server" ErrorMessage="New Password cannot be blank" ControlToValidate="txtNewPassword"
                                 ValidationGroup="Submit" Text="*" ForeColor="Red">
                             </asp:RequiredFieldValidator>
@@ -52,8 +52,8 @@
                         <td class="tdlabelchangepassword">
                             <asp:Label ID="lblConfirmPassword" runat="server" Text="Confirm Password: "></asp:Label>
                         </td>
-                        <td class="tdTextbox">
-                            <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" class="textbox"></asp:TextBox>
+                        <td class="tdTextboxChangePassword">
+                            <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" class="textboxChangePassword"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rfvtxtConfirmPassword" runat="server" ErrorMessage="Confirm Password cannot be blank" ControlToValidate="txtConfirmPassword"
                                 ValidationGroup="Submit" Text="*" ForeColor="Red">
 
@@ -64,22 +64,22 @@
                     </tr>
                     <tr>
                         <td class="tdlabelchangepassword"></td>
-                        <td class="tdTextbox"><span>password is case sensitive</span></td>
+                        <td class="tdTextboxChangePassword"><span>Password is case sensitive</span></td>
                     </tr>
                     <tr>
-                         <td class="tdTextbox"></td>
-                        <td class="tdlabelchangepassword" colspan="1" style="text-align:left">
-                            <asp:Button ID="btnChangePassword" runat="server" CssClass="button" ValidationGroup="Submit" OnClick="btnChangePassword_Click" Text="Submit" />
+                         <td class="tdlabelchangepassword"></td>
+                        <td class="tdTextboxChangePassword" colspan="1" style="text-align:left">
+                            <asp:Button ID="btnChangePassword" runat="server" CssClass="buttonChangePassword" ValidationGroup="Submit" OnClick="btnChangePassword_Click" Text="Submit" />
                         </td>
                         
                     </tr>
                     <tr>
                         <td class="tdlabelchangepassword"></td>
-                        <td class="tdTextbox">
+                        <td class="tdTextboxChangePassword">
                             <asp:Label ID="lblMessage" runat="server" Visible="false"></asp:Label></td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="Submit" ForeColor="Red" runat="server" />
                         </td>
                     </tr>

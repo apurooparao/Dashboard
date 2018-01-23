@@ -105,7 +105,7 @@
     text-align:right;
     padding:0.5%;
     vertical-align:middle;
-    width:4%;
+    width:15%;
     padding-top:0.5%;
 }
 
@@ -129,6 +129,16 @@ background: #eee;
     padding:0.5% 0px 0.5% 0.5%;
     vertical-align:middle;
     width:10%;
+    padding-top:0.5%;
+}
+.tdTextboxChangePassword{
+     border:0px solid #CCCCCC;
+background: #eee;
+    text-align:left;
+    height:5%;
+    padding:0.5% 0px 0.5% 0.5%;
+    vertical-align:middle;
+    /*width:50%;*/
     padding-top:0.5%;
 }
 
@@ -166,6 +176,22 @@ background: #eee;
 }
 
     .textbox:hover, #text1:focus {
+        outline: none;
+        box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+    }
+
+    
+.textboxChangePassword {
+    
+    width:30%;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    padding: 1% 2%;
+    color: #333;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+    .textboxChangePassword:hover, #text1:focus {
         outline: none;
         box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
     }
@@ -217,6 +243,22 @@ background: #eee;
         box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
     }
 
+
+    .buttonChangePassword {
+  
+    width:30%;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    padding: 1% 2%;
+    color: #333;
+
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+}
+    .buttonChangePassword:hover, .buttonChangePassword:active {
+        outline: none;
+        box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+    }
+
     
 .buttondash {
   
@@ -229,7 +271,7 @@ background: #eee;
 
     box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
 }
-.buttondash:hover, .button:active 
+.buttondash:hover, .buttondash:active 
 {
      outline: none;
         box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
