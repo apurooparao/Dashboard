@@ -33,6 +33,14 @@ public partial class TipsMaster : System.Web.UI.MasterPage
                 {
                     li_administration.Visible = false;
                 }
+                if (_userBO.RoleID == 1)
+                {
+                    li_reports.Visible = true;
+                }
+                else
+                {
+                    li_reports.Visible = false;
+                }
                 if (_userBO.RoleID == 4)
                 {
                     li_createrequest.Visible = false;
@@ -42,6 +50,7 @@ public partial class TipsMaster : System.Web.UI.MasterPage
                     li_createrequest.Visible = true;
                 }
             }
+
         }
     }
 

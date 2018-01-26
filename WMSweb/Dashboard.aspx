@@ -133,7 +133,9 @@
                 var i = 0;
                 $.each(dashboardData,
                     function (index, row) {
+                       
                         if (row.StatusName == selectedStatus) {
+                        //    alert(row.StatusName + " // " + selectedStatus);
                             donutData[i] = [row.PriorityName, row.StatusCount];
                             i++;
                         }
@@ -149,11 +151,17 @@
                         },
                         onmouseover: function (d, i) { console.log("onmouseover", d, i); },
                         onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+                        
                     },
                     donut: {
-                        title: selectedStatus
+                        title:selectedStatus
+                      //  title: {
+                    //    title: function (d,i) { return d3.select('#donut .c3-chart-arcs-title').node().innerHTML = d.id; }
+                      //  }
                     }
+                    
                 });
+              
             }
         });
     </script>

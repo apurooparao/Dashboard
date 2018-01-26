@@ -78,10 +78,12 @@
                                     <li><a href="../../AdminSection.aspx"><i class="fa-sub fa-angle-right"></i>Section</a></li>
                                 </ul>
                             </li>
-                            <li><a href="../../Reports.aspx">
+                            <li runat="server" id="li_reports" visible="false">
+                                <a href="../../Reports.aspx">
                                 <span><i class="fa fa-bar-chart-o"></i></span>
                                 <span>Reports</span></a></li>
-                            <li><a href="#">
+                            <li>
+                                <a href="#">
                                 <i class="fa fa-circle"></i>
                                 <span style="text-decoration: underline">Request</span>
                             </a>

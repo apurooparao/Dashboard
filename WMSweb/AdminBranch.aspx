@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TipsMaster.master" AutoEventWireup="true" CodeFile="AdminBranch.aspx.cs" Inherits="AdminBranch" %>
+﻿<%@ Page Title="Admin Branch" Language="C#" MasterPageFile="~/TipsMaster.master" AutoEventWireup="true" CodeFile="AdminBranch.aspx.cs" Inherits="AdminBranch" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
         <link href="Styles/GridViewStyleSheetSwetha.css" rel="stylesheet" />
