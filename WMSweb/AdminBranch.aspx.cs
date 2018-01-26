@@ -93,7 +93,7 @@ public partial class AdminBranch : System.Web.UI.Page
         try
         {
             txtBranchName.Text = "";
-            cbIsActive.Checked = false;
+           // cbIsActive.Checked = false;
             hidBranchID.Value = "";
             btnSave.Visible = true;
             btnUpdate.Visible = false;

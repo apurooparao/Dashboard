@@ -58,7 +58,7 @@ public partial class AdminPriority : System.Web.UI.Page
         try
         {
             txtPriorityName.Text = "";
-            cbIsActive.Checked = false;
+           // cbIsActive.Checked = false;
             hidPriorityID.Value = "";
             btnSave.Visible = true;
             btnUpdate.Visible = false;

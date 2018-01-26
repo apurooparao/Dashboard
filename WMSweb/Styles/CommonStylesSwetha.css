@@ -153,6 +153,18 @@
     width:5%;
     padding-top:0.5%;
 }
+
+.tdTextboxadminuser{
+     border:0px solid #CCCCCC;
+      /*background-color:white;*/
+    text-align:left;
+    height:1%;
+    padding:0.5% 0px 0.5% 0.5%;
+    vertical-align:middle;
+    width:85%;
+    padding-top:0.5%;
+}
+
 .textboxadmin {
     display: block;
     border: 1px solid lightblue;
@@ -186,6 +198,18 @@
     /*padding:0.5%;*/
     vertical-align:middle;
     width:50%;
+    padding-top:0.5%;
+    padding-right:3%;
+}
+
+.tdlabeladminuser {
+    border:0px solid #CCCCCC;
+    /*background-color:white;*/
+    text-align:left;
+    /*padding:0.5%;*/
+   padding-left:10%;
+    vertical-align:middle;
+    width:15%;
     padding-top:0.5%;
     padding-right:3%;
 }
@@ -232,3 +256,19 @@
      outline: none;
         box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
 }
+
+
+.buttonadminuser {
+    /*display: block;*/
+    width:90%;
+    border: 1px solid lightblue;
+    border-radius: 5%;
+    padding: 7% 9%;
+    color: #333;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1);
+}
+.buttonadminuser:hover, .buttonadmin:active {
+        outline: none;
+        box-shadow: inset 0 2px 0 rgba(0, 0, 0, .2), 0 0 4px rgba(0, 0, 0, 0.1), 0 0 5px 1px #51CBEE;
+    }
+    

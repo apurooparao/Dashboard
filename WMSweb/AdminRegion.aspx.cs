@@ -58,7 +58,7 @@ public partial class AdminRegion : System.Web.UI.Page
         try
         {
             txtRegionName.Text = "";
-            cbIsActive.Checked = false;
+           // cbIsActive.Checked = false;
             hidRegionID.Value = "";
             btnSave.Visible = true;
             btnUpdate.Visible = false;

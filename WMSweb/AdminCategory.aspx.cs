@@ -60,7 +60,7 @@ public partial class AdminCategory : System.Web.UI.Page
         try
         {
             txtCategoryName.Text = "";
-            cbIsActive.Checked = false;
+          //  cbIsActive.Checked = false;
             hidCategoryID.Value = "";
             btnSave.Visible = true;
             btnUpdate.Visible = false;

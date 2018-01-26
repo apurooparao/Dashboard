@@ -71,6 +71,7 @@
                                     <span><u>Administration</u></span>
                                 </a>
                                 <ul class="treeview-menu" style="display: none;">
+                                    <li><a href="AdminUser.aspx"><i class="fa-sub fa-angle-right"></i>User</a></li>
                                     <li><a href="../../AdminRegion.aspx"><i class="fa-sub fa-angle-right"></i>Region</a></li>
                                     <li><a href="../../AdminBranch.aspx"><i class="fa-sub fa-angle-right"></i>Branch</a></li>
                                     <li><a href="../../AdminCategory.aspx"><i class="fa-sub fa-angle-right"></i>Category</a></li>

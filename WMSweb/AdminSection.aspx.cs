@@ -58,7 +58,7 @@ public partial class AdminSection : System.Web.UI.Page
         try
         {
             txtSectionName.Text = "";
-            cbIsActive.Checked = false;
+       //     cbIsActive.Checked = false;
             hidSectionID.Value = "";
             btnSave.Visible = true;
             btnUpdate.Visible = false;

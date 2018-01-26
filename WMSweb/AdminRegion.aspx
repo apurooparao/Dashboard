@@ -5,13 +5,26 @@
     <link href="Styles/CommonStylesSwetha.css" rel="stylesheet" />
     <script type="text/javascript">
 
-        function validate() {
+        <%-- function validate() {
             if (document.getElementById("<%= txtRegionName.ClientID%>").value.trim() == "") {
                 alert("Region Name cannot be empty");
                 return false;
             }
             else if (document.getElementById("<%= cbIsActive.ClientID %>").checked == false) {
                 return confirm('Do you wish to continue');
+            }
+        }--%>
+           function ValidateSection(source, args) {
+
+            if (document.getElementById("<%= cbIsActive.ClientID %>").checked == false) {
+                if (confirm('Region will be Inactive. Do you wish to continue ?')) {
+                    args.IsValid = true;
+                }
+
+                else {
+                    args.IsValid = false;
+                    return;
+                }
             }
         }
 
@@ -28,7 +41,11 @@
                                 <asp:Label ID="lblRegion" runat="server" Text="Region Name"></asp:Label>
                             </td>
                             <td class="tdTextboxadmin">
-                                <asp:TextBox ID="txtRegionName" runat="server" CssClass="textboxadmin"></asp:TextBox>
+                                <asp:TextBox ID="txtRegionName" runat="server" CssClass="textboxadmin"    ValidationGroup="Insert"></asp:TextBox>
+                                 <asp:RequiredFieldValidator ID="rfvInsRegionName" runat="server" ErrorMessage="Region Name cannot be blank" 
+                                    ControlToValidate="txtRegionName"
+                                    ValidationGroup="Insert" Text="*" ForeColor="Red" >
+                                </asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -36,15 +53,18 @@
                                 <asp:Label ID="lblActive" runat="server" Text="Is Active"></asp:Label>
                             </td>
                             <td style="width: 50%;">
-                                <asp:CheckBox ID="cbIsActive" runat="server" CssClass="checkadminstyle"></asp:CheckBox>
+                                <asp:CheckBox ID="cbIsActive" runat="server" CssClass="checkadminstyle" Checked="true"></asp:CheckBox>
+                                  <asp:CustomValidator ID="vld_section" ValidationGroup="Insert" ClientValidationFunction="ValidateSection"
+                                                    ErrorMessage="Please Check Is Active" runat="server" Display="None" ></asp:CustomValidator>
+                               
                             </td>
                         </tr>
                         <tr>
 
                             <td class="tdlabeladmin">
-                                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="buttonadmin" OnClientClick="javascript:return validate();" />
-                                <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" CssClass="buttonadmin" OnClientClick="javascript:return validate();" 
-                                    Visible="false" />
+                                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="buttonadmin"   ValidationGroup="Insert"  />
+                                <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" CssClass="buttonadmin" 
+                                     Visible="false"   ValidationGroup="Insert" />
 
                             </td>
                             <td>
@@ -90,7 +110,12 @@
             <tr>
                 <td align="center" colspan="2">
                     <br />
-                    <asp:Label ID="lblMessage" runat="server" EnableViewState="false" ForeColor="Blue"></asp:Label>
+                    <asp:Label ID="lblMessage" runat="server" EnableViewState="false" ForeColor="Red"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                   <td>
+                    <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="Insert" ForeColor="Red" runat="server" />
                 </td>
             </tr>
         </table>

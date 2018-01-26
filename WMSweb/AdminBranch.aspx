@@ -1,18 +1,33 @@
 ﻿<%@ Page Title="Admin Branch" Language="C#" MasterPageFile="~/TipsMaster.master" AutoEventWireup="true" CodeFile="AdminBranch.aspx.cs" Inherits="AdminBranch" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-        <link href="Styles/GridViewStyleSheetSwetha.css" rel="stylesheet" />
+     <link href="Styles/GridViewStyleSheetSwetha.css" rel="stylesheet" />
     <link href="Styles/CommonStylesSwetha.css" rel="stylesheet" />
     <script type="text/javascript">
 
-        function validate()
+        function ValidateSection(source, args) {
 
-        {
-            if (document.getElementById("<%= cbIsActive.ClientID %>").checked == false)
-            {
-                return confirm('Do you wish to continue');
+            if (document.getElementById("<%= cbIsActive.ClientID %>").checked == false) {
+                if (confirm('Branch will be Inactive. Do you wish to continue ?')) {
+                    args.IsValid = true;
+                }
+
+                else {
+                    args.IsValid = false;
+                    return;
+                }
             }
         }
+     <%--   function validate()
+
+        {
+            if (Page_ClientValidate('Insert')) {
+                if (document.getElementById("<%= cbIsActive.ClientID %>").checked == false) {
+                    return confirm('Do you wish to continue');
+                }
+            }
+            return false;
+        }--%>
 
     </script>
 </asp:Content>
@@ -28,8 +43,9 @@
                             </td>
                             <td class="tdTextboxadmin">
                                 <asp:TextBox ID="txtBranchName" runat="server" CssClass="textboxadmin"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="rfvInsBranchName" runat="server" ErrorMessage="Branch Name cannot be blank" ControlToValidate="txtBranchName"
-                                    ValidationGroup="Insert" Text="*" ForeColor="Red">
+                                <asp:RequiredFieldValidator ID="rfvInsBranchName" runat="server" ErrorMessage="Branch Name cannot be blank" 
+                                    ControlToValidate="txtBranchName"
+                                    ValidationGroup="Insert" Text="*" ForeColor="Red" >
                                 </asp:RequiredFieldValidator>
                             </td>
                         </tr>
@@ -39,6 +55,8 @@
                             </td>
                             <td class="tdTextboxadmin">
                                 <asp:DropDownList ID="ddlAddRegName" runat="server" CssClass="textboxadmin"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvRegion" runat="server" ControlToValidate="ddlAddRegName" InitialValue="0" 
+                                    ErrorMessage="Please select a region" Display="None" ValidationGroup="Insert" Text="*" ForeColor="Red" />
                             </td>
                         </tr>
                         <tr>
@@ -46,14 +64,17 @@
                                 <asp:Label ID="lblActive" runat="server" Text="Is Active"></asp:Label>
                             </td>
                             <td style="width: 50%;">
-                                <asp:CheckBox ID="cbIsActive" runat="server" CssClass="checkadminstyle"></asp:CheckBox>
+                                <asp:CheckBox ID="cbIsActive" runat="server" CssClass="checkadminstyle" Checked="true"></asp:CheckBox>
+                                 <asp:CustomValidator ID="vld_section" ValidationGroup="Insert" ClientValidationFunction="ValidateSection"
+                                                    ErrorMessage="Please Check Is Active" runat="server" Display="None" ></asp:CustomValidator>
+                               
                             </td>
                         </tr>
                         <tr>
 
                             <td class="tdlabeladmin">
-                                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="buttonadmin" ValidationGroup="Insert"  OnClientClick="javascript:return validate();"/>
-                                <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" CssClass="buttonadmin" ValidationGroup="Insert" OnClientClick="javascript:return validate();"
+                                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="buttonadmin" ValidationGroup="Insert"  />
+                                <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" CssClass="buttonadmin" ValidationGroup="Insert" 
                                     Visible="false" />
 
                             </td>
@@ -106,7 +127,7 @@
             <tr>
                 <td align="center" colspan="2">
                     <br />
-                    <asp:Label ID="lblMessage" runat="server" EnableViewState="false" ForeColor="Blue"></asp:Label>
+                    <asp:Label ID="lblMessage" runat="server" EnableViewState="false" ForeColor="Red"></asp:Label>
                 </td>
             </tr>
             <tr>

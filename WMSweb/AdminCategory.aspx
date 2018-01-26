@@ -5,9 +5,17 @@
     <link href="Styles/CommonStylesSwetha.css" rel="stylesheet" />
     <script type="text/javascript">
 
-        function validate() {
+         function ValidateSection(source, args) {
+
             if (document.getElementById("<%= cbIsActive.ClientID %>").checked == false) {
-                return confirm('Do you wish to continue');
+                if (confirm('Category will be Inactive. Do you wish to continue ?')) {
+                    args.IsValid = true;
+                }
+
+                else {
+                    args.IsValid = false;
+                    return;
+                }
             }
         }
 
@@ -35,14 +43,16 @@
                                 <asp:Label ID="lblActive" runat="server" Text="Is Active"></asp:Label>
                             </td>
                             <td style="width: 50%;">
-                                <asp:CheckBox ID="cbIsActive" runat="server" CssClass="checkadminstyle"></asp:CheckBox>
+                                <asp:CheckBox ID="cbIsActive" runat="server" CssClass="checkadminstyle" Checked="true"></asp:CheckBox>
+                                        <asp:CustomValidator ID="vld_section" ValidationGroup="Insert" ClientValidationFunction="ValidateSection"
+                                                    ErrorMessage="Please Check Is Active" runat="server" Display="None" ></asp:CustomValidator>
                             </td>
                         </tr>
                         <tr>
 
                             <td class="tdlabeladmin">
-                                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="buttonadmin" ValidationGroup="Insert"  OnClientClick="javascript:return validate();"/>
-                                <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" CssClass="buttonadmin" ValidationGroup="Insert"  OnClientClick="javascript:return validate();"
+                                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="buttonadmin" ValidationGroup="Insert"  />
+                                <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" CssClass="buttonadmin" ValidationGroup="Insert"  
                                     Visible="false" />
 
                             </td>
@@ -91,7 +101,7 @@
             <tr>
                 <td align="center" colspan="2">
                     <br />
-                    <asp:Label ID="lblMessage" runat="server" EnableViewState="false" ForeColor="Blue"></asp:Label>
+                    <asp:Label ID="lblMessage" runat="server" EnableViewState="false" ForeColor="Red"></asp:Label>
                 </td>
             </tr>
             <tr>
