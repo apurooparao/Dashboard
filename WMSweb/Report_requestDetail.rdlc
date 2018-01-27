@@ -29,10 +29,6 @@
           <DataField>Scope</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Floor">
-          <DataField>Floor</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
         <Field Name="CreatedDate">
           <DataField>CreatedDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
@@ -47,6 +43,10 @@
         </Field>
         <Field Name="SectionName">
           <DataField>SectionName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Floor">
+          <DataField>Floor</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="StatusName">
@@ -557,7 +557,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Floor1">
+                        <Textbox Name="Floor">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -571,7 +571,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Floor1</rd:DefaultName>
+                          <rd:DefaultName>Floor</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -778,7 +778,6 @@
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
                       </Textbox>
-                      <rd:Selected>true</rd:Selected>
                     </CellContents>
                   </TablixHeader>
                   <TablixMembers>

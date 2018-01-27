@@ -244,6 +244,8 @@
                                                     <asp:ListItem Value="3" Text="Third"></asp:ListItem>
                                                     <asp:ListItem Value="4" Text="Fourth"></asp:ListItem>
                                                     <asp:ListItem Value="5" Text="Fifth"></asp:ListItem>
+                                                    <asp:ListItem Value="6" Text="Sixth"></asp:ListItem>
+                                                    <asp:ListItem Value="7" Text="Seventh"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </td>
                                         </tr>
@@ -608,8 +610,8 @@
                                 <tr>
                                     <td class="tdTextbox" colspan="6">
                                         <%--<asp:Label ID="lblTimeline" runat="server" Text=""></asp:Label>--%>
-                                              <asp:GridView ID="grdTimeline" runat="server" CssClass="mydatagridgray" 
-                                    HeaderStyle-CssClass="header" RowStyle-CssClass="rows" 
+                                                  <asp:GridView ID="grdTimeline" runat="server" CssClass="mydatagridgray" 
+                                        HeaderStyle-CssClass="header" RowStyle-CssClass="rows" 
                                                   Width="100%" AllowSorting="True" AutoGenerateColumns="False">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Status" HeaderStyle-Width="15%">

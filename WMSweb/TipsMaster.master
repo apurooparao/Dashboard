@@ -32,8 +32,9 @@
 <body>
     <form id="form1" runat="server">
         <nav class="titleHeader navbar navbar-inverse" style="z-index: 2200">
-            <span class="navbar-brand brandName">Tips n Toes
-            </span>
+          <%--  <span class="navbar-brand brandName">Tips n Toes
+            </span>--%>
+             <asp:Label ID="lblBrand"  runat="server" CssClass="navbar-brand" Text="Tips n Toes" ></asp:Label>
             <div class="pull-right">
                 <asp:Label ID="lblWelcomeMessage" Text="Welcome " runat="server" CssClass="navbar-brand"></asp:Label>
                  <asp:Label ID="lblUsername"  runat="server" CssClass="navbar-brand"></asp:Label>

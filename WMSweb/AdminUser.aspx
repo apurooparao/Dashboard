@@ -52,7 +52,7 @@
                                 <asp:Label ID="lblRole" runat="server" Text="Role"></asp:Label>
                             </td>
                             <td class="tdTextboxadminuser">
-                                <asp:DropDownList ID="ddlRole" runat="server" CssClass="textboxadmin"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlRole" runat="server" CssClass="textboxadmindash"></asp:DropDownList>
                                    <asp:RequiredFieldValidator ID="rfvRole" runat="server" ControlToValidate="ddlRole" InitialValue="0" 
                                     ErrorMessage="Please select a Role" Display="None" ValidationGroup="Insert" Text="*" ForeColor="Red" />
                             </td>

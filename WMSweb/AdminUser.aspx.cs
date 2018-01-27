@@ -155,6 +155,11 @@ public partial class AdminUser : System.Web.UI.Page
                 lblMessage.Text = "User Name already exists";
                 txtUserName.Focus();
             }
+            else if (result == 101)
+            {
+                lblMessage.Text = "User with same Role already exists in the branch";
+                ddlRole.Focus();
+            }
         }
         catch
         {
@@ -227,6 +232,11 @@ public partial class AdminUser : System.Web.UI.Page
             else if (result == 100)
             {
                 lblMessage.Text = "User Name already exists";
+                txtUserName.Focus();
+            }
+            else if (result == 101)
+            {
+                lblMessage.Text = "User with same Role already exists in the branch";
                 txtUserName.Focus();
             }
         }
