@@ -120,7 +120,7 @@ public class GetDataServices : System.Web.Services.WebService
                 SectionName = Convert.ToString(row["SectionName"]),
                 Category = Convert.ToString(row["Category"]),
                 Requestor = Convert.ToString(row["Requestor"]),
-                CreatedDate = Convert.ToDateTime(row["CreatedDate"])
+                StatusName = Convert.ToString(row["StatusName"])
             });
         }
 
@@ -148,7 +148,7 @@ public class GetDataServices : System.Web.Services.WebService
                 SectionName = Convert.ToString(row["SectionName"]),
                 Category = Convert.ToString(row["Category"]),
                 Requestor = Convert.ToString(row["Requestor"]),
-                CreatedDate = Convert.ToDateTime(row["CreatedDate"])
+                StatusName = Convert.ToString(row["StatusName"])
             });
         }
 
@@ -175,7 +175,7 @@ public class GetDataServices : System.Web.Services.WebService
                 SectionName = Convert.ToString(row["SectionName"]),
                 Category = Convert.ToString(row["Category"]),
                 Requestor = Convert.ToString(row["Requestor"]),
-                CreatedDate = Convert.ToDateTime(row["CreatedDate"])
+                StatusName = Convert.ToString(row["StatusName"])
             });
         }
 
@@ -259,7 +259,8 @@ public class GetDataServices : System.Web.Services.WebService
         public string SectionName { get; set; }
         public string Category { get; set; }
         public string Requestor { get; set; }
-        public DateTime CreatedDate { get; set; }
+      //  public DateTime CreatedDate { get; set; }
+      public string StatusName { get; set; }
     }
 
     public class Statuses

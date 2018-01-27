@@ -106,7 +106,7 @@
                     var reg = /^\d+$/;
                     if (numbers.test(wmsid)) {
                         // alert(wmsid);
-                        var tableHeader = "<table id='grid-requested-status' class='table table-condensed table-hover table-striped'><thead><tr><th data-column-id='WMSID' data-type='numeric'>WMSID</th><th data-column-id='PriorityName'>PriorityName</th><th data-column-id='BranchName' data-order='desc'>BranchName</th><th data-column-id='AffectOperation' data-order='desc'>AffectOperation</th><th data-column-id='Scope' data-order='desc'>Scope</th><th data-column-id='SectionName' data-order='desc'>SectionName</th><th data-column-id='Category' data-order='desc'>Category</th><th data-column-id='Requestor' data-order='desc'>Requestor</th><th data-type='date' data-column-id='CreatedDate' data-order='desc' >CreatedDate</th></tr></thead><tbody>$$$$</tbody></table>";
+                        var tableHeader = "<table id='grid-requested-status' class='table table-condensed table-hover table-striped'><thead><tr><th data-column-id='WMSID' data-type='numeric'>WMSID</th><th data-column-id='PriorityName'>PriorityName</th><th data-column-id='BranchName' data-order='desc'>BranchName</th><th data-column-id='AffectOperation' data-order='desc'>AffectOperation</th><th data-column-id='Scope' data-order='desc'>Scope</th><th data-column-id='SectionName' data-order='desc'>SectionName</th><th data-column-id='Category' data-order='desc'>Category</th><th data-column-id='Requestor' data-order='desc'>Requestor</th><th data-type='date' data-column-id='StatusName' data-order='desc' >Status</th></tr></thead><tbody>$$$$</tbody></table>";
                         $.ajax({
                             type: "POST",
                             url: "/GetDataServices.asmx/GetRequestDataByWMSid",
@@ -143,7 +143,7 @@
                                         row.Requestor +
                                         "</td>" +
                                         "<td >" +
-                                        row.CreatedDate +
+                                        row.StatusName +
                                         "</td>" +
                                         "</tr>";
                                     rows = rows + newRow;
@@ -167,7 +167,7 @@
                     var priorityId = $("#Prioritylist").val();
 
 
-                    var tableHeader = "<table id='grid-requested-status' class='table table-condensed table-hover table-striped'><thead><tr><th data-column-id='WMSID' data-type='numeric'>WMSID</th><th data-column-id='PriorityName'>PriorityName</th><th data-column-id='BranchName' data-order='desc'>BranchName</th><th data-column-id='AffectOperation' data-order='desc'>AffectOperation</th><th data-column-id='Scope' data-order='desc'>Scope</th><th data-column-id='SectionName' data-order='desc'>SectionName</th><th data-column-id='Category' data-order='desc'>Category</th><th data-column-id='Requestor' data-order='desc'>Requestor</th><th data-type='date' data-column-id='CreatedDate' data-order='desc' >CreatedDate</th></tr></thead><tbody>$$$$</tbody></table>";
+                    var tableHeader = "<table id='grid-requested-status' class='table table-condensed table-hover table-striped'><thead><tr><th data-column-id='WMSID' data-type='numeric'>WMSID</th><th data-column-id='PriorityName'>PriorityName</th><th data-column-id='BranchName' data-order='desc'>BranchName</th><th data-column-id='AffectOperation' data-order='desc'>AffectOperation</th><th data-column-id='Scope' data-order='desc'>Scope</th><th data-column-id='SectionName' data-order='desc'>SectionName</th><th data-column-id='Category' data-order='desc'>Category</th><th data-column-id='Requestor' data-order='desc'>Requestor</th><th data-type='date' data-column-id='StatusName' data-order='desc' >Status</th></tr></thead><tbody>$$$$</tbody></table>";
                     $.ajax({
                         type: "POST",
                         url: "/GetDataServices.asmx/GetRequestDataByStatusAndPriority",
@@ -204,7 +204,7 @@
                                     row.Requestor +
                                     "</td>" +
                                     "<td >" +
-                                    row.CreatedDate +
+                                    row.StatusName +
                                     "</td>" +
                                     "</tr>";
                                 rows = rows + newRow;
