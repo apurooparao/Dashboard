@@ -46,6 +46,8 @@ public partial class RequestDetails : System.Web.UI.Page
                     {
                         statusdiv.Visible = false;
                     }
+
+                   
                 }
                 else
                 {
@@ -63,6 +65,26 @@ public partial class RequestDetails : System.Web.UI.Page
             if (Form_Request.CurrentMode != FormViewMode.ReadOnly)
             {
                 BindControls();
+                var ddlname = (DropDownList)Form_Request.FindControl("ddlBranchEdit");
+                if (Session["UserBO"] == null)
+                {
+                    Response.Redirect("Login.aspx", false);
+                }
+                else
+                {
+                    _userBO = new UserBO();
+                    _userBO = (UserBO)Session["UserBO"];
+                    ddlname.SelectedIndex = ddlname.Items.IndexOf(ddlname.Items.FindByValue(_userBO.BranchID.ToString()));
+                  //  ddlname.SelectedIndex = _userBO.BranchID;
+                    if (_userBO.RoleID==1)
+                    {
+                        ddlname.Enabled = true;
+                    }
+                    else
+                    {
+                        ddlname.Enabled = false;
+                    }
+                }
             }
         }
         catch (Exception ex)
@@ -74,7 +96,8 @@ public partial class RequestDetails : System.Web.UI.Page
     private void BindControls()
     {
         try
-        {    
+        {
+            FillDropDown("ddlBranchEdit", "BranchID,BranchName", "tblm_Branch", " IsActive =1 order by BranchID");
             FillDropDown("ddlSectionEdit", "SectionID,SectionName", "tblm_Section", " IsActive =1 order by SectionName");
             FillDropDown("ddlPriorityEdit", "PriorityID,PriorityName", "tblm_Priority", " IsActive =1 order by PriorityName");
             FillCheckBox("chkCategoryEdit", "CategoryID,CategoryName", "tblm_Category", " IsActive =1 order by CategoryName");
@@ -144,20 +167,6 @@ public partial class RequestDetails : System.Web.UI.Page
                 lblCurrentStatusValue.Text = ds.Tables[0].Rows[0]["StatusName"].ToString();
 
                 
-
-                //StringBuilder sbstring = new StringBuilder();
-                //foreach (DataRow row in ds.Tables[1].Rows)
-                //{
-                //    sbstring.Append("\n");
-                //    sbstring.Append(row[0].ToString() + "   ");
-                //    sbstring.Append(row[1].ToString());
-                //    sbstring.Append(row[2].ToString());
-                //    sbstring.Append(row[3].ToString());
-                //    sbstring.Append(row[4].ToString());
-                //    sbstring.Append("\n");
-                //}
-                //lblTimeline.Text = sbstring.ToString();
-
                 if (Convert.ToInt16(ds.Tables[0].Rows[0]["StatusId"]) == 3 || Convert.ToInt16(ds.Tables[0].Rows[0]["StatusId"]) == 4)
                 {
                     var btnEditRequest = (Button)Form_Request.FindControl("btnEditRequest");
@@ -197,25 +206,6 @@ public partial class RequestDetails : System.Web.UI.Page
             _rqstbo.assignedTo = 1;
 
 
-            if (Session["UserBO"] == null)
-            {
-                Response.Redirect("Login.aspx", false);
-            }
-            else
-            {
-                _userBO = new UserBO();
-                _userBO = (UserBO)Session["UserBO"];
-                // change after adding branch drop down for admin
-                if (_userBO.RoleID == 1 )
-                {
-                    _rqstbo.branchId = 1;
-                }
-                else
-                {
-                    _rqstbo.branchId = _userBO.BranchID;
-                }
-              
-            }
             //   change after login page
 
             _rqstbl = new requestBL();
@@ -254,6 +244,9 @@ public partial class RequestDetails : System.Web.UI.Page
         _rqstbo = new requestBO();
         try
         {
+            var ddlbranch = (DropDownList)Form_Request.FindControl("ddlBranchEdit");
+            _rqstbo.branchId = Convert.ToInt16(ddlbranch.SelectedValue);
+
             var ddlpriority = (DropDownList)Form_Request.FindControl("ddlPriorityEdit");
             _rqstbo.priorityId = Convert.ToInt16(ddlpriority.SelectedValue);
 
@@ -304,25 +297,7 @@ public partial class RequestDetails : System.Web.UI.Page
             _rqstbo.InsUpdFlag = 1;
             _rqstbo.statusId = 1;
             _rqstbo.assignedTo = 1;
-            if (Session["UserBO"] == null)
-            {
-                Response.Redirect("Login.aspx", false);
-            }
-            else
-            {
-                _userBO = new UserBO();
-                _userBO = (UserBO)Session["UserBO"];
-                // change after adding branch drop down for admin
-                if (_userBO.RoleID == 1)
-                {
-                    _rqstbo.branchId = 1;
-                }
-                else
-                {
-                    _rqstbo.branchId = _userBO.BranchID;
-                }
-
-            }
+      
 
             _rqstbo.wmsId = Convert.ToInt32(Form_Request.DataKey.Value);
             _rqstbl = new requestBL();
@@ -378,6 +353,11 @@ public partial class RequestDetails : System.Web.UI.Page
 
             if (e.NewMode == FormViewMode.Edit)
             {
+                var ddlbranch = (DropDownList)Form_Request.FindControl("ddlBranchEdit");
+                // var ddl = (DropDownList)Form_Request.FindControl("ddlPriorityEdit");
+                var lblbrancheditvalue = (Label)Form_Request.FindControl("lblBranchEditValue");
+                ddlbranch.SelectedIndex = ddlbranch.Items.IndexOf(ddlbranch.Items.FindByText(lblbrancheditvalue.Text));
+
                 var ddlpriority = (DropDownList)Form_Request.FindControl("ddlPriorityEdit");
                 // var ddl = (DropDownList)Form_Request.FindControl("ddlPriorityEdit");
                 var lbl = (Label)Form_Request.FindControl("lblPriorityEditValue");

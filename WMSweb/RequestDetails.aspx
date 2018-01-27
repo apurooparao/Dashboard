@@ -74,6 +74,16 @@
                                         </tr>
                                         <tr style="line-height: 200%">
                                             <td class="tdlabel">
+                                                <asp:Label ID="lblBranch" runat="server" Text="Branch : "></asp:Label>
+                                            </td>
+                                            <td class="tdTextbox">
+                                            
+                                                <asp:Label ID="lblBranchValue" runat="server" Text='<%# Bind("BranchName") %>'></asp:Label>
+                                            </td>
+                                           
+                                        </tr>
+                                        <tr style="line-height: 200%">
+                                            <td class="tdlabel">
                                                 <asp:Label ID="lblPriority" runat="server" Text="Priority : "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
@@ -205,6 +215,16 @@
                                                     <h4>Request Details</h4>
                                                 </div>
                                             </td>
+                                        </tr>
+                                         <tr>
+                                            <td class="tdlabel">
+                                                <asp:Label ID="lblBranchEdit" runat="server" Text="Branch : "></asp:Label>
+                                            </td>
+                                            <td class="tdTextbox">
+                                                <asp:DropDownList ID="ddlBranchEdit" runat="server" CssClass="dropdownlistnew" Enabled="false">
+                                                </asp:DropDownList>
+                                            </td>
+                                          
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
@@ -358,6 +378,17 @@
                                                     <h4>Request Details</h4>
                                                 </div>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tdlabel">
+                                                <asp:Label ID="lblBranchEdit" runat="server" Text="Branch : "></asp:Label>
+                                            </td>
+                                            <td class="tdTextbox">
+                                                <asp:Label runat="server" ID="lblBranchEditValue" Text='<%# Bind("BranchName") %>' Visible="false"></asp:Label>
+                                                <asp:DropDownList ID="ddlBranchEdit" runat="server" CssClass="dropdownlistnew" Enabled="false">
+                                                </asp:DropDownList>
+                                            </td>
+                                         
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
