@@ -35,6 +35,9 @@
                                 <asp:RequiredFieldValidator ID="rfvtxtUserName" runat="server" ErrorMessage="User Name cannot be blank" ControlToValidate="txtUserName"
                                     ValidationGroup="Insert" Text="*" ForeColor="Red">
                                 </asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator Display="None" runat="server" id="regUserName" ErrorMessage="User name should not contain special characters or spaces" ControlToValidate="txtUserName"
+                                    ValidationGroup="Insert" ValidationExpression="^[a-zA-Z0-9\\s]+$"></asp:RegularExpressionValidator>
+                               
                             </td>
                         </tr>
                         <tr>
