@@ -177,7 +177,24 @@ public partial class RequestDetails : System.Web.UI.Page
                     var btnEditRequest = (Button)Form_Request.FindControl("btnEditRequest");
                     if (btnEditRequest != null)
                     {
-                        btnEditRequest.Visible = true;
+                        if (Session["UserBO"] == null)
+                        {
+                            Response.Redirect("Login.aspx", false);
+                        }
+                        else
+                        {
+                            _userBO = new UserBO();
+                            _userBO = (UserBO)Session["UserBO"];
+                            if (_userBO.RoleID == 4)
+                            {
+                                btnEditRequest.Visible = false;
+                            }
+                            else
+                            {
+                                btnEditRequest.Visible = true;
+                            }
+                        }
+                       
                     }
                 }
              //   Session["wmsId"] = wmsId;
