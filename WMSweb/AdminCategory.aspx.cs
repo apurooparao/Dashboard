@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WMSobjects;
 
 public partial class AdminCategory : System.Web.UI.Page
 {
@@ -17,11 +18,31 @@ public partial class AdminCategory : System.Web.UI.Page
     {
         try
         {
-            txtCategoryName.Focus();
-            if (!IsPostBack)
+
+            if (Session["UserBO"] == null)
             {
-                FillGrid();
+                Response.Redirect("Login.aspx", false);
             }
+            else
+            {
+                UserBO _userBO = new UserBO();
+                _userBO = (UserBO)Session["UserBO"];
+                if (_userBO.RoleID == 1)
+                {
+
+                    txtCategoryName.Focus();
+                    if (!IsPostBack)
+                    {
+                        FillGrid();
+                      
+                    }
+                }
+                else
+                {
+                    Response.Redirect("Dashboard.aspx", false);
+                }
+            }
+
         }
         catch (Exception)
         {

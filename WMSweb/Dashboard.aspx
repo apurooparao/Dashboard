@@ -81,7 +81,7 @@
                         var Inprogress = 0;
                         var Close = 0;
                         var Rejected = 0;
-                        debugger;
+                    
                         //if (pageLoad) {
                           //  pageLoad = false;
                             showDonut("Open");

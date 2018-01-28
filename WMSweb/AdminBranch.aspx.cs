@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WMSobjects;
 
 public partial class AdminBranch : System.Web.UI.Page
 {
@@ -15,12 +16,28 @@ public partial class AdminBranch : System.Web.UI.Page
     {
         try
         {
-
-            txtBranchName.Focus();
-            if (!IsPostBack)
+            if (Session["UserBO"] == null)
             {
-                FillGrid();
-                Fillddl(ddlAddRegName);
+                Response.Redirect("Login.aspx", false);
+            }
+            else
+            {
+                UserBO _userBO = new UserBO();
+                _userBO = (UserBO)Session["UserBO"];
+                if (_userBO.RoleID == 1)
+                {
+
+                    txtBranchName.Focus();
+                    if (!IsPostBack)
+                    {
+                        FillGrid();
+                        Fillddl(ddlAddRegName);
+                    }
+                }
+                else
+                {
+                    Response.Redirect("Dashboard.aspx", false);
+                }
             }
         }
         catch

@@ -102,6 +102,8 @@
                 var wmsid = $("#txtWMSid").val();
              
                 if (wmsid != null && wmsid != "") {
+                    
+              
                     var numbers = /^[0-9]+$/;
                     var reg = /^\d+$/;
                     if (numbers.test(wmsid)) {
@@ -149,6 +151,16 @@
                                     rows = rows + newRow;
                                     //$("#grid-requested-status tr:last").after();
                                 });
+                           // alert(data.row.Priority);
+                            //$.each($("#Prioritylist option"), function (index, element) {
+                            //    if (element.text == priorityText) {
+                            //        $("#Prioritylist").val(data.row.Priority)
+                            //    }
+                            //});
+
+                            $('#Statuslist').prop('disabled', 'disabled');
+                            $('#Prioritylist').prop('disabled', 'disabled');
+
                             $("#dRequestStatus").append(tableHeader.replace("$$$$", rows));
                             $("#dRequestStatus").find("table tbody tr").on("click", (function () {
 
@@ -163,6 +175,8 @@
                     }
                 }
                 else {
+                    $('#Statuslist').prop('disabled', false);
+                    $('#Prioritylist').prop('disabled', false);
                     var statusId = $("#Statuslist").val();
                     var priorityId = $("#Prioritylist").val();
 
@@ -231,7 +245,7 @@
                 $("#dRequestStatus").empty();
                 loadRequests();
             });
-                $("#txtWMSid").on("blur", function (e) {
+                $("#txtWMSid").on("keyup", function (e) {
                     $("#dRequestStatus").empty();
                     loadRequests();
                 });
@@ -246,19 +260,23 @@
             
             <tr>
                 <td >
-        <label class="form-horizontal">Status: </label>
-        <select id="Statuslist" class="form-control" style="width: 120px">
+        <label class="form-horizontal">Status </label>
+        <select id="Statuslist" class="form-control" style="width: 100%">
         </select>
                 </td>
-                <td>
+                <td style="padding-left:1%">
                     
-              <label class="form-horizontal">Priority: </label>
-        <select id="Prioritylist" class="form-control" style="width: 120px">
+              <label class="form-horizontal">Priority </label>
+        <select id="Prioritylist" class="form-control" style="width: 100%">
         </select>
                 </td>
-                <td>  
-                    <label class="form-horizontal">WMS Id: </label>
-                    <input type="text" id="txtWMSid" class="form-control" style="width:120px" />
+                <td style="width:72%">
+
+                </td>
+                
+                <td >  
+                    <label class="form-horizontal">WMS Id </label>
+                    <input type="text" id="txtWMSid" class="form-control" style="width:70%" />
                 </td>
             </tr>
         </table>
