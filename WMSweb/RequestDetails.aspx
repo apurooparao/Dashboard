@@ -645,27 +645,47 @@
                                         HeaderStyle-CssClass="header" RowStyle-CssClass="rows" 
                                                   Width="100%" AllowSorting="True" AutoGenerateColumns="False">
                                     <Columns>
-                                        <asp:TemplateField HeaderText="Status" HeaderStyle-Width="15%">
+                                        <asp:TemplateField HeaderText="Status" HeaderStyle-Width="7.5%">
                                             <ItemTemplate >
                                                  <asp:Label ID="lblStatusTimeline" runat="server" Text='<%#Eval("StatusName") %>' BackColor="Transparent"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Assigned To" HeaderStyle-Width="15%" >
+                                        <asp:TemplateField HeaderText="Assigned To" HeaderStyle-Width="10%" >
                                             <ItemTemplate>
                                                 <asp:Label ID="lblassignedToTimeline" runat="server" Text='<%#Eval("AsssignedTo") %>' BackColor="Transparent"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                           <asp:TemplateField HeaderText="Comment" HeaderStyle-Width="50%">
+                                           <asp:TemplateField HeaderText="Comment" HeaderStyle-Width="25%">
                                             <ItemTemplate>
                                                 <asp:Label ID="lblCommentsTimeline" runat="server" Text='<%#Eval("Comments") %>' BackColor="Transparent"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>  
                                         
-                                        <asp:TemplateField HeaderText="Date" HeaderStyle-Width="20%">
+                                        <asp:TemplateField HeaderText="Date" HeaderStyle-Width="12%">
                                             <ItemTemplate>
                                                 <asp:Label ID="lblDateTimeline" runat="server" Text='<%#Eval("ModifiedDate") %>' BackColor="Transparent"></asp:Label>
                                             </ItemTemplate>
-                                        </asp:TemplateField>                                            
+                                        </asp:TemplateField>    
+                                        <asp:TemplateField HeaderText="In Time" HeaderStyle-Width="8%">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblIntimeTimeline" runat="server" Text='<%#Eval("InTime") %>' BackColor="Transparent"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>    
+                                        <asp:TemplateField HeaderText="Out Time" HeaderStyle-Width="8%">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblOuttimeTimeline" runat="server" Text='<%#Eval("OutTime") %>' BackColor="Transparent"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>    
+                                        <asp:TemplateField HeaderText="Closed On" HeaderStyle-Width="12%">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblClosedOnTimeline" runat="server" Text='<%#Eval("ClosedOn") %>' BackColor="Transparent"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>  
+                                        <asp:TemplateField HeaderText="Closure Details" HeaderStyle-Width="17%">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblClosureDetailTimeline" runat="server" Text='<%#Eval("ClosureDetail") %>' BackColor="Transparent"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>  
                                     </Columns>
                                 </asp:GridView>
                                     </td>
