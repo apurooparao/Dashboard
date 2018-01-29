@@ -6,7 +6,7 @@ using WMSobjects;
 
 namespace WMSda
 {
-    public class ChangePasswordDAL
+    public class ChangePasswordDal
     {
         readonly SqlConnection _sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
         UserBo _objUserBo;

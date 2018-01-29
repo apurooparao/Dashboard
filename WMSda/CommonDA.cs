@@ -5,17 +5,17 @@ using System.Data.SqlClient;
 
 namespace WMSda
 {
-   public class CommonDA
+   public class CommonDa
     {
         readonly SqlConnection _sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
-        SqlDataAdapter sqlda;
+        private SqlDataAdapter _sqlda;
 
-        public DataSet getDropdown(string SelectQuery,string TableName,string Condition)
+        public DataSet getDropdown(string selectQuery,string tableName,string condition)
         {
-            sqlda = new SqlDataAdapter("select " + SelectQuery + " from " + TableName + " where " + Condition, _sqlcon);
+            _sqlda = new SqlDataAdapter("select " + selectQuery + " from " + tableName + " where " + condition, _sqlcon);
             DataSet ds = new DataSet();
             _sqlcon.Open();
-            sqlda.Fill(ds);
+            _sqlda.Fill(ds);
             _sqlcon.Close();
             return ds;
         }

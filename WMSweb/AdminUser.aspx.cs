@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using WMSobjects;
 
 public partial class AdminUser : System.Web.UI.Page
 {
-    SqlConnection _con = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
+    private readonly SqlConnection _con = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["UserBO"] == null)
@@ -20,9 +16,7 @@ public partial class AdminUser : System.Web.UI.Page
         }
         else
         {
-
-            var userBo = new UserBo();
-            userBo = (UserBo)Session["UserBO"];
+            var userBo = (UserBo)Session["UserBO"];
             if (userBo.RoleId == 1)
             {              
                 if (!IsPostBack)
@@ -36,8 +30,6 @@ public partial class AdminUser : System.Web.UI.Page
             {
                 Response.Redirect("Dashboard.aspx", false);
             }
-           
-
         }
     }
 

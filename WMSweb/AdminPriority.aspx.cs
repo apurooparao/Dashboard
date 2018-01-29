@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using WMSobjects;
 
 public partial class AdminPriority : System.Web.UI.Page
 {
-    SqlConnection _con = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
+    private readonly SqlConnection _con = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
         try
@@ -120,7 +116,7 @@ public partial class AdminPriority : System.Web.UI.Page
         }
         catch
         {
-
+            // ignored
         }
         finally
         {
@@ -138,7 +134,7 @@ public partial class AdminPriority : System.Web.UI.Page
         }
         catch
         {
-
+            // ignored
         }
     }
 
@@ -166,8 +162,7 @@ public partial class AdminPriority : System.Web.UI.Page
     {
         try
         {
-            var cmd = new SqlCommand("sp_Priority_CRUD");
-            cmd.CommandType = CommandType.StoredProcedure;
+            var cmd = new SqlCommand("sp_Priority_CRUD") {CommandType = CommandType.StoredProcedure};
             cmd.Parameters.AddWithValue("@Action", "UPDATE");
             cmd.Parameters.AddWithValue("@PriorityID", hidPriorityID.Value);
             cmd.Parameters.AddWithValue("@PriorityName", txtPriorityName.Text);

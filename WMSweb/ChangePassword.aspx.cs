@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using WMSbl;
 using WMSobjects;
 
 
 
 public partial class ChangePassword : System.Web.UI.Page
 {
-    UserBo _userBo;
+    private UserBo _userBo;
     readonly SqlConnection _sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
     private SqlDataReader _sqldr;
     private SqlCommand _sqlcmd;
@@ -160,7 +155,7 @@ public partial class ChangePassword : System.Web.UI.Page
             return password;
 
         }
-        catch (Exception ex) 
+        catch (Exception) 
         {
             lblMessage.Visible = true;
             lblMessage.Text = "Something went wrong please try again";

@@ -1,12 +1,9 @@
 ﻿using Microsoft.Reporting.WebForms;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using WMSbl;
 
@@ -49,7 +46,7 @@ public partial class Reports : System.Web.UI.Page
 
         try
         {
-            var cmdbl = new CommonBL();
+            var cmdbl = new CommonBl();
             var ds = cmdbl.GetDropDownValues(selectQuery, tblName, condition);
             lstPriority.DataSource = ds.Tables[0];
             lstPriority.DataValueField = ds.Tables[0].Columns[0].ToString();

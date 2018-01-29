@@ -56,7 +56,7 @@ public partial class TipsMaster : System.Web.UI.MasterPage
             Session.Abandon();
             Response.Redirect("~/SignOut.aspx");
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             // ignored
         }
@@ -68,7 +68,7 @@ public partial class TipsMaster : System.Web.UI.MasterPage
         {          
             Response.Redirect("~/ChangePassword.aspx");
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             // ignored
         }

@@ -32,7 +32,7 @@
                         
                             $.each($("#Statuslist option"), function (index, element) {
                                 if (element.text == statusText) {
-                                    $("#Statuslist").val(element.value)
+                                    $("#Statuslist").val(element.value);
                                 }
                             });                      
                         }
@@ -73,7 +73,7 @@
                             //alert(priorityText);
                             $.each($("#Prioritylist option"), function (index, element) {
                                 if (element.text == priorityText) {
-                                    $("#Prioritylist").val(element.value)
+                                    $("#Prioritylist").val(element.value);
                                 }
                             });
                         }

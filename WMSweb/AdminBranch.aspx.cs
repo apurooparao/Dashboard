@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using WMSobjects;
 
 public partial class AdminBranch : System.Web.UI.Page
 {
-    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
+    private readonly SqlConnection _con = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
         try
@@ -56,7 +52,7 @@ public partial class AdminBranch : System.Web.UI.Page
                 using (var sda = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Connection = con;
+                    cmd.Connection = _con;
                     sda.SelectCommand = cmd;
                     using (var dt = new DataTable())
                     {
@@ -88,7 +84,7 @@ public partial class AdminBranch : System.Web.UI.Page
                 using (var sda = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Connection = con;
+                    cmd.Connection = _con;
                     sda.SelectCommand = cmd;
                     using (var dt = new DataTable())
                     {
@@ -137,8 +133,8 @@ public partial class AdminBranch : System.Web.UI.Page
             };
 
             cmd.Parameters.Add(outValue);
-            cmd.Connection = con;
-            con.Open();
+            cmd.Connection = _con;
+            _con.Open();
             cmd.ExecuteNonQuery();
             int result = Convert.ToInt16(outValue.Value);
             FillGrid();
@@ -161,8 +157,8 @@ public partial class AdminBranch : System.Web.UI.Page
         }
         finally
         {
-            if (con.State == ConnectionState.Open)
-                con.Close();
+            if (_con.State == ConnectionState.Open)
+                _con.Close();
         }
     }
 
@@ -184,8 +180,8 @@ public partial class AdminBranch : System.Web.UI.Page
             // ReSharper disable once PossibleNullReferenceException
             hidBranchID.Value = (grow.FindControl("lblBranchID") as Label).Text;
             var sqlquery = "Select BranchID,BranchName,RegionID,IsActive from tblm_Branch where BranchID=" + hidBranchID.Value;
-            con.Open();
-            var cmd = new SqlCommand(sqlquery, con);
+            _con.Open();
+            var cmd = new SqlCommand(sqlquery, _con);
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
@@ -210,8 +206,7 @@ public partial class AdminBranch : System.Web.UI.Page
     {
         try
         {
-            var cmd = new SqlCommand("sp_Branch_CRUD");
-            cmd.CommandType = CommandType.StoredProcedure;
+            var cmd = new SqlCommand("sp_Branch_CRUD") {CommandType = CommandType.StoredProcedure};
             cmd.Parameters.AddWithValue("@Action", "UPDATE");
             cmd.Parameters.AddWithValue("@BranchID", hidBranchID.Value);
             cmd.Parameters.AddWithValue("@BranchName", txtBranchName.Text);
@@ -223,8 +218,8 @@ public partial class AdminBranch : System.Web.UI.Page
             };
 
             cmd.Parameters.Add(outValue);
-            cmd.Connection = con;
-            con.Open();
+            cmd.Connection = _con;
+            _con.Open();
             cmd.ExecuteNonQuery();
             int result = Convert.ToInt16(outValue.Value);
             FillGrid();
@@ -251,8 +246,8 @@ public partial class AdminBranch : System.Web.UI.Page
         }
         finally
         {
-            if (con.State == ConnectionState.Open)
-                con.Close();
+            if (_con.State == ConnectionState.Open)
+                _con.Close();
         }
     }
 

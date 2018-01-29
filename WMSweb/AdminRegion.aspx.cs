@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using WMSobjects;
 
@@ -168,8 +164,7 @@ public partial class AdminRegion : System.Web.UI.Page
     {
         try
         {
-            var cmd = new SqlCommand("sp_Region_CRUD");
-            cmd.CommandType = CommandType.StoredProcedure;
+            var cmd = new SqlCommand("sp_Region_CRUD") {CommandType = CommandType.StoredProcedure};
             cmd.Parameters.AddWithValue("@Action", "UPDATE");
             cmd.Parameters.AddWithValue("@RegionID", hidRegionID.Value);
             cmd.Parameters.AddWithValue("@RegionName", txtRegionName.Text);

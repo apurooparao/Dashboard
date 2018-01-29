@@ -4,7 +4,7 @@ using WMSobjects;
 
 namespace WMSbl
 {
-  public   class requestBL
+  public   class RequestBl
     {
         public int InsertUpdateRequest(requestBO objActivityBo)
         {

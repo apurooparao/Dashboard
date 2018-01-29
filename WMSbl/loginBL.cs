@@ -26,14 +26,14 @@ namespace WMSbl
         public string CheckOldPassword(string username)
         {
 
-            var objchangepasswordDl = new ChangePasswordDAL();
+            var objchangepasswordDl = new ChangePasswordDal();
             return objchangepasswordDl.CheckOldPassword(username);
 
         }
 
         public bool ChangePassword(string newPassword)
         {
-            var objChangeDal = new ChangePasswordDAL();
+            var objChangeDal = new ChangePasswordDal();
             return objChangeDal.ChangePassword(newPassword);
 
         }

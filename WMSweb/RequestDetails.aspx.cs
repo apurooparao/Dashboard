@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WMSbl;
 using WMSobjects;
 
-public partial class RequestDetails : System.Web.UI.Page
+public partial class RequestDetails : Page
 {
     private requestBO _rqstbo;
-    private requestBL _rqstbl;
+    private RequestBl _rqstbl;
     private statusBO _statusbo;
     private UserBo _userBo;
 
@@ -110,7 +106,7 @@ public partial class RequestDetails : System.Web.UI.Page
 
             var chkname = (CheckBoxList)Form_Request.FindControl(chk);
 
-            _rqstbl = new requestBL();
+            _rqstbl = new RequestBl();
 
             var ds = _rqstbl.GetDropDownValues(selectQuery, table, condition);
             chkname.DataSource = ds.Tables[0];
@@ -131,7 +127,7 @@ public partial class RequestDetails : System.Web.UI.Page
         {
             var ddlname = (DropDownList)Form_Request.FindControl(ddl);
 
-            _rqstbl = new requestBL();
+            _rqstbl = new RequestBl();
 
             var ds = _rqstbl.GetDropDownValues(selectQuery, table, condition);
             ddlname.DataSource = ds.Tables[0];
@@ -150,7 +146,7 @@ public partial class RequestDetails : System.Web.UI.Page
 
         try
         {
-            _rqstbl = new requestBL();
+            _rqstbl = new RequestBl();
             var ds = _rqstbl.GetRequestDetail(wmsId);
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -211,7 +207,7 @@ public partial class RequestDetails : System.Web.UI.Page
 
             //   change after login page
 
-            _rqstbl = new requestBL();
+            _rqstbl = new RequestBl();
             var tranid = _rqstbl.InsertUpdateRequest(_rqstbo);
             if (!(tranid.Equals(0)))
             {
@@ -304,7 +300,7 @@ public partial class RequestDetails : System.Web.UI.Page
       
 
             _rqstbo.wmsId = Convert.ToInt32(Form_Request.DataKey.Value);
-            _rqstbl = new requestBL();
+            _rqstbl = new RequestBl();
             var tranid = _rqstbl.InsertUpdateRequest(_rqstbo);
             if (!(tranid.Equals(0)))
             {
@@ -408,11 +404,11 @@ public partial class RequestDetails : System.Web.UI.Page
             _statusbo.materialsUsed = txtMaterialsUsed.Text;
             _statusbo.teamMembers = txtTeamMembers.Text;
               
-            _statusbo.timeIn = Convert.ToDateTime(txtIntime.Text.ToString());
-            _statusbo.timeOut = Convert.ToDateTime(txtOutTime.Text.ToString());
+            _statusbo.timeIn = Convert.ToDateTime(txtIntime.Text);
+            _statusbo.timeOut = Convert.ToDateTime(txtOutTime.Text);
         }
 
-        _rqstbl = new requestBL();
+        _rqstbl = new RequestBl();
         var tranid = _rqstbl.Changestatus(_statusbo);
         if (!(tranid.Equals(0)))
         {
@@ -433,7 +429,7 @@ public partial class RequestDetails : System.Web.UI.Page
     {
         try
         {
-            _rqstbl = new requestBL();
+            _rqstbl = new RequestBl();
             var ds = _rqstbl.GetStatusValues(wmsid);
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -517,7 +513,7 @@ public partial class RequestDetails : System.Web.UI.Page
         try
         {
 
-            _rqstbl = new requestBL();
+            _rqstbl = new RequestBl();
 
             var ds = _rqstbl.GetDropDownValues(selectQuery, table, condition);
             ddlAssignTo.DataSource = ds.Tables[0];

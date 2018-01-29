@@ -12,17 +12,9 @@ using WMSbl;
 [WebService(Namespace = "http://tempuri.org/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-[System.Web.Script.Services.ScriptService]
-public class GetDataServices : System.Web.Services.WebService
+[ScriptService]
+public class GetDataServices : WebService
 {
-
-    public GetDataServices()
-    {
-
-        //Uncomment the following line if using designed components 
-        //InitializeComponent(); 
-    }
-
     [WebMethod]
     public string HelloWorld()
     {
@@ -34,7 +26,7 @@ public class GetDataServices : System.Web.Services.WebService
     public string GetRequestbyStatus(int Status)
     {
         Status = 1;
-        var rqstbl = new requestBL();
+        var rqstbl = new RequestBl();
         var lstRequestCriticalityData = new List<RequestCriticalityData>();
         int userid = Convert.ToInt16(Session["UserId"]);
 
@@ -56,7 +48,7 @@ public class GetDataServices : System.Web.Services.WebService
     public string GetRequestbyStatusTypes()
     {
        // Status = 1;
-        var rqstbl = new requestBL();
+        var rqstbl = new RequestBl();
         var lstRequestStatusData = new List<RequestStatusData>();
         int userid = Convert.ToInt16(Session["UserId"]);
 
@@ -77,7 +69,7 @@ public class GetDataServices : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetStatsData(string Timeframe)
     {
-        var rqstbl = new requestBL();
+        var rqstbl = new RequestBl();
         int userid = Convert.ToInt16(Session["UserId"]);
         var lstPriorityByStatus = new List<PriorityByStatus>();
 
@@ -101,7 +93,7 @@ public class GetDataServices : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetRequestDataByStatus(int Status)
     {
-        var rqstbl = new requestBL();
+        var rqstbl = new RequestBl();
         int userid = Convert.ToInt16(Session["UserId"]);
         var lstRequestData = new List<RequestData>();
 
@@ -129,7 +121,7 @@ public class GetDataServices : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetRequestDataByStatusAndPriority(int Status,int Priority)
     {
-        var rqstbl = new requestBL();
+        var rqstbl = new RequestBl();
         int userid = Convert.ToInt16(Session["UserId"]);
         var lstRequestData = new List<RequestData>();
 
@@ -156,7 +148,7 @@ public class GetDataServices : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetRequestDataByWMSid(int wmsId)
     {
-        var rqstbl = new requestBL();
+        var rqstbl = new RequestBl();
         int userid = Convert.ToInt16(Session["UserId"]);
         var lstRequestData = new List<RequestData>();
 
@@ -184,7 +176,7 @@ public class GetDataServices : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetStatuses()
     {
-        var rqstbl = new requestBL();
+        var rqstbl = new RequestBl();
         var lstStatuses = new List<Statuses>();
 
         var dtStatuses = rqstbl.GetMasterStatus();
@@ -204,7 +196,7 @@ public class GetDataServices : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetPriorities()
     {
-        var rqstbl = new requestBL();
+        var rqstbl = new RequestBl();
         var lstpriorities = new List<Priorities>();
 
         var dtpriorities = rqstbl.GetMasterPriority();
