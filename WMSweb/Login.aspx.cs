@@ -13,8 +13,8 @@ using WMSobjects;
 
 public partial class Login : System.Web.UI.Page
 {
-    UserBO _userbo;
-    loginBL _objloginBL;
+    UserBo _userbo;
+    LoginBl _objloginBL;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -42,8 +42,8 @@ public partial class Login : System.Web.UI.Page
         {
             string UserName = txtUserName.Text.Trim();
             string password = txtPassword.Text.Trim();
-            _objloginBL = new loginBL();
-            _userbo = new UserBO();
+            _objloginBL = new LoginBl();
+            _userbo = new UserBo();
             _userbo = _objloginBL.CheckUser(UserName, password);
             if (_userbo == null)
             {

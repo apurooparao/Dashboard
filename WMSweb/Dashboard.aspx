@@ -47,7 +47,7 @@
                     });
                 })
                 .fail(function (msg) {
-                    console.log("fail")
+                    console.log("fail");
                 })
                 .always(function (msg) {
                 });
@@ -77,10 +77,10 @@
                     .done(function (msg) {
                         var data = eval("(" + msg.d + ")");
                         dashboardData = data;
-                        var Open = 0;
-                        var Inprogress = 0;
-                        var Close = 0;
-                        var Rejected = 0;
+                        var open = 0;
+                        var inprogress = 0;
+                        var close = 0;
+                        var rejected = 0;
                     
                         //if (pageLoad) {
                           //  pageLoad = false;
@@ -91,25 +91,25 @@
                             function (index, row) {
                                 switch (row.StatusId) {
                                     case 1:
-                                        Open = Open + row.StatusCount;
+                                        open = open + row.StatusCount;
                                         break;
                                     case 2:
-                                        Inprogress = Inprogress + row.StatusCount;
+                                        inprogress = inprogress + row.StatusCount;
                                         break;
                                     case 3:
-                                        Close = Close + row.StatusCount;
+                                        close = close + row.StatusCount;
                                         break;
                                     case 4:
-                                        Rejected = Rejected + row.StatusCount;
+                                        rejected = rejected + row.StatusCount;
                                         break;
 
                                     default:
                                 }
                             });
-                        $($("div.tileStyle h1")[0]).text(Open);
-                        $($("div.tileStyle h1")[1]).text(Inprogress);
-                        $($("div.tileStyle h1")[2]).text(Close);
-                        $($("div.tileStyle h1")[3]).text(Rejected);
+                        $($("div.tileStyle h1")[0]).text(open);
+                        $($("div.tileStyle h1")[1]).text(inprogress);
+                        $($("div.tileStyle h1")[2]).text(close);
+                        $($("div.tileStyle h1")[3]).text(rejected);
                     })
                     .fail(function (msg) {
                         console.log("fail");

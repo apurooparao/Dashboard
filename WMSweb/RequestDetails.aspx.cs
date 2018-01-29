@@ -11,10 +11,10 @@ using WMSobjects;
 
 public partial class RequestDetails : System.Web.UI.Page
 {
-    requestBO _rqstbo;
-    requestBL _rqstbl;
-    statusBO _statusbo;
-    UserBO _userBO;
+    private requestBO _rqstbo;
+    private requestBL _rqstbl;
+    private statusBO _statusbo;
+    private UserBo _userBo;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -26,8 +26,8 @@ public partial class RequestDetails : System.Web.UI.Page
         {
             if (!IsPostBack)
             {
-                _userBO = new UserBO();
-                _userBO = (UserBO)Session["UserBO"];
+                _userBo = new UserBo();
+                _userBo = (UserBo)Session["UserBO"];
                 if (Request["request"] != null)
                 {
                     Session["WmsId"] = int.Parse(Request["request"]);
@@ -37,12 +37,12 @@ public partial class RequestDetails : System.Web.UI.Page
                 if (Session["WmsId"] != null && Convert.ToInt32(Session["WmsId"]) != 0)
                 {
                     lblWmsIdValue.Text = Session["WmsId"].ToString();
-                    var WmsId = Convert.ToInt32(Session["WmsId"]);
-                    FillStatusDropDown(WmsId);
-                    FillRequestDetails(WmsId);
+                    var wmsId = Convert.ToInt32(Session["WmsId"]);
+                    FillStatusDropDown(wmsId);
+                    FillRequestDetails(wmsId);
                     Session["WmsId"] = "";
                     Session.Remove("WmsId");
-                    if (_userBO.RoleID == 3)
+                    if (_userBo.RoleId == 3)
                     {
                         statusdiv.Visible = false;
                     }
@@ -72,22 +72,15 @@ public partial class RequestDetails : System.Web.UI.Page
                 }
                 else
                 {
-                    _userBO = new UserBO();
-                    _userBO = (UserBO)Session["UserBO"];
-                    ddlname.SelectedIndex = ddlname.Items.IndexOf(ddlname.Items.FindByValue(_userBO.BranchID.ToString()));
+                    _userBo = new UserBo();
+                    _userBo = (UserBo)Session["UserBO"];
+                    ddlname.SelectedIndex = ddlname.Items.IndexOf(ddlname.Items.FindByValue(_userBo.BranchId.ToString()));
                   //  ddlname.SelectedIndex = _userBO.BranchID;
-                    if (_userBO.RoleID==1)
-                    {
-                        ddlname.Enabled = true;
-                    }
-                    else
-                    {
-                        ddlname.Enabled = false;
-                    }
+                    ddlname.Enabled = _userBo.RoleId==1;
                 }
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
 
             throw;
@@ -104,7 +97,7 @@ public partial class RequestDetails : System.Web.UI.Page
 
 
         }
-        catch (Exception ex)
+        catch (Exception)
         {
 
             throw;
@@ -119,13 +112,13 @@ public partial class RequestDetails : System.Web.UI.Page
 
             _rqstbl = new requestBL();
 
-            DataSet ds = _rqstbl.getDropDownValues(selectQuery, table, condition);
+            var ds = _rqstbl.GetDropDownValues(selectQuery, table, condition);
             chkname.DataSource = ds.Tables[0];
             chkname.DataValueField = ds.Tables[0].Columns[0].ToString();
             chkname.DataTextField = ds.Tables[0].Columns[1].ToString();
             chkname.DataBind();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
 
             throw;
@@ -140,13 +133,13 @@ public partial class RequestDetails : System.Web.UI.Page
 
             _rqstbl = new requestBL();
 
-            DataSet ds = _rqstbl.getDropDownValues(selectQuery, table, condition);
+            var ds = _rqstbl.GetDropDownValues(selectQuery, table, condition);
             ddlname.DataSource = ds.Tables[0];
             ddlname.DataValueField = ds.Tables[0].Columns[0].ToString();
             ddlname.DataTextField = ds.Tables[0].Columns[1].ToString();
             ddlname.DataBind();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
 
             throw;
@@ -183,16 +176,9 @@ public partial class RequestDetails : System.Web.UI.Page
                         }
                         else
                         {
-                            _userBO = new UserBO();
-                            _userBO = (UserBO)Session["UserBO"];
-                            if (_userBO.RoleID == 4)
-                            {
-                                btnEditRequest.Visible = false;
-                            }
-                            else
-                            {
-                                btnEditRequest.Visible = true;
-                            }
+                            _userBo = new UserBo();
+                            _userBo = (UserBo)Session["UserBO"];
+                            btnEditRequest.Visible = _userBo.RoleId != 4;
                         }
                        
                     }
@@ -207,7 +193,7 @@ public partial class RequestDetails : System.Web.UI.Page
 
 
             }
-        catch (Exception ex)
+        catch (Exception)
         {
 
             throw;
@@ -226,7 +212,7 @@ public partial class RequestDetails : System.Web.UI.Page
             //   change after login page
 
             _rqstbl = new requestBL();
-            var tranid = _rqstbl.insertUpdateRequest(_rqstbo);
+            var tranid = _rqstbl.InsertUpdateRequest(_rqstbo);
             if (!(tranid.Equals(0)))
             {
                 lblMessage.Text = "Request placed succesfully";
@@ -242,8 +228,9 @@ public partial class RequestDetails : System.Web.UI.Page
                 lblMessage.Visible = true;
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
+            // ReSharper disable once RedundantCheckBeforeAssignment
             if (Session["wmsId"]!=null)
             {
                 Session["wmsId"] = null;
@@ -283,7 +270,7 @@ public partial class RequestDetails : System.Web.UI.Page
             _rqstbo.otherSection = txtOtherSection.Text;
 
             var chkCategory = (CheckBoxList)Form_Request.FindControl("chkCategoryEdit");
-            string category = String.Join(", ", chkCategory.Items.Cast<ListItem>().Where(i => i.Selected));
+            var category = String.Join(", ", chkCategory.Items.Cast<ListItem>().Where(i => i.Selected));
             _rqstbo.categoryId = category;
 
             var txtRemarks = (TextBox)Form_Request.FindControl("txtRemarksEdit");
@@ -297,7 +284,7 @@ public partial class RequestDetails : System.Web.UI.Page
             _rqstbo.assignedTo = 1;
 
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             lblMessage.Visible = true;
             lblMessage.Text = "Something went wrong please try again";
@@ -318,7 +305,7 @@ public partial class RequestDetails : System.Web.UI.Page
 
             _rqstbo.wmsId = Convert.ToInt32(Form_Request.DataKey.Value);
             _rqstbl = new requestBL();
-            var tranid = _rqstbl.insertUpdateRequest(_rqstbo);
+            var tranid = _rqstbl.InsertUpdateRequest(_rqstbo);
             if (!(tranid.Equals(0)))
             {
                 lblMessage.Text = "Request updated succesfully";
@@ -346,113 +333,99 @@ public partial class RequestDetails : System.Web.UI.Page
     }
     protected void Form_Request_ModeChanging(object sender, FormViewModeEventArgs e)
     {
-        try
+        Form_Request.ChangeMode(e.NewMode);
+
+        // if (Session["wmsId"] != null)
+        if (!string.IsNullOrWhiteSpace(lblWmsIdValue.Text))
         {
-            Form_Request.ChangeMode(e.NewMode);
-
-            // if (Session["wmsId"] != null)
-            if (!string.IsNullOrWhiteSpace(lblWmsIdValue.Text))
-            {
-                //var wmsid = Convert.ToInt32(Session["wmsId"]);
-                var wmsid = Convert.ToInt32(lblWmsIdValue.Text);
-                FillRequestDetails(wmsid);
-            }
-            else
-            {
-              Form_Request.ChangeMode(FormViewMode.Insert);
-            }
-
-            if (e.NewMode == FormViewMode.Insert)
-            {
-                //  Session["wmsId"] = null;
-                lblWmsIdValue.Text = string.Empty;
-            }
-
-            if (e.NewMode == FormViewMode.Edit)
-            {
-                var ddlbranch = (DropDownList)Form_Request.FindControl("ddlBranchEdit");
-                // var ddl = (DropDownList)Form_Request.FindControl("ddlPriorityEdit");
-                var lblbrancheditvalue = (Label)Form_Request.FindControl("lblBranchEditValue");
-                ddlbranch.SelectedIndex = ddlbranch.Items.IndexOf(ddlbranch.Items.FindByText(lblbrancheditvalue.Text));
-
-                var ddlpriority = (DropDownList)Form_Request.FindControl("ddlPriorityEdit");
-                // var ddl = (DropDownList)Form_Request.FindControl("ddlPriorityEdit");
-                var lbl = (Label)Form_Request.FindControl("lblPriorityEditValue");
-                ddlpriority.SelectedIndex = ddlpriority.Items.IndexOf(ddlpriority.Items.FindByText(lbl.Text));
-
-                var ddlAffectingEdit = (DropDownList)Form_Request.FindControl("ddlAffectingEdit");
-                var lblAffectingEditValue = (Label)Form_Request.FindControl("lblAffectingEditValue");
-                ddlAffectingEdit.SelectedIndex = ddlAffectingEdit.Items.IndexOf(ddlAffectingEdit.Items.FindByText(lblAffectingEditValue.Text));
-
-                var ddlFloorEdit = (DropDownList)Form_Request.FindControl("ddlFloorEdit");
-                var lblFloorEditValue = (Label)Form_Request.FindControl("lblFloorEditValue");
-                // ddlFloorEdit.SelectedIndex = ddlFloorEdit.Items.IndexOf(ddlFloorEdit.Items.FindByText(lblFloorEditValue.Text));
-                ddlFloorEdit.SelectedValue = lblFloorEditValue.Text;
-
-                var ddlSectionEdit = (DropDownList)Form_Request.FindControl("ddlSectionEdit");
-                var lblSectionEditValue = (Label)Form_Request.FindControl("lblSectionEditValue");
-                ddlSectionEdit.SelectedIndex = ddlSectionEdit.Items.IndexOf(ddlSectionEdit.Items.FindByText(lblSectionEditValue.Text));
-
-                var chkCategoryEdit = (CheckBoxList)Form_Request.FindControl("chkCategoryEdit");
-                var Category = (Label)Form_Request.FindControl("lblCategoryEditValue");
-                String[] categories = Category.Text.Split(new[] { ", " }, StringSplitOptions.None);
-                foreach (ListItem item in chkCategoryEdit.Items)
-                {
-                    item.Selected = categories.Contains(item.Text);
-                }
-            }
+            //var wmsid = Convert.ToInt32(Session["wmsId"]);
+            var wmsid = Convert.ToInt32(lblWmsIdValue.Text);
+            FillRequestDetails(wmsid);
         }
-        catch (Exception ex)
+        else
         {
+            Form_Request.ChangeMode(FormViewMode.Insert);
+        }
 
-            throw;
+        if (e.NewMode == FormViewMode.Insert)
+        {
+            //  Session["wmsId"] = null;
+            lblWmsIdValue.Text = string.Empty;
+        }
+
+        if (e.NewMode == FormViewMode.Edit)
+        {
+            var ddlbranch = (DropDownList)Form_Request.FindControl("ddlBranchEdit");
+            // var ddl = (DropDownList)Form_Request.FindControl("ddlPriorityEdit");
+            var lblbrancheditvalue = (Label)Form_Request.FindControl("lblBranchEditValue");
+            ddlbranch.SelectedIndex = ddlbranch.Items.IndexOf(ddlbranch.Items.FindByText(lblbrancheditvalue.Text));
+
+            var ddlpriority = (DropDownList)Form_Request.FindControl("ddlPriorityEdit");
+            // var ddl = (DropDownList)Form_Request.FindControl("ddlPriorityEdit");
+            var lbl = (Label)Form_Request.FindControl("lblPriorityEditValue");
+            ddlpriority.SelectedIndex = ddlpriority.Items.IndexOf(ddlpriority.Items.FindByText(lbl.Text));
+
+            var ddlAffectingEdit = (DropDownList)Form_Request.FindControl("ddlAffectingEdit");
+            var lblAffectingEditValue = (Label)Form_Request.FindControl("lblAffectingEditValue");
+            ddlAffectingEdit.SelectedIndex = ddlAffectingEdit.Items.IndexOf(ddlAffectingEdit.Items.FindByText(lblAffectingEditValue.Text));
+
+            var ddlFloorEdit = (DropDownList)Form_Request.FindControl("ddlFloorEdit");
+            var lblFloorEditValue = (Label)Form_Request.FindControl("lblFloorEditValue");
+            // ddlFloorEdit.SelectedIndex = ddlFloorEdit.Items.IndexOf(ddlFloorEdit.Items.FindByText(lblFloorEditValue.Text));
+            ddlFloorEdit.SelectedValue = lblFloorEditValue.Text;
+
+            var ddlSectionEdit = (DropDownList)Form_Request.FindControl("ddlSectionEdit");
+            var lblSectionEditValue = (Label)Form_Request.FindControl("lblSectionEditValue");
+            ddlSectionEdit.SelectedIndex = ddlSectionEdit.Items.IndexOf(ddlSectionEdit.Items.FindByText(lblSectionEditValue.Text));
+
+            var chkCategoryEdit = (CheckBoxList)Form_Request.FindControl("chkCategoryEdit");
+            var Category = (Label)Form_Request.FindControl("lblCategoryEditValue");
+            var categories = Category.Text.Split(new[] { ", " }, StringSplitOptions.None);
+            foreach (ListItem item in chkCategoryEdit.Items)
+            {
+                item.Selected = categories.Contains(item.Text);
+            }
         }
     }
     protected void btnSubmitStatus_Click(object sender, EventArgs e)
     {
-        try
+        _statusbo = new statusBO
         {
-            _statusbo = new statusBO();
+            closureFlag = 0,
+            wmsId = Convert.ToInt32(lblWmsIdValue.Text),
+            status = Convert.ToInt32(ddlChangeStatus.SelectedValue),
+            assignedTo = 0
+        };
 
-            _statusbo.closureFlag = 0;
-            _statusbo.wmsId = Convert.ToInt32(lblWmsIdValue.Text);
-            _statusbo.status = Convert.ToInt32(ddlChangeStatus.SelectedValue);
-            _statusbo.assignedTo = 0;
-            if (ddlAssignTo.SelectedValue != "" && ddlAssignTo.SelectedValue != null)
-            {
-                _statusbo.assignedTo = Convert.ToInt32(ddlAssignTo.SelectedValue);
-            }
-            _statusbo.comment = txtAdminComment.Text;
-            if (ddlChangeStatus.SelectedItem.Text == "Close")
-            {
-                _statusbo.closureFlag = 1;
-                _statusbo.materialsUsed = txtMaterialsUsed.Text;
-                _statusbo.teamMembers = txtTeamMembers.Text;
-              
-                _statusbo.timeIn = Convert.ToDateTime(txtIntime.Text.ToString());
-                _statusbo.timeOut = Convert.ToDateTime(txtOutTime.Text.ToString());
-            }
-
-            _rqstbl = new requestBL();
-            var tranid = _rqstbl.changestatus(_statusbo);
-            if (!(tranid.Equals(0)))
-            {
-                lblMessage.Text = "Status updated succesfully";
-                lblMessage.Visible = true;
-                FillStatusDropDown(tranid);
-                FillRequestDetails(tranid);
-                txtAdminComment.Text = "";
-            }
-            else
-            {
-                lblMessage.Text = "Status updation failed. Please try again";
-                lblMessage.Visible = true;
-            }
+        if (!string.IsNullOrEmpty(ddlAssignTo.SelectedValue))
+        {
+            _statusbo.assignedTo = Convert.ToInt32(ddlAssignTo.SelectedValue);
         }
-        catch (Exception ex)
+        _statusbo.comment = txtAdminComment.Text;
+        if (ddlChangeStatus.SelectedItem.Text == "Close")
         {
+            _statusbo.closureFlag = 1;
+            _statusbo.materialsUsed = txtMaterialsUsed.Text;
+            _statusbo.teamMembers = txtTeamMembers.Text;
+              
+            _statusbo.timeIn = Convert.ToDateTime(txtIntime.Text.ToString());
+            _statusbo.timeOut = Convert.ToDateTime(txtOutTime.Text.ToString());
+        }
 
-            throw;
+        _rqstbl = new requestBL();
+        var tranid = _rqstbl.Changestatus(_statusbo);
+        if (!(tranid.Equals(0)))
+        {
+            lblMessage.Text = "Status updated succesfully";
+            lblMessage.Visible = true;
+            FillStatusDropDown(tranid);
+            FillRequestDetails(tranid);
+            txtAdminComment.Text = "";
+        }
+        else
+        {
+            lblMessage.Text = "Status updation failed. Please try again";
+            lblMessage.Visible = true;
         }
     }
 
@@ -461,7 +434,7 @@ public partial class RequestDetails : System.Web.UI.Page
         try
         {
             _rqstbl = new requestBL();
-            DataSet ds = _rqstbl.getStatusValues(wmsid);
+            var ds = _rqstbl.GetStatusValues(wmsid);
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 ddlChangeStatus.DataSource = ds.Tables[0];
@@ -476,16 +449,9 @@ public partial class RequestDetails : System.Web.UI.Page
                 }
                 else
                 {
-                    _userBO = new UserBO();
-                    _userBO = (UserBO)Session["UserBO"];
-                    if (_userBO.RoleID == 3)
-                    {
-                        statusdiv.Visible = false;
-                    }
-                    else
-                    {
-                        statusdiv.Visible = true;
-                    }
+                    _userBo = new UserBo();
+                    _userBo = (UserBo)Session["UserBO"];
+                    statusdiv.Visible = _userBo.RoleId != 3;
                 }
 
             }
@@ -498,7 +464,7 @@ public partial class RequestDetails : System.Web.UI.Page
             rfvtxtOutTime.Enabled = false;
             rgvtxtOutTime.Enabled = false;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             statusdiv.Visible = false;
             throw;
@@ -553,7 +519,7 @@ public partial class RequestDetails : System.Web.UI.Page
 
             _rqstbl = new requestBL();
 
-            DataSet ds = _rqstbl.getDropDownValues(selectQuery, table, condition);
+            var ds = _rqstbl.GetDropDownValues(selectQuery, table, condition);
             ddlAssignTo.DataSource = ds.Tables[0];
             ddlAssignTo.DataValueField = ds.Tables[0].Columns[0].ToString();
             ddlAssignTo.DataTextField = ds.Tables[0].Columns[1].ToString();

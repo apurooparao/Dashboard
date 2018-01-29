@@ -14,10 +14,10 @@ using WMSobjects;
 
 public partial class ChangePassword : System.Web.UI.Page
 {
-    UserBO _userBO;
-    SqlConnection _sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);    
-    SqlDataReader _sqldr;
-    SqlCommand _sqlcmd;
+    UserBo _userBo;
+    readonly SqlConnection _sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
+    private SqlDataReader _sqldr;
+    private SqlCommand _sqlcmd;
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -30,9 +30,9 @@ public partial class ChangePassword : System.Web.UI.Page
         {
             if (!IsPostBack)
             {
-                _userBO = new UserBO();
-                _userBO = (UserBO)Session["UserBO"];
-                lblUserNameValue.Text = _userBO.UserName;
+                _userBo = new UserBo();
+                _userBo = (UserBo)Session["UserBO"];
+                lblUserNameValue.Text = _userBo.UserName;
             }
 
         }
@@ -46,7 +46,7 @@ public partial class ChangePassword : System.Web.UI.Page
             // if (CheckDetails())
             if (CheckDetails())
             {
-                bool result = ChangePasswordNew(txtConfirmPassword.Text.Trim());
+                var result = ChangePasswordNew(txtConfirmPassword.Text.Trim());
                 if (result)
                 {
                     lblMessage.Visible = true;
@@ -77,12 +77,12 @@ public partial class ChangePassword : System.Web.UI.Page
     {
         try
         {
-            bool result = true;
-            _userBO = new UserBO();            
-            string password = CheckOldPassword(lblUserNameValue.Text);
-            string oldPassword = txtOldPassword.Text;
-            string newPassword = txtNewPassword.Text;
-            string confirmPassword = txtConfirmPassword.Text;
+            var result = true;
+            _userBo = new UserBo();            
+            var password = CheckOldPassword(lblUserNameValue.Text);
+            var oldPassword = txtOldPassword.Text;
+            var newPassword = txtNewPassword.Text;
+            var confirmPassword = txtConfirmPassword.Text;
 
 
             if (!password.Equals(oldPassword))
@@ -115,32 +115,24 @@ public partial class ChangePassword : System.Web.UI.Page
         }
     }
 
-    public bool ChangePasswordNew(string NewPassword)
+    public bool ChangePasswordNew(string newPassword)
     {
         try
         {
-            _userBO = new UserBO();
-            _userBO = (UserBO)(HttpContext.Current.Session["UserBO"]);
-            
-            _sqlcmd = new SqlCommand("sp_ChangePassword", _sqlcon);
-            _sqlcmd.CommandType = CommandType.StoredProcedure;
-            _sqlcmd.Parameters.AddWithValue("@Password", NewPassword);
+            _userBo = new UserBo();
+            _userBo = (UserBo)(HttpContext.Current.Session["UserBO"]);
+
+            _sqlcmd = new SqlCommand("sp_ChangePassword", _sqlcon) {CommandType = CommandType.StoredProcedure};
+            _sqlcmd.Parameters.AddWithValue("@Password", newPassword);
             _sqlcmd.Parameters.AddWithValue("@UserName", lblUserNameValue.Text);
             _sqlcon.Open();
-            int result = _sqlcmd.ExecuteNonQuery();
+            var result = _sqlcmd.ExecuteNonQuery();
             _sqlcon.Close();
-            if (result > 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return result > 1;
 
 
         }
-        catch (Exception ex)
+        catch (Exception)
         {
 
             lblMessage.Visible = true;
@@ -154,9 +146,8 @@ public partial class ChangePassword : System.Web.UI.Page
     {
         try
         {
-            string password = string.Empty;
-            _sqlcmd = new SqlCommand();
-            _sqlcmd.Connection = _sqlcon;
+            var password = string.Empty;
+            _sqlcmd = new SqlCommand {Connection = _sqlcon};
             _sqlcmd.Parameters.AddWithValue("@UserName", username);
             _sqlcmd.CommandText = "select UserPassword  from tblm_User where UserName = @UserName";
             _sqlcon.Open();

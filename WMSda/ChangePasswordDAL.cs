@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using WMSobjects;
 
@@ -13,67 +8,38 @@ namespace WMSda
 {
     public class ChangePasswordDAL
     {
-      
-
-        SqlConnection _sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
-        UserBO _objUserBO;
-        SqlDataReader _sqldr;
-        SqlCommand _sqlcmd;
+        readonly SqlConnection _sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
+        UserBo _objUserBo;
+        private SqlDataReader _sqldr;
+        private SqlCommand _sqlcmd;
 
         public string CheckOldPassword(string username)
         {
-            try
+            string password = string.Empty;
+            _sqlcmd.Connection = _sqlcon;
+            _sqlcmd.Parameters.AddWithValue("@UserName", username);
+            _sqlcmd.CommandText = "select UserPassword  from tblm_User where UserName = @UserName";
+            _sqlcon.Open();
+            _sqldr = _sqlcmd.ExecuteReader();
+            if (_sqldr.Read())
             {
-                string password = string.Empty;
-                _sqlcmd.Connection = _sqlcon;
-                _sqlcmd.Parameters.AddWithValue("@UserName", username);
-                _sqlcmd.CommandText = "select UserPassword  from tblm_User where UserName = @UserName";
-                _sqlcon.Open();
-                _sqldr = _sqlcmd.ExecuteReader();
-                if (_sqldr.Read())
-                {
-                    password = _sqldr["UserPassword"].ToString();
-                }
-                _sqlcon.Close();
-                return password;
-
+                password = _sqldr["UserPassword"].ToString();
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            _sqlcon.Close();
+            return password;
         }
 
-        public bool ChangePassword(string NewPassword)
+        public bool ChangePassword(string newPassword)
         {
-            try
-            {
-                _objUserBO = new UserBO();
-                _objUserBO = (UserBO)(HttpContext.Current.Session["UserBO"]);
-                _sqlcmd = new SqlCommand("CHANGE_PASSWORD", _sqlcon);
-                _sqlcmd.CommandType = CommandType.StoredProcedure;
-                _sqlcmd.Parameters.AddWithValue("@Password", NewPassword);
-                _sqlcmd.Parameters.AddWithValue("@UserName", _objUserBO.UserName);
-                _sqlcon.Open();
-                int result = _sqlcmd.ExecuteNonQuery();
-                _sqlcon.Close();
-                if (result.Equals(1))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-                     
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            _objUserBo = new UserBo();
+            _objUserBo = (UserBo)(HttpContext.Current.Session["UserBO"]);
+            _sqlcmd = new SqlCommand("CHANGE_PASSWORD", _sqlcon) {CommandType = CommandType.StoredProcedure};
+            _sqlcmd.Parameters.AddWithValue("@Password", newPassword);
+            _sqlcmd.Parameters.AddWithValue("@UserName", _objUserBo.UserName);
+            _sqlcon.Open();
+            int result = _sqlcmd.ExecuteNonQuery();
+            _sqlcon.Close();
+            return result.Equals(1);
         }
 
        }

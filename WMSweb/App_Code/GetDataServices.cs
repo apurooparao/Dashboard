@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
@@ -36,11 +34,11 @@ public class GetDataServices : System.Web.Services.WebService
     public string GetRequestbyStatus(int Status)
     {
         Status = 1;
-        requestBL _rqstbl = new requestBL();
-        List<RequestCriticalityData> lstRequestCriticalityData = new List<RequestCriticalityData>();
-        int Userid = Convert.ToInt16(Session["UserId"]);
+        var rqstbl = new requestBL();
+        var lstRequestCriticalityData = new List<RequestCriticalityData>();
+        int userid = Convert.ToInt16(Session["UserId"]);
 
-        DataTable dtRequest = _rqstbl.getRequestbyStatus(Status, Userid).Tables[0];
+        var dtRequest = rqstbl.GetRequestbyStatus(Status, userid).Tables[0];
         foreach (DataRow row in dtRequest.Rows)
         {
             lstRequestCriticalityData.Add(new RequestCriticalityData
@@ -58,11 +56,11 @@ public class GetDataServices : System.Web.Services.WebService
     public string GetRequestbyStatusTypes()
     {
        // Status = 1;
-        requestBL _rqstbl = new requestBL();
-        List<RequestStatusData> lstRequestStatusData = new List<RequestStatusData>();
-        int Userid = Convert.ToInt16(Session["UserId"]);
+        var rqstbl = new requestBL();
+        var lstRequestStatusData = new List<RequestStatusData>();
+        int userid = Convert.ToInt16(Session["UserId"]);
 
-        DataTable dtRequest = _rqstbl.getRequestbyStatusTypes( Userid).Tables[0];
+        var dtRequest = rqstbl.GetRequestbyStatusTypes( userid).Tables[0];
         foreach (DataRow row in dtRequest.Rows)
         {
             lstRequestStatusData.Add(new RequestStatusData
@@ -79,11 +77,11 @@ public class GetDataServices : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetStatsData(string Timeframe)
     {
-        requestBL _rqstbl = new requestBL();
+        var rqstbl = new requestBL();
         int userid = Convert.ToInt16(Session["UserId"]);
-        List<PriorityByStatus> lstPriorityByStatus = new List<PriorityByStatus>();
+        var lstPriorityByStatus = new List<PriorityByStatus>();
 
-        DataTable dtRequest = _rqstbl.GetDashboardInfo(userid, Timeframe).Tables[1];
+        var dtRequest = rqstbl.GetDashboardInfo(userid, Timeframe).Tables[1];
         foreach (DataRow row in dtRequest.Rows)
         {
             lstPriorityByStatus.Add(new PriorityByStatus
@@ -103,11 +101,11 @@ public class GetDataServices : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetRequestDataByStatus(int Status)
     {
-        requestBL _rqstbl = new requestBL();
+        var rqstbl = new requestBL();
         int userid = Convert.ToInt16(Session["UserId"]);
-        List<RequestData> lstRequestData = new List<RequestData>();
+        var lstRequestData = new List<RequestData>();
 
-        DataTable dtRequest = _rqstbl.GetRequestDetailsByStatus(userid, Status);
+        var dtRequest = rqstbl.GetRequestDetailsByStatus(userid, Status);
         foreach (DataRow row in dtRequest.Rows)
         {
             lstRequestData.Add(new RequestData
@@ -131,11 +129,11 @@ public class GetDataServices : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetRequestDataByStatusAndPriority(int Status,int Priority)
     {
-        requestBL _rqstbl = new requestBL();
+        var rqstbl = new requestBL();
         int userid = Convert.ToInt16(Session["UserId"]);
-        List<RequestData> lstRequestData = new List<RequestData>();
+        var lstRequestData = new List<RequestData>();
 
-        DataTable dtRequest = _rqstbl.GetRequestDetailsByStatusAndPriority(userid, Status,Priority);
+        var dtRequest = rqstbl.GetRequestDetailsByStatusAndPriority(userid, Status,Priority);
         foreach (DataRow row in dtRequest.Rows)
         {
             lstRequestData.Add(new RequestData
@@ -158,11 +156,11 @@ public class GetDataServices : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetRequestDataByWMSid(int wmsId)
     {
-        requestBL _rqstbl = new requestBL();
+        var rqstbl = new requestBL();
         int userid = Convert.ToInt16(Session["UserId"]);
-        List<RequestData> lstRequestData = new List<RequestData>();
+        var lstRequestData = new List<RequestData>();
 
-        DataTable dtRequest = _rqstbl.GetRequestDataByWMSid(userid, wmsId);
+        var dtRequest = rqstbl.GetRequestDataByWmSid(userid, wmsId);
         foreach (DataRow row in dtRequest.Rows)
         {
             lstRequestData.Add(new RequestData
@@ -186,10 +184,10 @@ public class GetDataServices : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetStatuses()
     {
-        requestBL _rqstbl = new requestBL();
-        List<Statuses> lstStatuses = new List<Statuses>();
+        var rqstbl = new requestBL();
+        var lstStatuses = new List<Statuses>();
 
-        DataTable dtStatuses = _rqstbl.GetMasterStatus();
+        var dtStatuses = rqstbl.GetMasterStatus();
         foreach (DataRow row in dtStatuses.Rows)
         {
             lstStatuses.Add(new Statuses
@@ -206,10 +204,10 @@ public class GetDataServices : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public string GetPriorities()
     {
-        requestBL _rqstbl = new requestBL();
-        List<Priorities> lstpriorities = new List<Priorities>();
+        var rqstbl = new requestBL();
+        var lstpriorities = new List<Priorities>();
 
-        DataTable dtpriorities = _rqstbl.GetMasterPriority();
+        var dtpriorities = rqstbl.GetMasterPriority();
         foreach (DataRow row in dtpriorities.Rows)
         {
             lstpriorities.Add(new Priorities

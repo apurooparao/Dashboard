@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using WMSda;
 using WMSobjects;
 
@@ -11,82 +6,82 @@ namespace WMSbl
 {
   public   class requestBL
     {
-        public int insertUpdateRequest(requestBO objActivityBO)
+        public int InsertUpdateRequest(requestBO objActivityBo)
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.insertUpdateRequest(objActivityBO);
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.insertUpdateRequest(objActivityBo);
         }
 
-        public DataSet getDropDownValues(string selectQuery, string table, string condition)
+        public DataSet GetDropDownValues(string selectQuery, string table, string condition)
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.getDropDownValues(selectQuery, table, condition);
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.getDropDownValues(selectQuery, table, condition);
         }
 
-        public DataSet getRequestbyStatus(int status, int userId)
+        public DataSet GetRequestbyStatus(int status, int userId)
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.getRequestByStatus(status, userId);
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.getRequestByStatus(status, userId);
         }
 
-        public DataSet GetDashboardInfo(int UserId, string Timeframe)
+        public DataSet GetDashboardInfo(int userId, string timeframe)
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.GetDashboardInfo(UserId, Timeframe);
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.GetDashboardInfo(userId, timeframe);
         }
 
         public DataSet GetRequestDetail(int wmsId)
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.getRequestDetail(wmsId);
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.getRequestDetail(wmsId);
         }
 
-        public int changestatus(statusBO statusBO)
+        public int Changestatus(statusBO statusBo)
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.changeStatus(statusBO);
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.changeStatus(statusBo);
         }
 
-        public DataSet getStatusValues(int wmsId)
+        public DataSet GetStatusValues(int wmsId)
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.getStatusvalues(wmsId);
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.getStatusvalues(wmsId);
         }
 
         public DataTable GetRequestDetailsByStatus(int userId, int status)
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.GetRequestDetailsByStatus(userId, status);
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.GetRequestDetailsByStatus(userId, status);
         }
         public DataTable GetRequestDetailsByStatusAndPriority(int userId, int status, int priority)
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.GetRequestDetailsByStatusAndPriority(userId, status, priority);
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.GetRequestDetailsByStatusAndPriority(userId, status, priority);
         }
 
-        public DataTable GetRequestDataByWMSid(int userId, int wmsID)
+        public DataTable GetRequestDataByWmSid(int userId, int wmsId)
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.GetRequestDataByWMSid(userId, wmsID);
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.GetRequestDataByWMSid(userId, wmsId);
         }
 
         public DataTable GetMasterStatus()
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.getMasterStatus();
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.getMasterStatus();
         }
 
 
         public DataTable GetMasterPriority()
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.getMasterPriority();
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.getMasterPriority();
         }
 
-        public DataSet getRequestbyStatusTypes(int userid)
+        public DataSet GetRequestbyStatusTypes(int userid)
         {
-            requestDA objRequestDA = new requestDA();
-            return objRequestDA.getRequestByStatusTypes(userid);
+            requestDA objRequestDa = new requestDA();
+            return objRequestDa.getRequestByStatusTypes(userid);
         }
     }
 }

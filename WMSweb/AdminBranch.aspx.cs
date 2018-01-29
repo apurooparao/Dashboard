@@ -22,9 +22,8 @@ public partial class AdminBranch : System.Web.UI.Page
             }
             else
             {
-                UserBO _userBO = new UserBO();
-                _userBO = (UserBO)Session["UserBO"];
-                if (_userBO.RoleID == 1)
+                var userBo = (UserBo)Session["UserBO"];
+                if (userBo.RoleId == 1)
                 {
 
                     txtBranchName.Focus();
@@ -51,15 +50,15 @@ public partial class AdminBranch : System.Web.UI.Page
     {
         try
         {
-            using (SqlCommand cmd = new SqlCommand("sp_Branch_CRUD"))
+            using (var cmd = new SqlCommand("sp_Branch_CRUD"))
             {
                 cmd.Parameters.AddWithValue("@Action", "SELECTDDL");
-                using (SqlDataAdapter sda = new SqlDataAdapter())
+                using (var sda = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = con;
                     sda.SelectCommand = cmd;
-                    using (DataTable dt = new DataTable())
+                    using (var dt = new DataTable())
                     {
                         sda.Fill(dt);
                         ddl.DataSource = dt;
@@ -83,15 +82,15 @@ public partial class AdminBranch : System.Web.UI.Page
     {
         try
         {
-            using (SqlCommand cmd = new SqlCommand("sp_Branch_CRUD"))
+            using (var cmd = new SqlCommand("sp_Branch_CRUD"))
             {
                 cmd.Parameters.AddWithValue("@Action", "SELECT");
-                using (SqlDataAdapter sda = new SqlDataAdapter())
+                using (var sda = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = con;
                     sda.SelectCommand = cmd;
-                    using (DataTable dt = new DataTable())
+                    using (var dt = new DataTable())
                     {
                         sda.Fill(dt);
                         datagrid.DataSource = dt;
@@ -127,24 +126,24 @@ public partial class AdminBranch : System.Web.UI.Page
     {
         try
         {
-            SqlCommand cmd = new SqlCommand("sp_Branch_CRUD");
-            cmd.CommandType = CommandType.StoredProcedure;
+            var cmd = new SqlCommand("sp_Branch_CRUD") {CommandType = CommandType.StoredProcedure};
             cmd.Parameters.AddWithValue("@Action", "INSERT");
             cmd.Parameters.AddWithValue("@BranchName", txtBranchName.Text);
             cmd.Parameters.AddWithValue("@RegionID", ddlAddRegName.SelectedValue);
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
-            SqlParameter OutValue = new SqlParameter("@OutValue", SqlDbType.Int)
+            var outValue = new SqlParameter("@OutValue", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Output
             };
 
-            cmd.Parameters.Add(OutValue);
+            cmd.Parameters.Add(outValue);
             cmd.Connection = con;
             con.Open();
             cmd.ExecuteNonQuery();
-            int result = Convert.ToInt16(OutValue.Value);
+            int result = Convert.ToInt16(outValue.Value);
             FillGrid();
 
+            // ReSharper disable once ConvertIfStatementToSwitchStatement
             if (result == 1)
             {
                 lblMessage.Text = "Saved Successfully";
@@ -169,15 +168,8 @@ public partial class AdminBranch : System.Web.UI.Page
 
     protected void btnClear_Click(object sender, EventArgs e)
     {
-        try
-        {
-            btnClear.Text = "Clear";
-            ClearControls();
-        }
-        catch
-        {
-            throw;
-        }
+        btnClear.Text = "Clear";
+        ClearControls();
     }
 
     protected void btnEdit_Click(object sender, EventArgs e)
@@ -186,17 +178,20 @@ public partial class AdminBranch : System.Web.UI.Page
         {
             ClearControls();
 
-            LinkButton btn = sender as LinkButton;
-            GridViewRow grow = btn.NamingContainer as GridViewRow;
+            var btn = sender as LinkButton;
+            // ReSharper disable once PossibleNullReferenceException
+            var grow = btn.NamingContainer as GridViewRow;
+            // ReSharper disable once PossibleNullReferenceException
             hidBranchID.Value = (grow.FindControl("lblBranchID") as Label).Text;
-            string sqlquery = "Select BranchID,BranchName,RegionID,IsActive from tblm_Branch where BranchID=" + hidBranchID.Value;
+            var sqlquery = "Select BranchID,BranchName,RegionID,IsActive from tblm_Branch where BranchID=" + hidBranchID.Value;
             con.Open();
-            SqlCommand cmd = new SqlCommand(sqlquery, con);
-            SqlDataReader dr = cmd.ExecuteReader();
+            var cmd = new SqlCommand(sqlquery, con);
+            var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
                 txtBranchName.Text = dr["BranchName"].ToString();
                 ddlAddRegName.SelectedIndex = ddlAddRegName.Items.IndexOf(ddlAddRegName.Items.FindByValue(dr["RegionID"].ToString()));
+                // ReSharper disable once PossibleNullReferenceException
                 cbIsActive.Checked = (grow.FindControl("lblIsActive") as CheckBox).Checked;
             }
 
@@ -215,23 +210,23 @@ public partial class AdminBranch : System.Web.UI.Page
     {
         try
         {
-            SqlCommand cmd = new SqlCommand("sp_Branch_CRUD");
+            var cmd = new SqlCommand("sp_Branch_CRUD");
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Action", "UPDATE");
             cmd.Parameters.AddWithValue("@BranchID", hidBranchID.Value);
             cmd.Parameters.AddWithValue("@BranchName", txtBranchName.Text);
             cmd.Parameters.AddWithValue("@RegionID", ddlAddRegName.SelectedValue);
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
-            SqlParameter OutValue = new SqlParameter("@OutValue", SqlDbType.Int)
+            var outValue = new SqlParameter("@OutValue", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Output
             };
 
-            cmd.Parameters.Add(OutValue);
+            cmd.Parameters.Add(outValue);
             cmd.Connection = con;
             con.Open();
             cmd.ExecuteNonQuery();
-            int result = Convert.ToInt16(OutValue.Value);
+            int result = Convert.ToInt16(outValue.Value);
             FillGrid();
 
             if (result == 1)

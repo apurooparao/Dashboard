@@ -12,8 +12,7 @@ using WMSbl;
 
 public partial class Reports : System.Web.UI.Page
 {
-
-    string connectionString = ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString;
+    private readonly string _connectionString = ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["UserBO"] == null)
@@ -45,13 +44,13 @@ public partial class Reports : System.Web.UI.Page
        
     }
 
-    private void FillListBoxValues(ListBox lstPriority, string selectQuery, string tblName, string Condition)
+    private void FillListBoxValues(ListBox lstPriority, string selectQuery, string tblName, string condition)
     {
 
         try
         {
-            CommonBL cmdbl = new CommonBL();
-            DataSet ds = cmdbl.GetDropDownValues(selectQuery, tblName, Condition);
+            var cmdbl = new CommonBL();
+            var ds = cmdbl.GetDropDownValues(selectQuery, tblName, condition);
             lstPriority.DataSource = ds.Tables[0];
             lstPriority.DataValueField = ds.Tables[0].Columns[0].ToString();
             lstPriority.DataTextField = ds.Tables[0].Columns[1].ToString();
@@ -68,7 +67,7 @@ public partial class Reports : System.Web.UI.Page
     {
         try
         {
-            string priority = String.Join(",", lstPriority.Items.OfType<ListItem>()
+            var priority = string.Join(",", lstPriority.Items.OfType<ListItem>()
                                        .Where(r => r.Selected)
                                        .Select(r => r.Value));
             if (string.IsNullOrEmpty(priority))
@@ -76,7 +75,7 @@ public partial class Reports : System.Web.UI.Page
                 priority = "0";
             }
 
-            string branch = String.Join(",", lstBranch.Items.OfType<ListItem>()
+            var branch = string.Join(",", lstBranch.Items.OfType<ListItem>()
                                      .Where(r => r.Selected)
                                      .Select(r => r.Value));
             if (string.IsNullOrEmpty(branch))
@@ -84,7 +83,7 @@ public partial class Reports : System.Web.UI.Page
                 branch = "0";
             }
 
-            string status = String.Join(",", lstStatus.Items.OfType<ListItem>()
+            var status = string.Join(",", lstStatus.Items.OfType<ListItem>()
                                      .Where(r => r.Selected)
                                      .Select(r => r.Value));
             if (string.IsNullOrEmpty(status))
@@ -92,7 +91,7 @@ public partial class Reports : System.Web.UI.Page
                 status = "0";
             }
 
-            ReportDataSource rds = new ReportDataSource("RequestDataset", GetRequestReports(priority,branch,status));
+            var rds = new ReportDataSource("RequestDataset", GetRequestReports(priority,branch,status));
 
             ReportViewer_RequestDetail.LocalReport.DataSources.Clear();
             ReportViewer_RequestDetail.LocalReport.DataSources.Add(rds);
@@ -111,14 +110,14 @@ public partial class Reports : System.Web.UI.Page
     {
         try
         {
-            RequestDataset ds = new RequestDataset();
-            using (SqlConnection sqlcon = new SqlConnection(connectionString))
+            var ds = new RequestDataset();
+            using (var sqlcon = new SqlConnection(_connectionString))
             {
-                SqlCommand cmd = new SqlCommand("sp_Reports_Request_Dynamic", sqlcon) { CommandType = CommandType.StoredProcedure };
+                var cmd = new SqlCommand("sp_Reports_Request_Dynamic", sqlcon) { CommandType = CommandType.StoredProcedure };
                 cmd.Parameters.Add("@PRIOIRITYID", SqlDbType.NVarChar).Value = priority;
                 cmd.Parameters.Add("@BRANCHID", SqlDbType.NVarChar).Value = branch;
                 cmd.Parameters.Add("@STATUSID", SqlDbType.NVarChar).Value = status;
-                SqlDataAdapter sqlda = new SqlDataAdapter { SelectCommand = cmd };
+                var sqlda = new SqlDataAdapter { SelectCommand = cmd };
                 sqlda.Fill(ds, "RequestDataset");
                 if (ds.Tables["RequestDataset"].Rows.Count == 0)
                 {

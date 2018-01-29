@@ -1,37 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using WMSobjects;
 
 namespace WMSda
 {
-    public class loginDA
+    public class LoginDa
     {
         readonly SqlConnection _sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
-        UserBO _objUserBO;
-        SqlDataReader _sqldr;
+        private UserBo _objUserBo;
+        private SqlDataReader _sqldr;
 
-        public DataTable getStatusvalues(string UserName, string Password)
+        public DataTable GetStatusvalues(string userName, string password)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM vw_UserRole WHERE UserName = @UserName AND UserPassword = @UserPassword", _sqlcon);
-                cmd.Parameters.AddWithValue("@UserName", UserName);
-                cmd.Parameters.AddWithValue("@UserPassword", Password);
+                var cmd = new SqlCommand("SELECT * FROM vw_UserRole WHERE UserName = @UserName AND UserPassword = @UserPassword", _sqlcon);
+                cmd.Parameters.AddWithValue("@UserName", userName);
+                cmd.Parameters.AddWithValue("@UserPassword", password);
 
-                SqlDataAdapter adapt = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
+                var adapt = new SqlDataAdapter(cmd);
+                var dt = new DataTable();
                 adapt.Fill(dt);
                 _sqlcon.Close();
                 return dt;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -42,52 +38,48 @@ namespace WMSda
         }
 
 
-        public UserBO CheckUser(string UserName, string Password)
+        public UserBo CheckUser(string userName, string password)
         {
             try
             {
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM vw_UserRole WHERE UserName = @UserName AND UserPassword = @UserPassword", _sqlcon);
-                cmd.Parameters.AddWithValue("@UserName", UserName);
-                cmd.Parameters.AddWithValue("@UserPassword", Password);
+                var cmd = new SqlCommand("SELECT * FROM vw_UserRole WHERE UserName = @UserName AND UserPassword = @UserPassword", _sqlcon);
+                cmd.Parameters.AddWithValue("@UserName", userName);
+                cmd.Parameters.AddWithValue("@UserPassword", password);
                 _sqlcon.Open();
                 _sqldr = cmd.ExecuteReader();
 
                 if (_sqldr.Read())
                 {
-                    _objUserBO = new UserBO();
-                    _objUserBO.UserID = Convert.ToInt32(_sqldr["USERID"]);
-                    _objUserBO.UserName = _sqldr["UserName"].ToString();
-                    _objUserBO.RoleID = Convert.ToInt32(_sqldr["ROLEID"]);
+                    _objUserBo = new UserBo
+                    {
+                        UserId = Convert.ToInt32(_sqldr["USERID"]),
+                        UserName = _sqldr["UserName"].ToString(),
+                        RoleId = Convert.ToInt32(_sqldr["ROLEID"]),
+                        BranchId = _sqldr["BRANCHID"].ToString() != string.Empty
+                            ? Convert.ToInt32(_sqldr["BRANCHID"])
+                            : 1
+                    };
 
-                    if (_sqldr["BRANCHID"].ToString() != string.Empty)
-                    {
-                        _objUserBO.BranchID = Convert.ToInt32(_sqldr["BRANCHID"]);
-                    }
-                    else
-                    {
-                        _objUserBO.BranchID = 1;
-                    }
 
                     _sqldr.Close();
                     _sqlcon.Close();
 
                     // INSERT A RECORD IN AUDIT TABLE IF USER IS LOGGED IN 
-                    SqlCommand sqlcmd = new SqlCommand("sp_Audit_Ins", _sqlcon);
-                    sqlcmd.CommandType = CommandType.StoredProcedure;
-                    sqlcmd.Parameters.AddWithValue("@UserID", _objUserBO.UserID);
+                    var sqlcmd =
+                        new SqlCommand("sp_Audit_Ins", _sqlcon) {CommandType = CommandType.StoredProcedure};
+                    sqlcmd.Parameters.AddWithValue("@UserID", _objUserBo.UserId);
                     sqlcmd.Parameters.Add("@sessionId", SqlDbType.VarChar).Value = HttpContext.Current.Session.SessionID;
                     _sqlcon.Open();
                     sqlcmd.ExecuteNonQuery();
                 }
                 _sqlcon.Close();
-                return _objUserBO;
+                return _objUserBo;
             }
             catch (Exception ex)
             {
-                _objUserBO = new UserBO();
-                _objUserBO.UserName = ex.Message;
-                return _objUserBO;
+                _objUserBo = new UserBo {UserName = ex.Message};
+                return _objUserBo;
 
             }
 
@@ -97,15 +89,15 @@ namespace WMSda
         {
             try
             {
-                _objUserBO = (UserBO)HttpContext.Current.Session["UserBO"];
-                SqlCommand _sqlcmd = new SqlCommand("sp_UpdateLogin_Signout", _sqlcon);
-                _sqlcmd.CommandType = CommandType.StoredProcedure;
-                _sqlcmd.Parameters.AddWithValue("@UserID", _objUserBO.UserID);
+                _objUserBo = (UserBo)HttpContext.Current.Session["UserBO"];
+                var sqlcmd =
+                    new SqlCommand("sp_UpdateLogin_Signout", _sqlcon) {CommandType = CommandType.StoredProcedure};
+                sqlcmd.Parameters.AddWithValue("@UserID", _objUserBo.UserId);
                 _sqlcon.Open();
-                string ID = Convert.ToString(_sqlcmd.ExecuteNonQuery());
+                var id = Convert.ToString(sqlcmd.ExecuteNonQuery());
                 _sqlcon.Close();
 
-                return ID;
+                return id;
             }
             catch (Exception)
             {

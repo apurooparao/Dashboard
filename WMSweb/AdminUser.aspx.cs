@@ -11,7 +11,7 @@ using WMSobjects;
 
 public partial class AdminUser : System.Web.UI.Page
 {
-    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
+    SqlConnection _con = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["UserBO"] == null)
@@ -21,9 +21,9 @@ public partial class AdminUser : System.Web.UI.Page
         else
         {
 
-            UserBO _userBO = new UserBO();
-            _userBO = (UserBO)Session["UserBO"];
-            if (_userBO.RoleID == 1)
+            var userBo = new UserBo();
+            userBo = (UserBo)Session["UserBO"];
+            if (userBo.RoleId == 1)
             {              
                 if (!IsPostBack)
                 {
@@ -45,15 +45,15 @@ public partial class AdminUser : System.Web.UI.Page
     {
         try
         {
-            using (SqlCommand cmd = new SqlCommand("sp_User_CRUD"))
+            using (var cmd = new SqlCommand("sp_User_CRUD"))
             {
                 cmd.Parameters.AddWithValue("@Action", "SELECTROLE");
-                using (SqlDataAdapter sda = new SqlDataAdapter())
+                using (var sda = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Connection = con;
+                    cmd.Connection = _con;
                     sda.SelectCommand = cmd;
-                    using (DataTable dt = new DataTable())
+                    using (var dt = new DataTable())
                     {
                         sda.Fill(dt);
                         ddl.DataSource = dt;
@@ -77,15 +77,15 @@ public partial class AdminUser : System.Web.UI.Page
     {
         try
         {
-            using (SqlCommand cmd = new SqlCommand("sp_User_CRUD"))
+            using (var cmd = new SqlCommand("sp_User_CRUD"))
             {
                 cmd.Parameters.AddWithValue("@Action", "SELECTBR");
-                using (SqlDataAdapter sda = new SqlDataAdapter())
+                using (var sda = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Connection = con;
+                    cmd.Connection = _con;
                     sda.SelectCommand = cmd;
-                    using (DataTable dt = new DataTable())
+                    using (var dt = new DataTable())
                     {
                         sda.Fill(dt);
                         ddl.DataSource = dt;
@@ -109,15 +109,15 @@ public partial class AdminUser : System.Web.UI.Page
     {
         try
         {
-            using (SqlCommand cmd = new SqlCommand("sp_User_CRUD"))
+            using (var cmd = new SqlCommand("sp_User_CRUD"))
             {
                 cmd.Parameters.AddWithValue("@Action", "SELECT");
-                using (SqlDataAdapter sda = new SqlDataAdapter())
+                using (var sda = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Connection = con;
+                    cmd.Connection = _con;
                     sda.SelectCommand = cmd;
-                    using (DataTable dt = new DataTable())
+                    using (var dt = new DataTable())
                     {
                         sda.Fill(dt);
                         datagrid.DataSource = dt;
@@ -136,8 +136,7 @@ public partial class AdminUser : System.Web.UI.Page
     {
         try
         {
-            SqlCommand cmd = new SqlCommand("sp_User_CRUD");
-            cmd.CommandType = CommandType.StoredProcedure;
+            var cmd = new SqlCommand("sp_User_CRUD") {CommandType = CommandType.StoredProcedure};
             cmd.Parameters.AddWithValue("@Action", "INSERT");
             cmd.Parameters.AddWithValue("@UserName", txtUserName.Text);
             cmd.Parameters.AddWithValue("@BranchId", ddlBranch.SelectedValue);
@@ -145,16 +144,16 @@ public partial class AdminUser : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
             cmd.Parameters.AddWithValue("@Phone", txtPhone.Text);
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
-            SqlParameter OutValue = new SqlParameter("@OutValue", SqlDbType.Int)
+            var outValue = new SqlParameter("@OutValue", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Output
             };
 
-            cmd.Parameters.Add(OutValue);
-            cmd.Connection = con;
-            con.Open();
+            cmd.Parameters.Add(outValue);
+            cmd.Connection = _con;
+            _con.Open();
             cmd.ExecuteNonQuery();
-            int result = Convert.ToInt16(OutValue.Value);
+            int result = Convert.ToInt16(outValue.Value);
             FillGrid();
 
             if (result == 1)
@@ -179,8 +178,8 @@ public partial class AdminUser : System.Web.UI.Page
         }
         finally
         {
-            if (con.State == ConnectionState.Open)
-                con.Close();
+            if (_con.State == ConnectionState.Open)
+                _con.Close();
         }
     }
 
@@ -209,8 +208,7 @@ public partial class AdminUser : System.Web.UI.Page
     {
         try
         {
-            SqlCommand cmd = new SqlCommand("sp_User_CRUD");
-            cmd.CommandType = CommandType.StoredProcedure;
+            var cmd = new SqlCommand("sp_User_CRUD") {CommandType = CommandType.StoredProcedure};
             cmd.Parameters.AddWithValue("@Action", "UPDATE");
             cmd.Parameters.AddWithValue("@UserId", hidUserId.Value);
             cmd.Parameters.AddWithValue("@UserName", txtUserName.Text);
@@ -219,16 +217,16 @@ public partial class AdminUser : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
             cmd.Parameters.AddWithValue("@Phone", txtPhone.Text);
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
-            SqlParameter OutValue = new SqlParameter("@OutValue", SqlDbType.Int)
+            var outValue = new SqlParameter("@OutValue", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Output
             };
 
-            cmd.Parameters.Add(OutValue);
-            cmd.Connection = con;
-            con.Open();
+            cmd.Parameters.Add(outValue);
+            cmd.Connection = _con;
+            _con.Open();
             cmd.ExecuteNonQuery();
-            int result = Convert.ToInt16(OutValue.Value);
+            int result = Convert.ToInt16(outValue.Value);
             FillGrid();
 
             if (result == 1)
@@ -258,8 +256,8 @@ public partial class AdminUser : System.Web.UI.Page
         }
         finally
         {
-            if (con.State == ConnectionState.Open)
-                con.Close();
+            if (_con.State == ConnectionState.Open)
+                _con.Close();
         }
     }
 
@@ -296,13 +294,13 @@ public partial class AdminUser : System.Web.UI.Page
         {
             ClearControls();
 
-            LinkButton btn = sender as LinkButton;
-            GridViewRow grow = btn.NamingContainer as GridViewRow;
+            var btn = sender as LinkButton;
+            var grow = btn.NamingContainer as GridViewRow;
             hidUserId.Value = (grow.FindControl("lblUserId") as Label).Text;
-            string sqlquery = "Select UserID,UserName,BranchID,RoleID,EmailID,PhoneNumber,IsActive from tblm_User where UserID=" + hidUserId.Value;
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sqlquery, con);
-            SqlDataReader dr = cmd.ExecuteReader();
+            var sqlquery = "Select UserID,UserName,BranchID,RoleID,EmailID,PhoneNumber,IsActive from tblm_User where UserID=" + hidUserId.Value;
+            _con.Open();
+            var cmd = new SqlCommand(sqlquery, _con);
+            var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
                 txtUserName.Text = dr["UserName"].ToString();

@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using WMSbl;
 using WMSobjects;
 
 public partial class TipsMaster : System.Web.UI.MasterPage
 {
-    UserBO _userBO;
+    private UserBo _userBo;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -19,36 +14,16 @@ public partial class TipsMaster : System.Web.UI.MasterPage
         }
         else
         {
+            // ReSharper disable once InvertIf
             if (!IsPostBack)
             {
-                _userBO = new UserBO();
-                _userBO = (UserBO)Session["UserBO"];
-                lblUsername.Text = _userBO.UserName;
+                _userBo = new UserBo();
+                _userBo = (UserBo)Session["UserBO"];
+                lblUsername.Text = _userBo.UserName;
 
-                if (_userBO.RoleID == 1)
-                {
-                    li_administration.Visible = true;
-                }
-                else
-                {
-                    li_administration.Visible = false;
-                }
-                if (_userBO.RoleID == 1)
-                {
-                    li_reports.Visible = true;
-                }
-                else
-                {
-                    li_reports.Visible = false;
-                }
-                if (_userBO.RoleID == 4)
-                {
-                    li_createrequest.Visible = false;
-                }
-                else
-                {
-                    li_createrequest.Visible = true;
-                }
+                li_administration.Visible = _userBo.RoleId == 1;
+                li_reports.Visible = _userBo.RoleId == 1;
+                li_createrequest.Visible = _userBo.RoleId != 4;
             }
 
         }
@@ -74,8 +49,8 @@ public partial class TipsMaster : System.Web.UI.MasterPage
     {
         try
         {
-            loginBL _objloginBL = new loginBL();
-            _objloginBL.UpdateLoginStatus();
+            var objloginBl = new LoginBl();
+            objloginBl.UpdateLoginStatus();
             Session.Remove("UserBO");
             Session.RemoveAll();
             Session.Abandon();
@@ -83,9 +58,7 @@ public partial class TipsMaster : System.Web.UI.MasterPage
         }
         catch (Exception ex)
         {
-            
-
-
+            // ignored
         }
     }
 
@@ -97,7 +70,7 @@ public partial class TipsMaster : System.Web.UI.MasterPage
         }
         catch (Exception ex)
         {
-          
+            // ignored
         }
     }
 }

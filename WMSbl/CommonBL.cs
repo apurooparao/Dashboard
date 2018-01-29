@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using WMSda;
 
 namespace WMSbl
@@ -12,7 +7,7 @@ namespace WMSbl
     {
         public DataSet GetDropDownValues(string selquery,string tblnm,string cond)
         {
-            CommonDA cmndl = new CommonDA();
+            var cmndl = new CommonDA();
             return cmndl.getDropdown(selquery, tblnm, cond);
              }
     }

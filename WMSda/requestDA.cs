@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using WMSobjects;
 
 namespace WMSda
@@ -51,7 +49,7 @@ namespace WMSda
                 int result = Convert.ToInt16(WMSID_Out.Value);
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 0;
             }
@@ -82,7 +80,7 @@ namespace WMSda
                 sqlda.Fill(dset);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 dset = null;
             }
@@ -113,7 +111,7 @@ namespace WMSda
                 sqlda.Fill(dset);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 dset = null;
             }
@@ -146,7 +144,7 @@ namespace WMSda
                 return dset;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -173,7 +171,7 @@ namespace WMSda
                 sqlda.Fill(dset);
                 return dset;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -201,7 +199,7 @@ namespace WMSda
                 sqlda.Fill(dset);
                 return dset;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -245,7 +243,7 @@ namespace WMSda
                 int result = Convert.ToInt16(WMSID_Out.Value);
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 0;
             }
@@ -272,7 +270,7 @@ namespace WMSda
                 sqlda.Fill(dset);
                 return dset;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -304,7 +302,7 @@ namespace WMSda
                 return dset;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -334,7 +332,7 @@ namespace WMSda
                 sqlda.Fill(dset);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 dset = null;
             }
@@ -362,7 +360,7 @@ namespace WMSda
                     sqlda.Fill(dset);
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dset = null;
                 }
@@ -391,7 +389,7 @@ namespace WMSda
                     sqlda.Fill(dset);
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dset = null;
                 }
@@ -423,7 +421,7 @@ namespace WMSda
                 return dset;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

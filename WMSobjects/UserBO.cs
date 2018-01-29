@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 
 namespace WMSobjects
 {
-  public  class UserBO
+  public  class UserBo
     {
-        public int UserID { get; set; }
+        public int UserId { get; set; }
         public string UserName { get; set; }
-        public int RoleID { get; set; }
-        public int BranchID { get; set; }
+        public int RoleId { get; set; }
+        public int BranchId { get; set; }
     }
 }

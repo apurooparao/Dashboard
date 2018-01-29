@@ -1,45 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using WMSda;
 using WMSobjects;
 
 namespace WMSbl
 {
-    public class loginBL
+    public class LoginBl
     {
-        public DataTable loginUser(string username, string password)
+        public DataTable LoginUser(string username, string password)
         {
-            loginDA objloginDA = new loginDA();
-            return objloginDA.getStatusvalues(username, password);
+            var objloginDa = new LoginDa();
+            return objloginDa.GetStatusvalues(username, password);
         }
         public string UpdateLoginStatus()
         {
-            loginDA _objloginDA = new loginDA();
-            return _objloginDA.UpdateLoginStatus();
+            var objloginDa = new LoginDa();
+            return objloginDa.UpdateLoginStatus();
         }
 
-        public UserBO CheckUser(string userName, string password)
+        public UserBo CheckUser(string userName, string password)
         {
-            loginDA _obLoginDA = new loginDA();
-            return _obLoginDA.CheckUser(userName, password);
+            var obLoginDa = new LoginDa();
+            return obLoginDa.CheckUser(userName, password);
         }
 
         public string CheckOldPassword(string username)
         {
 
-            ChangePasswordDAL objchangepasswordDL = new ChangePasswordDAL();
-            return objchangepasswordDL.CheckOldPassword(username);
+            var objchangepasswordDl = new ChangePasswordDAL();
+            return objchangepasswordDl.CheckOldPassword(username);
 
         }
 
         public bool ChangePassword(string newPassword)
         {
-            ChangePasswordDAL objChangeDAL = new ChangePasswordDAL();
-            return objChangeDAL.ChangePassword(newPassword);
+            var objChangeDal = new ChangePasswordDAL();
+            return objChangeDal.ChangePassword(newPassword);
 
         }
 

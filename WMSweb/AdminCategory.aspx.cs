@@ -25,9 +25,8 @@ public partial class AdminCategory : System.Web.UI.Page
             }
             else
             {
-                UserBO _userBO = new UserBO();
-                _userBO = (UserBO)Session["UserBO"];
-                if (_userBO.RoleID == 1)
+                var userBo = (UserBo)Session["UserBO"];
+                if (userBo.RoleId == 1)
                 {
 
                     txtCategoryName.Focus();
@@ -53,15 +52,15 @@ public partial class AdminCategory : System.Web.UI.Page
     {
         try
         {
-            using (SqlCommand cmd = new SqlCommand("sp_Category_CRUD"))
+            using (var cmd = new SqlCommand("sp_Category_CRUD"))
             {
                 cmd.Parameters.AddWithValue("@Action", "SELECT");
-                using (SqlDataAdapter sda = new SqlDataAdapter())
+                using (var sda = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = con;
                     sda.SelectCommand = cmd;
-                    using (DataTable dt = new DataTable())
+                    using (var dt = new DataTable())
                     {
                         sda.Fill(dt);
                         datagrid.DataSource = dt;
@@ -97,20 +96,20 @@ public partial class AdminCategory : System.Web.UI.Page
     {
         try
         {
-            SqlCommand cmd = new SqlCommand("sp_Category_CRUD");
+            var cmd = new SqlCommand("sp_Category_CRUD");
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Action", "INSERT");
             cmd.Parameters.AddWithValue("@CategoryName", txtCategoryName.Text);
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
-            SqlParameter OutValue = new SqlParameter("@OutValue", SqlDbType.Int)
+            var outValue = new SqlParameter("@OutValue", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Output
             };
-            cmd.Parameters.Add(OutValue);
+            cmd.Parameters.Add(outValue);
             cmd.Connection = con;
             con.Open();
             cmd.ExecuteNonQuery();
-            int result = Convert.ToInt16(OutValue.Value);
+            int result = Convert.ToInt16(outValue.Value);
 
             FillGrid();
 
@@ -155,11 +154,15 @@ public partial class AdminCategory : System.Web.UI.Page
         try
         {
             ClearControls();
-            LinkButton btn = sender as LinkButton;
-            GridViewRow grow = btn.NamingContainer as GridViewRow;
-            hidCategoryID.Value = (grow.FindControl("lblCategoryID") as Label).Text;
-            txtCategoryName.Text = (grow.FindControl("lblCategoryName") as Label).Text;
-            cbIsActive.Checked = (grow.FindControl("lblIsActive") as CheckBox).Checked;
+            var btn = sender as LinkButton;
+            if (btn != null)
+            {
+                var grow = btn.NamingContainer as GridViewRow;
+                hidCategoryID.Value = (grow.FindControl("lblCategoryID") as Label).Text;
+                txtCategoryName.Text = (grow.FindControl("lblCategoryName") as Label).Text;
+                cbIsActive.Checked = (grow.FindControl("lblIsActive") as CheckBox).Checked;
+            }
+
             btnSave.Visible = false;
             btnUpdate.Visible = true;
             btnClear.Text = "Cancel";
@@ -174,22 +177,21 @@ public partial class AdminCategory : System.Web.UI.Page
     {
         try
         {
-            SqlCommand cmd = new SqlCommand("sp_Category_CRUD");
-            cmd.CommandType = CommandType.StoredProcedure;
+            var cmd = new SqlCommand("sp_Category_CRUD") {CommandType = CommandType.StoredProcedure};
             cmd.Parameters.AddWithValue("@Action", "UPDATE");
             cmd.Parameters.AddWithValue("@CategoryID", hidCategoryID.Value);
             cmd.Parameters.AddWithValue("@CategoryName", txtCategoryName.Text);
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
-            SqlParameter OutValue = new SqlParameter("@OutValue", SqlDbType.Int)
+            var outValue = new SqlParameter("@OutValue", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Output
             };
 
-            cmd.Parameters.Add(OutValue);
+            cmd.Parameters.Add(outValue);
             cmd.Connection = con;
             con.Open();
             cmd.ExecuteNonQuery();
-            int result = Convert.ToInt16(OutValue.Value);
+            int result = Convert.ToInt16(outValue.Value);
 
             FillGrid();
 

@@ -11,7 +11,7 @@ using WMSobjects;
 
 public partial class AdminSection : System.Web.UI.Page
 {
-    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
+    readonly SqlConnection _con = new SqlConnection(ConfigurationManager.ConnectionStrings["WmsConnection"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
         try
@@ -22,9 +22,8 @@ public partial class AdminSection : System.Web.UI.Page
             }
             else
             {
-                UserBO _userBO = new UserBO();
-                _userBO = (UserBO)Session["UserBO"];
-                if (_userBO.RoleID == 1)
+                var userBo = (UserBo)Session["UserBO"];
+                if (userBo.RoleId == 1)
                 {
 
                     txtSectionName.Focus();
@@ -50,15 +49,15 @@ public partial class AdminSection : System.Web.UI.Page
     {
         try
         {
-            using (SqlCommand cmd = new SqlCommand("sp_Section_CRUD"))
+            using (var cmd = new SqlCommand("sp_Section_CRUD"))
             {
                 cmd.Parameters.AddWithValue("@Action", "SELECT");
-                using (SqlDataAdapter sda = new SqlDataAdapter())
+                using (var sda = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Connection = con;
+                    cmd.Connection = _con;
                     sda.SelectCommand = cmd;
-                    using (DataTable dt = new DataTable())
+                    using (var dt = new DataTable())
                     {
                         sda.Fill(dt);
                         datagrid.DataSource = dt;
@@ -94,21 +93,20 @@ public partial class AdminSection : System.Web.UI.Page
     {
         try
         {
-            SqlCommand cmd = new SqlCommand("sp_Section_CRUD");
-            cmd.CommandType = CommandType.StoredProcedure;
+            var cmd = new SqlCommand("sp_Section_CRUD") {CommandType = CommandType.StoredProcedure};
             cmd.Parameters.AddWithValue("@Action", "INSERT");
             cmd.Parameters.AddWithValue("@SectionName", txtSectionName.Text);
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
-            SqlParameter OutValue = new SqlParameter("@OutValue", SqlDbType.Int)
+            var outValue = new SqlParameter("@OutValue", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Output
             };
-            cmd.Parameters.Add(OutValue);
+            cmd.Parameters.Add(outValue);
 
-            cmd.Connection = con;
-            con.Open();
+            cmd.Connection = _con;
+            _con.Open();
             cmd.ExecuteNonQuery();
-            int result = Convert.ToInt16(OutValue.Value);
+            int result = Convert.ToInt16(outValue.Value);
 
             FillGrid();
 
@@ -130,8 +128,8 @@ public partial class AdminSection : System.Web.UI.Page
         }
         finally
         {
-            if (con.State == ConnectionState.Open)
-                con.Close();
+            if (_con.State == ConnectionState.Open)
+                _con.Close();
         }
     }
 
@@ -153,8 +151,8 @@ public partial class AdminSection : System.Web.UI.Page
         try
         {
             ClearControls();
-            LinkButton btn = sender as LinkButton;
-            GridViewRow grow = btn.NamingContainer as GridViewRow;
+            var btn = sender as LinkButton;
+            var grow = btn.NamingContainer as GridViewRow;
             hidSectionID.Value = (grow.FindControl("lblSectionID") as Label).Text;
             txtSectionName.Text = (grow.FindControl("lblSectionName") as Label).Text;
             cbIsActive.Checked = (grow.FindControl("lblIsActive") as CheckBox).Checked;
@@ -172,23 +170,23 @@ public partial class AdminSection : System.Web.UI.Page
     {
         try
         {
-            SqlCommand cmd = new SqlCommand("sp_Section_CRUD");
+            var cmd = new SqlCommand("sp_Section_CRUD");
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Action", "UPDATE");
             cmd.Parameters.AddWithValue("@SectionID", hidSectionID.Value);
             cmd.Parameters.AddWithValue("@SectionName", txtSectionName.Text);
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
-            SqlParameter OutValue = new SqlParameter("@OutValue", SqlDbType.Int)
+            var outValue = new SqlParameter("@OutValue", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Output
             };
 
-            cmd.Parameters.Add(OutValue);
+            cmd.Parameters.Add(outValue);
 
-            cmd.Connection = con;
-            con.Open();
+            cmd.Connection = _con;
+            _con.Open();
             cmd.ExecuteNonQuery();
-            int result = Convert.ToInt16(OutValue.Value);
+            int result = Convert.ToInt16(outValue.Value);
 
             FillGrid();
 
@@ -214,8 +212,8 @@ public partial class AdminSection : System.Web.UI.Page
         }
         finally
         {
-            if (con.State == ConnectionState.Open)
-                con.Close();
+            if (_con.State == ConnectionState.Open)
+                _con.Close();
         }
     }
 
