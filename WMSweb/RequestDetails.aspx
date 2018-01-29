@@ -74,7 +74,7 @@
                                         </tr>
                                         <tr style="line-height: 200%">
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblBranch" runat="server" Text="Branch : "></asp:Label>
+                                                <asp:Label ID="lblBranch" runat="server" Text="Branch "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                             
@@ -84,7 +84,7 @@
                                         </tr>
                                         <tr style="line-height: 200%">
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblPriority" runat="server" Text="Priority : "></asp:Label>
+                                                <asp:Label ID="lblPriority" runat="server" Text="Priority "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <%--  <asp:DropDownList ID="ddlPriority" runat="server" CssClass="dropdownlistnew">
@@ -92,7 +92,7 @@
                                                 <asp:Label ID="lblPriorityValue" runat="server" Text='<%# Bind("PriorityName") %>'></asp:Label>
                                             </td>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblAffecting" runat="server" Text="Affecting Operation: "></asp:Label>
+                                                <asp:Label ID="lblAffecting" runat="server" Text="Affecting Operation "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:Label ID="lblAffectingValue" runat="server" Text='<%# Bind("AffectOperation") %>'></asp:Label>
@@ -100,7 +100,7 @@
                                         </tr>
                                         <tr style="line-height: 200%">
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblScope" runat="server" Text="Scope Of Work : "></asp:Label>
+                                                <asp:Label ID="lblScope" runat="server" Text="Scope Of Work "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:Label ID="lblScopeValue" runat="server" Text='<%# Bind("Scope") %>'></asp:Label>
@@ -108,7 +108,7 @@
 
 
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblFloor" runat="server" Text="Floor: "></asp:Label>
+                                                <asp:Label ID="lblFloor" runat="server" Text="Floor "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:Label ID="lblFloorValue" runat="server" Text='<%# Bind("Floor") %>'></asp:Label>
@@ -116,13 +116,13 @@
                                         </tr>
                                         <tr style="line-height: 200%">
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblSection" runat="server" Text="Section / Area : "></asp:Label>
+                                                <asp:Label ID="lblSection" runat="server" Text="Section / Area "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:Label ID="lblSectionValue" runat="server" Text='<%# Bind("SectionName") %>'></asp:Label>
                                             </td>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblOtherSection" runat="server" Text="If Others : "></asp:Label>
+                                                <asp:Label ID="lblOtherSection" runat="server" Text="If Others "></asp:Label>
                                                 <asp:Label ID="ddlSectionEdit" runat="server" Visible="false"></asp:Label>
                                                 <asp:Label ID="txtOtherSectionEdit" runat="server" Visible="false"></asp:Label>
                                             </td>
@@ -133,7 +133,7 @@
                                         </tr>
                                         <tr style="line-height: 200%">
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblCategory" runat="server" Text="Category : "></asp:Label>
+                                                <asp:Label ID="lblCategory" runat="server" Text="Category "></asp:Label>
                                                 <asp:Label ID="chkCategoryEdit" runat="server" Visible="false"></asp:Label>
 
                                             </td>
@@ -144,7 +144,7 @@
                                             </td>
 
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblRequestor" runat="server" Text="Requestor Name : "></asp:Label>
+                                                <asp:Label ID="lblRequestor" runat="server" Text="Requestor Name "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:Label ID="lblRequestorValue" runat="server" Text='<%# Bind("Requestor") %>'></asp:Label>
@@ -152,7 +152,7 @@
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblRemarks" runat="server" Text="Remarks : "></asp:Label>
+                                                <asp:Label ID="lblRemarks" runat="server" Text="Remarks "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:Label ID="lblRemarksValue" runat="server" Text='<%# Bind("Remarks") %>'></asp:Label>
@@ -218,7 +218,7 @@
                                         </tr>
                                          <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblBranchEdit" runat="server" Text="Branch : "></asp:Label>
+                                                <asp:Label ID="lblBranchEdit" runat="server" Text="Branch "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:DropDownList ID="ddlBranchEdit" runat="server" CssClass="dropdownlistnew" Enabled="false">
@@ -228,14 +228,14 @@
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblPriorityEdit" runat="server" Text="Priority : "></asp:Label>
+                                                <asp:Label ID="lblPriorityEdit" runat="server" Text="Priority "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:DropDownList ID="ddlPriorityEdit" runat="server" CssClass="dropdownlistnew">
                                                 </asp:DropDownList>
                                             </td>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblAffectingEdit" runat="server" Text="Affecting Operation: "></asp:Label>
+                                                <asp:Label ID="lblAffectingEdit" runat="server" Text="Affecting Operation "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:DropDownList ID="ddlAffectingEdit" runat="server" CssClass="dropdownlistnew">
@@ -246,7 +246,7 @@
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblScopeEdit" runat="server" Text="Scope Of Work : "></asp:Label>
+                                                <asp:Label ID="lblScopeEdit" runat="server" Text="Scope Of Work "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:TextBox ID="txtScopeEdit" runat="server" class="textbox"></asp:TextBox>
@@ -254,7 +254,7 @@
                                                     ErrorMessage="Please enter Scope" ControlToValidate="txtScopeEdit" Display="None"></asp:RequiredFieldValidator>
                                             </td>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblFloorEdit" runat="server" Text="Floor: "></asp:Label>
+                                                <asp:Label ID="lblFloorEdit" runat="server" Text="Floor "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:DropDownList ID="ddlFloorEdit" runat="server" CssClass="dropdownlistnew">
@@ -271,14 +271,14 @@
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblSectionEdit" runat="server" Text="Section / Area : "></asp:Label>
+                                                <asp:Label ID="lblSectionEdit" runat="server" Text="Section / Area "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:DropDownList ID="ddlSectionEdit" runat="server" CssClass="dropdownlistnew">
                                                 </asp:DropDownList>
                                             </td>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblOtherSectionEdit" runat="server" Text="If Others : "></asp:Label>
+                                                <asp:Label ID="lblOtherSectionEdit" runat="server" Text="If Others "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
 
@@ -290,7 +290,7 @@
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblCategoryEdit" runat="server" Text="Category : "></asp:Label>
+                                                <asp:Label ID="lblCategoryEdit" runat="server" Text="Category "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:CheckBoxList ID="chkCategoryEdit" runat="server" CssClass="checkstyle">
@@ -301,7 +301,7 @@
                                             </td>
 
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblRequestorEdit" runat="server" Text="Requestor Name : "></asp:Label>
+                                                <asp:Label ID="lblRequestorEdit" runat="server" Text="Requestor Name "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:TextBox ID="txtRequestorEdit" runat="server" class="textbox"></asp:TextBox>
@@ -311,7 +311,7 @@
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblRemarksEdit" runat="server" Text="Remarks : "></asp:Label>
+                                                <asp:Label ID="lblRemarksEdit" runat="server" Text="Remarks "></asp:Label>
                                             </td>
                                             <td class="tdTextbox" colspan="2">
                                                 <asp:TextBox ID="txtRemarksEdit" runat="server" TextMode="MultiLine" class="textboxlong"></asp:TextBox></td>
@@ -381,7 +381,7 @@
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblBranchEdit" runat="server" Text="Branch : "></asp:Label>
+                                                <asp:Label ID="lblBranchEdit" runat="server" Text="Branch "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:Label runat="server" ID="lblBranchEditValue" Text='<%# Bind("BranchName") %>' Visible="false"></asp:Label>
@@ -392,7 +392,7 @@
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblPriorityEdit" runat="server" Text="Priority : "></asp:Label>
+                                                <asp:Label ID="lblPriorityEdit" runat="server" Text="Priority "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:Label runat="server" ID="lblPriorityEditValue" Text='<%# Bind("PriorityName") %>' Visible="false"></asp:Label>
@@ -400,7 +400,7 @@
                                                 </asp:DropDownList>
                                             </td>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblAffectingEdit" runat="server" Text="Affecting Operation: "></asp:Label>
+                                                <asp:Label ID="lblAffectingEdit" runat="server" Text="Affecting Operation "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:Label runat="server" ID="lblAffectingEditValue" Text='<%# Bind("AffectOperation") %>' Visible="false"></asp:Label>
@@ -412,7 +412,7 @@
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblScopeEdit" runat="server" Text="Scope Of Work : "></asp:Label>
+                                                <asp:Label ID="lblScopeEdit" runat="server" Text="Scope Of Work "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:TextBox ID="txtScopeEdit" runat="server" class="textbox" Text='<%# Bind("Scope") %>'></asp:TextBox>
@@ -420,7 +420,7 @@
                                                     ErrorMessage="Please enter Scope" ControlToValidate="txtScopeEdit" Display="None"></asp:RequiredFieldValidator>
                                             </td>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblFloorEdit" runat="server" Text="Floor: "></asp:Label>
+                                                <asp:Label ID="lblFloorEdit" runat="server" Text="Floor "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:Label runat="server" ID="lblFloorEditValue" Text='<%# Bind("Floor") %>' Visible="false"></asp:Label>
@@ -436,7 +436,7 @@
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblSectionEdit" runat="server" Text="Section / Area : "></asp:Label>
+                                                <asp:Label ID="lblSectionEdit" runat="server" Text="Section / Area "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:Label runat="server" ID="lblSectionEditValue" Text='<%# Bind("SectionName") %>' Visible="false"></asp:Label>
@@ -444,7 +444,7 @@
                                                 </asp:DropDownList>
                                             </td>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblOtherSectionEdit" runat="server" Text="If Others : "></asp:Label>
+                                                <asp:Label ID="lblOtherSectionEdit" runat="server" Text="If Others "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:TextBox ID="txtOtherSectionEdit" runat="server" class="textbox" Text='<%# Bind("OtherSection") %>'> ></asp:TextBox>
@@ -454,7 +454,7 @@
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblCategoryEdit" runat="server" Text="Category : "></asp:Label>
+                                                <asp:Label ID="lblCategoryEdit" runat="server" Text="Category "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:Label runat="server" ID="lblCategoryEditValue" Text='<%# Bind("Category") %>' Visible="false"></asp:Label>
@@ -465,7 +465,7 @@
                                             </td>
 
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblRequestorEdit" runat="server" Text="Requestor Name : "></asp:Label>
+                                                <asp:Label ID="lblRequestorEdit" runat="server" Text="Requestor Name "></asp:Label>
                                             </td>
                                             <td class="tdTextbox">
                                                 <asp:TextBox ID="txtRequestorEdit" runat="server" class="textbox" Text='<%# Bind("Requestor") %>'></asp:TextBox>
@@ -475,7 +475,7 @@
                                         </tr>
                                         <tr>
                                             <td class="tdlabel">
-                                                <asp:Label ID="lblRemarksEdit" runat="server" Text="Remarks : "></asp:Label>
+                                                <asp:Label ID="lblRemarksEdit" runat="server" Text="Remarks "></asp:Label>
                                             </td>
                                             <td class="tdTextbox" colspan="2">
                                                 <asp:TextBox ID="txtRemarksEdit" runat="server" TextMode="MultiLine" class="textboxlong" Text='<%# Bind("Remarks") %>'></asp:TextBox></td>
@@ -540,14 +540,14 @@
 
                                     </td>
                                     <td class="tdlabel">
-                                        <asp:Label ID="lblAssignTo" runat="server" Text="Assign To : "></asp:Label>
+                                        <asp:Label ID="lblAssignTo" runat="server" Text="Assign To "></asp:Label>
                                     </td>
 
                                     <td class="tdTextbox">
                                         <asp:DropDownList ID="ddlAssignTo" runat="server" CssClass="dropdownlistnew"></asp:DropDownList>
                                     </td>
                                     <td class="tdlabel">
-                                        <asp:Label ID="lblAdminComment" runat="server" Text="Comment : "></asp:Label>
+                                        <asp:Label ID="lblAdminComment" runat="server" Text="Comment "></asp:Label>
                                     </td>
                                     <td class="tdTextbox" colspan="2">
                                         <asp:TextBox ID="txtAdminComment" runat="server" class="textboxlong" TextMode="MultiLine"></asp:TextBox>
@@ -559,13 +559,13 @@
                                 <tr id="trclosure" runat="server">
 
                                     <td class="tdlabel">
-                                        <asp:Label ID="lblMaterialsUsed" runat="server" Text="Materials Used : "></asp:Label>
+                                        <asp:Label ID="lblMaterialsUsed" runat="server" Text="Materials Used "></asp:Label>
                                     </td>
                                     <td class="tdTextbox">
                                         <asp:TextBox ID="txtMaterialsUsed" runat="server" class="textboxlong" TextMode="MultiLine"></asp:TextBox>
                                     </td>
                                     <td class="tdlabel">
-                                        <asp:Label ID="lblTeamMembers" runat="server" Text="Team Members : "></asp:Label>
+                                        <asp:Label ID="lblTeamMembers" runat="server" Text="Team Members "></asp:Label>
                                     </td>
                                     <td class="tdTextbox">
                                         <asp:TextBox ID="txtTeamMembers" runat="server" class="textboxlong" TextMode="MultiLine"></asp:TextBox>
@@ -625,13 +625,13 @@
                              <%--   </tr>
                                 <tr >--%>
                                     <td class="tdlabel">
-                                        <asp:Label ID="lblWmsId" runat="server" Text="WMS ID : "></asp:Label>
+                                        <asp:Label ID="lblWmsId" runat="server" Text="WMS ID "></asp:Label>
                                     </td>
                                     <td class="tdTextbox">
                                         <asp:Label ID="lblWmsIdValue" runat="server"></asp:Label>
                                     </td>
                                     <td class="tdlabel">
-                                        <asp:Label ID="lblCurrentStatus" runat="server" Text="Current Status : "></asp:Label>
+                                        <asp:Label ID="lblCurrentStatus" runat="server" Text="Current Status "></asp:Label>
                                     </td>
 
                                     <td class="tdTextbox">

@@ -270,7 +270,7 @@
         <select id="Prioritylist" class="form-control" style="width: 100%">
         </select>
                 </td>
-                <td style="width:72%">
+                <td style="width:68%">
 
                 </td>
                 
