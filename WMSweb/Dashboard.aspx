@@ -153,61 +153,46 @@
             <button type="button" data-timeframe="Day" class="btn btn-default btn-frequency">Day</button>
         </div>
     </div>
-
-    <div class="wrap">
-        <div class="tile">
+    <div class="row-fluid">
+        <div class="tile col-lg-3 col-md-3">
             <div class="tileStyle">
                 <div class="text">
                     <h1>0</h1>
                     <h2 class="animate-text">Critical</h2>
                     <p class="animate-text">... </p>
-                    <%--<div class="dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>--%>
                 </div>
             </div>
         </div>
 
 
-        <div class="tile">
+        <div class="tile col-lg-3 col-md-3">
             <div class="tileStyle">
                 <div class="text">
                     <h1>0</h1>
                     <h2 class="animate-text">Urgent</h2>
                     <p class="animate-text">... </p>
-                    <%--<div class="dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>--%>
                 </div>
             </div>
         </div>
 
-        <div class="tile">
+        <div class="tile col-lg-3 col-md-3">
             <div class="tileStyle">
                 <div class="text">
                     <h1>0</h1>
                     <h2 class="animate-text">Routine</h2>
                     <p class="animate-text">... </p>
-                    <%-- <div class="dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>--%>
                 </div>
             </div>
         </div>
     </div>
-
-    <div style="width: 70%; margin: 0 auto">
-        <div class="tile" style="width: 557px; height: 360px; text-align: center; font-size: 2em;">
-            <div id="donut"></div>
-            <span style="font-weight: bold; font-style: italic;">Percentage of status under prioroty</span> </div>
-        <div class="tile" style="padding-left: 10px; width: 557px; height: 360px; text-align: center; font-size: 2em;">
-            <div id="charts"></div>
-            <span style="font-weight: bold; font-style: italic;">Number of requests per status and Priorty</span></div>
+    <div class="row-fluid">
+        <div style="width: 70%; margin: 0 auto">
+            <div class="tile" style="width: 557px; height: 360px; text-align: center; font-size: 2em;">
+                <div id="donut"></div>
+                <span style="font-weight: bold; font-style: italic;">Percentage of status under priority</span> </div>
+            <div class="tile" style="padding-left: 10px; width: 557px; height: 360px; text-align: center; font-size: 2em;">
+                <div id="charts"></div>
+                <span style="font-weight: bold; font-style: italic;">Number of requests per status and Priorty</span></div>
+        </div>
     </div>
 </asp:Content>
