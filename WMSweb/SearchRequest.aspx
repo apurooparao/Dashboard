@@ -264,13 +264,13 @@
         <select id="Statuslist" class="form-control" style="width: 100%">
         </select>
                 </td>
-                <td style="padding-left:1%">
+                <td style="padding-left: 3%;width:15%">
                     
               <label class="form-horizontal">Priority </label>
         <select id="Prioritylist" class="form-control" style="width: 100%">
         </select>
                 </td>
-                <td style="width:68%">
+                <td style="width:60%">
 
                 </td>
                 
