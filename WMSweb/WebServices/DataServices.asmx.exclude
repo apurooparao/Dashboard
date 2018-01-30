@@ -1,0 +1,51 @@
+﻿<%@ WebService Language="C#" Class="DataServices" %>
+
+using System;
+using System.Web;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using System.Web.Script.Serialization;
+using System.Web.Script.Services;
+using WMSbl;
+using System.Data;
+using System.Collections.Generic;
+
+
+[WebService(Namespace = "http://tempuri.org/")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+// To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+[System.Web.Script.Services.ScriptService]
+public class DataServices  : System.Web.Services.WebService {
+
+    [WebMethod]
+    public string HelloWorld() {
+        return "Hello World";
+    }
+
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+    [WebMethod(EnableSession = true)]
+    public string GetRequestbyStatus(int Status, int Userid)
+    {
+        requestBL _rqstbl = new requestBL();
+        List<RequestCriticalityData> lstRequestCriticalityData = new List<RequestCriticalityData>();
+
+        DataTable dtRequest = _rqstbl.getRequestbyStatus(Status, Userid).Tables[0];
+        foreach (DataRow row in dtRequest.Rows)
+        {
+            lstRequestCriticalityData.Add(new RequestCriticalityData
+            {
+                Criticality = Convert.ToString(row["Criticality"]),
+                IssueCount = Convert.ToInt16(row["IssueCount"]),
+                ChartColor = Convert.ToString(row["ChartColor"]),
+            });
+        }
+        return new JavaScriptSerializer().Serialize(lstRequestCriticalityData);
+    }
+}
+
+public class RequestCriticalityData
+{
+    public string Criticality { get; set; }
+    public int IssueCount { get; set; }
+    public string ChartColor { get; set; }
+}

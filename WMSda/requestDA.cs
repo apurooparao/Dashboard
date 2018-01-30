@@ -88,6 +88,34 @@ namespace WMSda
             }
         }
 
+        public DataSet GetDashboardInfo(int UserId, string Timeframe)
+        {
+            try
+            {
+                var cmd = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = _sqlcon,
+                    CommandText = "USP_GetDashboardInfo"
+                };
+                cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = UserId;
+                cmd.Parameters.Add("@Timeframe", SqlDbType.VarChar, 5).Value = Timeframe;
+                _sqlcon.Open();
+                var sqlda = new SqlDataAdapter(cmd);
+                var dset = new DataSet();
+                sqlda.Fill(dset);
+                return dset;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                _sqlcon.Close();
+            }
+        }
+
         public int changeStatus(statusBO _statusBO)
         {
             try
@@ -188,6 +216,66 @@ namespace WMSda
             finally
             {
                 _sqlcon.Close();
+            }
+        }
+
+        public DataTable GetRequestDetailsByStatus(int userId, int status)
+        {
+            DataTable dset = new DataTable();
+            try
+            {
+                var cmd = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = _sqlcon,
+                    CommandText = "sp_Dashboard_Grid_Sel"
+                };
+                cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = userId;
+                cmd.Parameters.Add("@StatusID", SqlDbType.Int).Value = status;
+
+                _sqlcon.Open();
+
+                var sqlda = new SqlDataAdapter(cmd);
+                sqlda.Fill(dset);
+
+            }
+            catch (Exception ex)
+            {
+                dset = null;
+            }
+            finally
+            {
+                _sqlcon.Close();
+            }
+            return dset;
+        }
+
+        public DataTable getMasterStatus()
+        {
+            {
+                DataTable dset = new DataTable();
+                try
+                {
+                    var cmd = new SqlCommand
+                    {
+                        CommandType = CommandType.StoredProcedure,
+                        Connection = _sqlcon,
+                        CommandText = "sp_master_status"
+                    };
+
+                    var sqlda = new SqlDataAdapter(cmd);
+                    sqlda.Fill(dset);
+
+                }
+                catch (Exception ex)
+                {
+                    dset = null;
+                }
+                finally
+                {
+                    _sqlcon.Close();
+                }
+                return dset;
             }
         }
 
