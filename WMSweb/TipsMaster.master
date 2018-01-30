@@ -69,7 +69,7 @@
                                 <a href="#">
 
                                     <span><i class="fa fa-gear"></i></span>
-                                    <span><u>Administration</u></span>
+                                    <span>Administration</span>
                                 </a>
                                 <ul class="treeview-menu" style="display: none;">
                                     <li><a href="AdminUser.aspx"><i class="fa-sub fa-angle-right"></i>User</a></li>
@@ -87,7 +87,7 @@
                             <li>
                                 <a href="#">
                                 <i class="fa fa-circle"></i>
-                                <span style="text-decoration: underline">Request</span>
+                                <span >Request</span>
                             </a>
                                 <ul class="treeview-menu" style="display: none;">
                                     <li runat="server" id="li_createrequest" visible="false"><a href="../../RequestDetails.aspx"><i class="fa-sub fa-angle-right"></i>Add Request</a></li>

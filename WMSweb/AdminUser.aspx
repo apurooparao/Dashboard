@@ -99,12 +99,13 @@
                         <tr>
 
                             <td class="tdlabeladmin">
-                                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="buttonadminuser" ValidationGroup="Insert"  />
-                                <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" CssClass="buttonadminuser" ValidationGroup="Insert"
-                                    Visible="false" />
+                               
 
                             </td>
                             <td>
+                                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="buttonadmin" ValidationGroup="Insert"  />
+                                <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" CssClass="buttonadmin" ValidationGroup="Insert"
+                                            Visible="false" />
                                 <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click" CssClass="buttonadmin" />
                             </td>
                         </tr>
