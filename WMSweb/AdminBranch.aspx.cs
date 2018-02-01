@@ -234,6 +234,11 @@ public partial class AdminBranch : System.Web.UI.Page
                 lblMessage.Text = "Cannot de-activate the Branch Record as it is being referenced by Open/In-Progress tickets";
                 ClearControls();
             }
+            else if (result == 3)
+            {
+                lblMessage.Text = "Cannot de-activate the Branch Record as there are Active users attached to this Branch";
+                ClearControls();
+            }
             else if (result == 100)
             {
                 lblMessage.Text = "Branch Name for this Region already exists";

@@ -655,13 +655,13 @@
                                                 <asp:Label ID="lblassignedToTimeline" runat="server" Text='<%#Eval("AsssignedTo") %>' BackColor="Transparent"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                           <asp:TemplateField HeaderText="Comment" HeaderStyle-Width="25%">
+                                           <asp:TemplateField HeaderText="Comment" HeaderStyle-Width="22%">
                                             <ItemTemplate>
                                                 <asp:Label ID="lblCommentsTimeline" runat="server" Text='<%#Eval("Comments") %>' BackColor="Transparent"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>  
                                         
-                                        <asp:TemplateField HeaderText="Date" HeaderStyle-Width="12%">
+                                        <asp:TemplateField HeaderText="Date" HeaderStyle-Width="14%">
                                             <ItemTemplate>
                                                 <asp:Label ID="lblDateTimeline" runat="server" Text='<%#Eval("ModifiedDate") %>' BackColor="Transparent"></asp:Label>
                                             </ItemTemplate>
@@ -676,7 +676,7 @@
                                                 <asp:Label ID="lblOuttimeTimeline" runat="server" Text='<%#Eval("OutTime") %>' BackColor="Transparent"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>    
-                                        <asp:TemplateField HeaderText="Closed On" HeaderStyle-Width="12%">
+                                        <asp:TemplateField HeaderText="Closed On" HeaderStyle-Width="13%">
                                             <ItemTemplate>
                                                 <asp:Label ID="lblClosedOnTimeline" runat="server" Text='<%#Eval("ClosedOn") %>' BackColor="Transparent"></asp:Label>
                                             </ItemTemplate>

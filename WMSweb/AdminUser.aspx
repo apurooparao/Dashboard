@@ -70,7 +70,7 @@
                                     ValidationGroup="Insert" Text="*" ForeColor="Red">
                                 </asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator Display="None" runat="server" id="regEmail" ErrorMessage="Please enter valid email" ControlToValidate="txtEmail"
-                                    ValidationGroup="Insert" ValidationExpression="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"></asp:RegularExpressionValidator>
+                                    ValidationGroup="Insert" ValidationExpression="[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?"></asp:RegularExpressionValidator>
                             </td>
                         </tr>
                          <tr>
