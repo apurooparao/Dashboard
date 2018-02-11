@@ -10,7 +10,7 @@
     <title></title>
 
     <%--<link href="Styles/MenuStyle.css" rel="stylesheet" />--%>
-    <%--<script src="../../Scripts/jquery-3.1.1.js"></script>--%>
+    <%--<script src="Scripts/jquery-3.1.1.js"></script>--%>
     <%--<script src="Scripts/foundation.min.js"></script>--%>
 
     <link href="Styles/c3.css" rel="stylesheet" />
@@ -60,7 +60,7 @@
                         <ul class="sidebar-menu">
                             <li class="header"></li>
                             <li class="treeview">
-                                <a href="../../Dashboard.aspx">
+                                <a href="Dashboard.aspx">
                                     <span><i class="fa fa-dashboard"></i></span>
                                     <span>Dashboard</span>
                                 </a>
@@ -73,15 +73,15 @@
                                 </a>
                                 <ul class="treeview-menu" style="display: none;">
                                     <li><a href="AdminUser.aspx"><i class="fa-sub fa-angle-right"></i>User</a></li>
-                                    <li><a href="../../AdminRegion.aspx"><i class="fa-sub fa-angle-right"></i>Region</a></li>
-                                    <li><a href="../../AdminBranch.aspx"><i class="fa-sub fa-angle-right"></i>Branch</a></li>
-                                    <li><a href="../../AdminCategory.aspx"><i class="fa-sub fa-angle-right"></i>Category</a></li>
-                                    <li><a href="../../AdminPriority.aspx"><i class="fa-sub fa-angle-right"></i>Priority</a></li>
-                                    <li><a href="../../AdminSection.aspx"><i class="fa-sub fa-angle-right"></i>Section</a></li>
+                                    <li><a href="AdminRegion.aspx"><i class="fa-sub fa-angle-right"></i>Region</a></li>
+                                    <li><a href="AdminBranch.aspx"><i class="fa-sub fa-angle-right"></i>Branch</a></li>
+                                    <li><a href="AdminCategory.aspx"><i class="fa-sub fa-angle-right"></i>Category</a></li>
+                                    <li><a href="AdminPriority.aspx"><i class="fa-sub fa-angle-right"></i>Priority</a></li>
+                                    <li><a href="AdminSection.aspx"><i class="fa-sub fa-angle-right"></i>Section</a></li>
                                 </ul>
                             </li>
                             <li runat="server" id="li_reports" visible="false">
-                                <a href="../../Reports.aspx">
+                                <a href="Reports.aspx">
                                 <span><i class="fa fa-bar-chart-o"></i></span>
                                 <span>Reports</span></a></li>
                             <li>
@@ -90,8 +90,8 @@
                                 <span >Request</span>
                             </a>
                                 <ul class="treeview-menu" style="display: none;">
-                                    <li runat="server" id="li_createrequest" visible="false"><a href="../../RequestDetails.aspx"><i class="fa-sub fa-angle-right"></i>Add Request</a></li>
-                                    <li><a href="../../SearchRequest.aspx"><i class="fa-sub fa-angle-right"></i>Search</a></li>
+                                    <li runat="server" id="li_createrequest" visible="false"><a href="RequestDetails.aspx"><i class="fa-sub fa-angle-right"></i>Add Request</a></li>
+                                    <li><a href="SearchRequest.aspx"><i class="fa-sub fa-angle-right"></i>Search</a></li>
                                 </ul>
                             </li>
                         </ul>

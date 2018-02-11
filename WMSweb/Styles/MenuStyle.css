@@ -30,7 +30,7 @@ ul {
 header {
     /*background: #2d3f51;*/
     background-image: padding: 0 7%;
-    background-image: url('../Images/greenBackground.jpg');
+    background-image: url('Images/greenBackground.jpg');
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;

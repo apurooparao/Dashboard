@@ -78,9 +78,9 @@ namespace WMSda
             }
             catch (Exception ex)
             {
-                _objUserBo = new UserBo {UserName = ex.Message};
-                return _objUserBo;
-
+                //   _objUserBo = new UserBo {UserName = ex.Message};
+                // return _objUserBo;
+                return null;
             }
 
         }

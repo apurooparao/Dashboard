@@ -18,7 +18,7 @@
             //Get Stats tile data
             $.ajax({
                 type: "POST",
-                url: "/GetDataServices.asmx/GetRequestbyStatusTypes",
+                url: "GetDataServices.asmx/GetRequestbyStatusTypes",
              //   data: JSON.stringify({ Status: 1, Userid: 1003 }),
                 data: JSON.stringify({  Userid: 1003 }),
                 contentType: "application/json; charset=utf-8",
@@ -147,7 +147,7 @@
                         type: 'donut',
                         onclick: function (d, i) {
                             console.log("onclick", d, i);
-                            location.href = "/SearchRequest.aspx?status=" + selectedStatus + "&priority=" + d.id;
+                            location.href = "SearchRequest.aspx?status=" + selectedStatus + "&priority=" + d.id;
                         },
                         onmouseover: function (d, i) { console.log("onmouseover", d, i); },
                         onmouseout: function (d, i) { console.log("onmouseout", d, i); }

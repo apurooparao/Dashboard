@@ -10,7 +10,7 @@
             var getStatuses = function () {
                 $.ajax({
                     type: "POST",
-                    url: "/GetDataServices.asmx/GetStatuses",
+                    url: "GetDataServices.asmx/GetStatuses",
                     contentType: "application/json; charset=utf-8"
                 })
                     .done(function (msg) {
@@ -50,7 +50,7 @@
             var getPriorities = function () {
                 $.ajax({
                     type: "POST",
-                    url: "/GetDataServices.asmx/GetPriorities",
+                    url: "GetDataServices.asmx/GetPriorities",
                     contentType: "application/json; charset=utf-8"
                 })
                     .done(function (msg) {
@@ -111,7 +111,7 @@
                         var tableHeader = "<table id='grid-requested-status' class='table table-condensed table-hover table-striped'><thead><tr><th data-column-id='WMSID' data-type='numeric'>WMSID</th><th data-column-id='PriorityName'>PriorityName</th><th data-column-id='BranchName' data-order='desc'>BranchName</th><th data-column-id='AffectOperation' data-order='desc'>AffectOperation</th><th data-column-id='Scope' data-order='desc'>Scope</th><th data-column-id='SectionName' data-order='desc'>SectionName</th><th data-column-id='Category' data-order='desc'>Category</th><th data-column-id='Requestor' data-order='desc'>Requestor</th><th data-type='date' data-column-id='StatusName' data-order='desc' >Status</th></tr></thead><tbody>$$$$</tbody></table>";
                         $.ajax({
                             type: "POST",
-                            url: "/GetDataServices.asmx/GetRequestDataByWMSid",
+                            url: "GetDataServices.asmx/GetRequestDataByWMSid",
                             contentType: "application/json; charset=utf-8",
                             data: JSON.stringify({ wmsId: wmsid})
                         }).done(function (resp) {
@@ -184,7 +184,7 @@
                     var tableHeader = "<table id='grid-requested-status' class='table table-condensed table-hover table-striped'><thead><tr><th data-column-id='WMSID' data-type='numeric'>WMSID</th><th data-column-id='PriorityName'>PriorityName</th><th data-column-id='BranchName' data-order='desc'>BranchName</th><th data-column-id='AffectOperation' data-order='desc'>AffectOperation</th><th data-column-id='Scope' data-order='desc'>Scope</th><th data-column-id='SectionName' data-order='desc'>SectionName</th><th data-column-id='Category' data-order='desc'>Category</th><th data-column-id='Requestor' data-order='desc'>Requestor</th><th data-type='date' data-column-id='StatusName' data-order='desc' >Status</th></tr></thead><tbody>$$$$</tbody></table>";
                     $.ajax({
                         type: "POST",
-                        url: "/GetDataServices.asmx/GetRequestDataByStatusAndPriority",
+                        url: "GetDataServices.asmx/GetRequestDataByStatusAndPriority",
                         contentType: "application/json; charset=utf-8",
                         data: JSON.stringify({ Status: statusId, Priority: priorityId })
                     }).done(function (resp) {

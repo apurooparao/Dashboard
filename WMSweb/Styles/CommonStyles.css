@@ -379,7 +379,7 @@ background: #eee;
 .validationsummary{
     border: 1px solid #b08b34;
     /*background:transparent  no-repeat 12px 35px;*/
-    background-image:url(../Images/warning.gif) ;
+    background-image:url(Images/warning.gif) ;
     background-repeat:no-repeat;
     background-size:4%;
     background-position-y:center;    

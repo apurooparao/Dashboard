@@ -26,7 +26,7 @@ BODY STYLING
 
 body {
 	
-    /*background-image:url('../Images//TipsNToes.jpg');*/
+    /*background-image:url('Images//TipsNToes.jpg');*/
     background-repeat:no-repeat;
     background-size:cover;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -56,7 +56,7 @@ body {
 	z-index: -2;
 	
 	/* Fallback */ 
-	background-image: url(../Images//gradient.png); 
+	background-image: url(Images//gradient.png); 
 	background-repeat: no-repeat; 
 	
 	/* CSS3 Gradient */
