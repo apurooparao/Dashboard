@@ -240,3 +240,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/WMSweb/WebServices/DataServices.asmx.exclude
