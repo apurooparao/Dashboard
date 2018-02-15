@@ -44,7 +44,7 @@
                 <asp:LinkButton ID="lnkSignout" Text="Sign Out" runat="server" CssClass="navbar-brand" OnClick="lnkSignout_Click"></asp:LinkButton>
             </div>
         </nav>
-        <aside class="sidebar-left col-md-1">
+        <aside class="sidebar-left col-md-1" style="padding-left: 0px; padding-right: 0px;">
             <nav class="navbar navbar-inverse">
                 <div class="">
                     <div class="navbar-header">
@@ -61,15 +61,14 @@
                             <li class="header"></li>
                             <li class="treeview">
                                 <a href="Dashboard.aspx">
-                                    <span><i class="fa fa-dashboard"></i></span>
-                                    <span>Dashboard</span>
+                                    <span><i class="fa fa-dashboard sidebar-icon"></i></span>
+                                    <span class="sidebar-label">Dashboard</span>
                                 </a>
                             </li>
                             <li runat="server" id="li_administration" visible="false">
                                 <a href="#">
-
-                                    <span><i class="fa fa-gear"></i></span>
-                                    <span>Administration</span>
+                                   <span><i class="fa fa-gear sidebar-icon"></i></span>
+                                    <span class="sidebar-label"><u>Administration</u></span>
                                 </a>
                                 <ul class="treeview-menu" style="display: none;">
                                     <li><a href="AdminUser.aspx"><i class="fa-sub fa-angle-right"></i>User</a></li>
@@ -82,12 +81,14 @@
                             </li>
                             <li runat="server" id="li_reports" visible="false">
                                 <a href="Reports.aspx">
-                                <span><i class="fa fa-bar-chart-o"></i></span>
-                                <span>Reports</span></a></li>
+                                    <span><i class="fa fa-bar-chart-o sidebar-icon"></i></span>
+                                    <div class="sidebar-label">Reports</div>
+                                </a>
+                            </li>
                             <li>
                                 <a href="#">
-                                <i class="fa fa-circle"></i>
-                                <span >Request</span>
+                                <i class="fa fa-circle sidebar-icon"></i>
+                                <div class="sidebar-label">Request</div>
                             </a>
                                 <ul class="treeview-menu" style="display: none;">
                                     <li runat="server" id="li_createrequest" visible="false"><a href="RequestDetails.aspx"><i class="fa-sub fa-angle-right"></i>Add Request</a></li>

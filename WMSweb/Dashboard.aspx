@@ -178,8 +178,8 @@
         </div>
     </div>
 
-    <div class="wrap">
-        <div class="tile">
+    <div class="row-fluid">
+        <div class="tile col-lg-3 col-md-3">
             <div class="tileStyle">
                 <div class="text">
                     <h1>0</h1>
@@ -195,7 +195,7 @@
         </div>
 
 
-        <div class="tile">
+         <div class="tile col-lg-3 col-md-3">
             <div class="tileStyle">
                 <div class="text">
                     <h1>0</h1>
@@ -210,7 +210,7 @@
             </div>
         </div>
 
-        <div class="tile">
+         <div class="tile col-lg-3 col-md-3">
             <div class="tileStyle">
                 <div class="text">
                     <h1>0</h1>
@@ -224,7 +224,7 @@
                 </div>
             </div>
         </div>
-            <div class="tile">
+             <div class="tile col-lg-3 col-md-3">
             <div class="tileStyle">
                 <div class="text">
                     <h1>0</h1>
@@ -239,7 +239,7 @@
             </div>
         </div>
     </div>
-
+     <div class="row-fluid">
     <div style="width: 70%; margin: 0 auto">
         <div class="tile" style="width: 557px; height: 360px; text-align: center; font-size: 2em;">
             <div id="donut"></div>
@@ -248,4 +248,5 @@
             <div id="charts"></div>
             <span style="font-weight: bold; font-style: italic;">Requests per status and Priority</span></div>
     </div>
+         </div>
 </asp:Content>
