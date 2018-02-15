@@ -62,13 +62,13 @@
                             <li class="treeview">
                                 <a href="Dashboard.aspx">
                                     <span><i class="fa fa-dashboard sidebar-icon"></i></span>
-                                    <span class="sidebar-label">Dashboard</span>
+                                    <div class="sidebar-label">Dashboard</div>
                                 </a>
                             </li>
                             <li runat="server" id="li_administration" visible="false">
                                 <a href="#">
                                    <span><i class="fa fa-gear sidebar-icon"></i></span>
-                                    <span class="sidebar-label"><u>Administration</u></span>
+                                    <div class="sidebar-label">Administration</div>
                                 </a>
                                 <ul class="treeview-menu" style="display: none;">
                                     <li><a href="AdminUser.aspx"><i class="fa-sub fa-angle-right"></i>User</a></li>

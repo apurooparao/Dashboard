@@ -112,12 +112,12 @@
 
         .sidebar-menu .treeview-menu > li > a {
             display: block;
-            font-size: 1em;
+            font-size: 0.8em;
             color: #8aa4af;
         }
 
             .sidebar-menu .treeview-menu > li > a > i {
-                padding: 5px 5px 15px 25px;
+                padding: 5px 5px 15px 10px;
             }
 
             .sidebar-menu .treeview-menu > li > a > span {

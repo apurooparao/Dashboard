@@ -1,5 +1,4 @@
-﻿
-    <%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/TipsMaster.master" AutoEventWireup="true" CodeFile="Dashboard.aspx.cs" Inherits="Dashboard" EnableEventValidation="false" %>
+﻿<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/TipsMaster.master" AutoEventWireup="true" CodeFile="Dashboard.aspx.cs" Inherits="Dashboard" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link href="Styles/GridViewStyleSheet.css" rel="stylesheet" />
@@ -19,8 +18,8 @@
             $.ajax({
                 type: "POST",
                 url: "GetDataServices.asmx/GetRequestbyStatusTypes",
-             //   data: JSON.stringify({ Status: 1, Userid: 1003 }),
-                data: JSON.stringify({  Userid: 1003 }),
+                //   data: JSON.stringify({ Status: 1, Userid: 1003 }),
+                data: JSON.stringify({ Userid: 1003 }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json"
             })
@@ -81,10 +80,10 @@
                         var inprogress = 0;
                         var close = 0;
                         var rejected = 0;
-                    
+
                         //if (pageLoad) {
-                          //  pageLoad = false;
-                            showDonut("Open");
+                        //  pageLoad = false;
+                        showDonut("Open");
                         //}
 
                         $.each(data,
@@ -133,9 +132,9 @@
                 var i = 0;
                 $.each(dashboardData,
                     function (index, row) {
-                       
+
                         if (row.StatusName == selectedStatus) {
-                        //    alert(row.StatusName + " // " + selectedStatus);
+                            //    alert(row.StatusName + " // " + selectedStatus);
                             donutData[i] = [row.PriorityName, row.StatusCount];
                             i++;
                         }
@@ -151,24 +150,23 @@
                         },
                         onmouseover: function (d, i) { console.log("onmouseover", d, i); },
                         onmouseout: function (d, i) { console.log("onmouseout", d, i); }
-                        
+
                     },
                     donut: {
-                        title:selectedStatus
-                      //  title: {
-                    //    title: function (d,i) { return d3.select('#donut .c3-chart-arcs-title').node().innerHTML = d.id; }
-                      //  }
+                        title: selectedStatus
+                        //  title: {
+                        //    title: function (d,i) { return d3.select('#donut .c3-chart-arcs-title').node().innerHTML = d.id; }
+                        //  }
                     }
-                    
+
                 });
-              
+
             }
         });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_body" runat="Server">
     <div id="dCriterion">
-
     </div>
     <div class="row-fluid" style="text-align: center;">
         <div class="btn-group" role="timeframe" aria-label="...">
@@ -179,74 +177,61 @@
     </div>
 
     <div class="row-fluid">
-        <div class="tile col-lg-3 col-md-3">
-            <div class="tileStyle">
-                <div class="text">
-                    <h1>0</h1>
-                    <h2 class="animate-text">Open</h2>
-                    <p class="animate-text">... </p>
-                    <%--<div class="dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>--%>
+        <div class="col-lg-3 col-md-3">
+            <div class="tile col-lg-12 col-md-12">
+                <div class="tileStyle">
+                    <div class="text">
+                        <h1>0</h1>
+                        <h2 class="animate-text">Open</h2>
+                        <p class="animate-text">... </p>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-         <div class="tile col-lg-3 col-md-3">
-            <div class="tileStyle">
-                <div class="text">
-                    <h1>0</h1>
-                    <h2 class="animate-text">In Progress</h2>
-                    <p class="animate-text">... </p>
-                    <%--<div class="dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>--%>
+        <div class="col-lg-3 col-md-3">
+            <div class="tile col-lg-12 col-md-12">
+                <div class="tileStyle">
+                    <div class="text">
+                        <h1>0</h1>
+                        <h2 class="animate-text">In Progress</h2>
+                        <p class="animate-text">... </p>
+                    </div>
                 </div>
             </div>
         </div>
-
-         <div class="tile col-lg-3 col-md-3">
-            <div class="tileStyle">
-                <div class="text">
-                    <h1>0</h1>
-                    <h2 class="animate-text">Close</h2>
-                    <p class="animate-text">... </p>
-                    <%-- <div class="dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>--%>
+        <div class="col-lg-3 col-md-3">
+            <div class="tile col-lg-12 col-md-12">
+                <div class="tileStyle">
+                    <div class="text">
+                        <h1>0</h1>
+                        <h2 class="animate-text">Close</h2>
+                        <p class="animate-text">... </p>
+                    </div>
                 </div>
             </div>
         </div>
-             <div class="tile col-lg-3 col-md-3">
-            <div class="tileStyle">
-                <div class="text">
-                    <h1>0</h1>
-                    <h2 class="animate-text">Rejected</h2>
-                    <p class="animate-text">... </p>
-                    <%-- <div class="dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>--%>
+        <div class="col-lg-3 col-md-3">
+            <div class="tile col-lg-12 col-md-12">
+                <div class="tileStyle">
+                    <div class="text">
+                        <h1>0</h1>
+                        <h2 class="animate-text">Rejected</h2>
+                        <p class="animate-text">... </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-     <div class="row-fluid">
-    <div style="width: 70%; margin: 0 auto">
-        <div class="tile" style="width: 557px; height: 360px; text-align: center; font-size: 2em;">
-            <div id="donut"></div>
-            <span style="font-weight: bold; font-style: italic;">Priority Distribution</span> </div>
-        <div class="tile" style="padding-left: 10px; width: 557px; height: 360px; text-align: center; font-size: 2em;">
-            <div id="charts"></div>
-            <span style="font-weight: bold; font-style: italic;">Requests per status and Priority</span></div>
+    <div class="row-fluid">
+        <div style="width: 70%; margin: 0 auto">
+            <div class="tile" style="width: 557px; height: 360px; text-align: center; font-size: 2em;">
+                <div id="donut"></div>
+                <span style="font-weight: bold; font-style: italic;">Priority Distribution</span>
+            </div>
+            <div class="tile" style="padding-left: 10px; width: 557px; height: 360px; text-align: center; font-size: 2em;">
+                <div id="charts"></div>
+                <span style="font-weight: bold; font-style: italic;">Requests per status and Priority</span>
+            </div>
+        </div>
     </div>
-         </div>
 </asp:Content>
